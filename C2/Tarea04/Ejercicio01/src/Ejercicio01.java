@@ -1,6 +1,14 @@
 public class Ejercicio01 {
     
     public static void main(String[] args) {
+    	//COLORES
+        String morado = "\033[35m";
+        String verde = "\033[32m";
+        String azul = "\033[34m";
+        String rojo = "\033[31m";
+        String reset = "\u001B[0m";
+
+        //Ejercicio01
     	int val1=8 , val2=5;
 		int suma=val1+val2;
 		int resta=val1-val2;
