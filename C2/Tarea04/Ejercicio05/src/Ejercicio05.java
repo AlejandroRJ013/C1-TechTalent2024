@@ -11,13 +11,15 @@ public class Ejercicio05 {
         //Ejercicio05
         int A=85, B=53, C=77, D=37;
 
-        System.out.println("Valores iniciales: \n A="+morado+A+reset+"   C="+verde+C+reset+"\n B="+azul+B+reset+"   D="+rojo+D+reset);
+        System.out.println("Valores iniciales: \n A="+morado+A+reset+"  "
+        		+ " C="+verde+C+reset+"\n B="+azul+B+reset+"   D="+rojo+D+reset);
 
         B=C;
         C=A;
         A=D;
         D=B;
 
-        System.out.println("Valores Después de la assignación: \n A="+morado+A+reset+"   C="+verde+C+reset+"\n B="+azul+B+reset+"   D="+rojo+D+reset);
+        System.out.println("Valores Después de la assignación: \n A="+morado+A+reset+"  "
+        		+ " C="+verde+C+reset+"\n B="+azul+B+reset+"   D="+rojo+D+reset);
     }
 }

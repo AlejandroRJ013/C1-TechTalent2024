@@ -8,8 +8,6 @@ public class Ejercicio01pruebas {
     	//COLORES
         String morado = "\033[35m";
         String verde = "\033[32m";
-        String azul = "\033[34m";
-        String rojo = "\033[31m";
         String reset = "\u001B[0m";
 
         //Ejercicio01
@@ -20,8 +18,8 @@ public class Ejercicio01pruebas {
 		int divi=val1/val2;
 		int modulo=val1%val2;
         
-		System.out.println("El valor asignado al primer numero es: "+val1);
-		System.out.println("El valor asignado al segundo numero es: "+val2);
+		System.out.println("El valor asignado al primer numero es: "+morado+val1+reset);
+		System.out.println("El valor asignado al segundo numero es: "+verde+val2+reset);
 		
         // Crear un marco (frame) y configurar sus propiedades
         JFrame frame = new JFrame("Operaciones Matemáticas");

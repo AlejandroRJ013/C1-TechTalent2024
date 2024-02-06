@@ -11,36 +11,41 @@ public class Ejercicio03 {
         String reset = "\u001B[0m";
         
         //Ejercicio03
-    	int X =(55) , Y =(71);
-        double N =(25.25) , M =(33.14);
-
-        System.out.println("Los valores asignados han sido los siguientes:");
-        System.out.println("para X="+morado+X+reset+", para Y="+verde+Y+reset+", para N="+azul+N+reset+" y para M="+rojo+M+reset);
+    	int X1 =(55) , Y1 =(71);
+        double N1 =(25.25) , M1 =(33.14);
         
         //Definiremos las acciones de sumar, restar, etc.
-        int isuma= X+Y, iresta=X-Y, imulti=X*Y, idivi=X/Y, imodulo=X%Y, xdoble=X*2, ydoble=Y*2;
-        double dsuma= N+M, dresta=N-M, dmulti=N*M, ddivi=N/M, dmodulo=N%M, ndoble=N*2, mdoble=M*2;
-
-        double supsuma=X+Y+N+M, supmulti=X*Y*N*M;
-
+        int isumar= X1+Y1, irestar=X1-Y1, imultiplicar=X1*Y1, idividir=X1/Y1, imodulos=X1%Y1, xdobles=X1*2, ydobles=Y1*2;
+        double dsumar= N1+M1, drestar=N1-M1, dmultiplicar=N1*M1, ddividir=N1/M1, dmodulos=N1%M1, ndobles=N1*2, mdobles=M1*2;
+        double supersuma=X1+Y1+N1+M1, supermulti=X1*Y1*N1*M1;
+        
+        //Numeros con colores ;)
+        String X=morado+X1+reset, Y=verde+Y1+reset, N=azul+N1+reset, M=rojo+M1+reset;
+        String isuma=naranja+isumar+reset, iresta=naranja+irestar+reset, imulti=amarillo+imultiplicar+reset, idivi=amarillo+idividir+reset, imodulo=amarillo+imodulos+reset;
+        String dsuma=naranja+dsumar+reset, dresta=naranja+drestar+reset, dmulti=amarillo+dmultiplicar+reset, ddivi=amarillo+ddividir+reset, dmodulo=amarillo+dmodulos+reset;        
+        String xdoble=morado+xdobles+reset, ydoble=verde+ydobles+reset, ndoble=azul+ndobles+reset, mdoble=rojo+mdobles+reset, supsuma=naranja+supersuma+reset, supmulti=amarillo+supermulti+reset;
+        
+        System.out.println("Los valores asignados han sido los siguientes:");
+        System.out.println("para X="+X+", para Y="+Y+", para N="+N+" y para M="+M);
+        
         System.out.println("Numeros enteros");
-        System.out.println("La suma entre "+morado+X+reset+" y "+verde+Y+reset+" es igual= "+naranja+isuma+reset);
-        System.out.println("La resta entre "+morado+X+reset+" y "+verde+Y+reset+" es igual= "+naranja+iresta+reset);
-        System.out.println("La multiplicación entre "+morado+X+reset+" y "+verde+Y+reset+" es igual= "+amarillo+imulti+reset);
-        System.out.println("La división entre "+morado+X+reset+" y "+verde+Y+reset+" es igual= "+amarillo+idivi+reset+". Con resto: "+amarillo+imodulo+reset);
+        System.out.println("La suma entre "+X+" y "+Y+" es igual= "+isuma);
+        System.out.println("La resta entre "+X+" y "+Y+" es igual= "+iresta);
+        System.out.println("La multiplicación entre "+X+" y "+Y+" es igual= "+imulti);
+        System.out.println("La división entre "+X+" y "+Y+" es igual= "+idivi+". Con resto: "+imodulo);
 
         System.out.println("Numeros reales");
-        System.out.println("La suma entre "+azul+N+reset+" y "+rojo+M+reset+" es igual= "+naranja+dsuma+reset);
-        System.out.println("La resta entre "+azul+N+reset+" y "+rojo+M+reset+" es igual= "+naranja+dresta+reset);
-        System.out.println("La multiplicación entre "+azul+N+reset+" y "+rojo+M+reset+" es igual= "+dmulti+reset);
-        System.out.println("La división entre "+azul+N+reset+" y "+rojo+M+reset+" es igual= "+amarillo+ddivi+reset+". Con resto: "+amarillo+dmodulo+reset);
+        System.out.println("La suma entre "+N+" y "+M+" es igual= "+dsuma);
+        System.out.println("La resta entre "+N+" y "+M+" es igual= "+dresta);
+        System.out.println("La multiplicación entre "+N+" y "+M+" es igual= "+dmulti);
+        System.out.println("La división entre "+N+" y "+M+" es igual= "+ddivi+". Con resto: "+dmodulo);
 
-        System.out.println("El doble del valor "+morado+X+reset+" es igual a= "+morado+xdoble+reset);
-        System.out.println("El doble del valor "+verde+Y+reset+" es igual a= "+verde+ydoble+reset);
-        System.out.println("El doble del valor "+azul+N+reset+" es igual a= "+azul+ndoble+reset);
-        System.out.println("El doble del valor "+rojo+M+reset+" es igual a= "+rojo+mdoble+reset);
+        System.out.println("El doble del valor "+X+" es igual a= "+xdoble);
+        System.out.println("El doble del valor "+Y+" es igual a= "+ydoble);
+        System.out.println("El doble del valor "+N+" es igual a= "+ndoble);
+        System.out.println("El doble del valor "+M+" es igual a= "+mdoble);
 
-        System.out.println("La suma de todas las variables es: "+naranja+supsuma+reset);
-        System.out.println("La multiplicación de todas las variables es: "+amarillo+supmulti+reset);
+        System.out.println("La suma de todas las variables es: "+supsuma);
+        System.out.println("La multiplicación de todas las variables es: "+supmulti);
     }
 }
