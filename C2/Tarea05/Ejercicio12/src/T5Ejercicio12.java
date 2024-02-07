@@ -1,74 +1,28 @@
 import javax.swing.JOptionPane;
-import java.util.Scanner;
 
 public class T5Ejercicio12 {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
         String respuesta;
-       /* String contraseña = "contraseña";
-          int cont = 1;  */ 
-        String lector = sc.next();
-        sc.close();
-        respuesta = JOptionPane.showInputDialog("Instroduzca: contraseña"+lector);
-        System.out.println(lector);
-        System.out.println(respuesta);
-    }
-}
-/* 
-        while (cont <=3){
-            respuesta = JOptionPane.showInputDialog("Contraseña erronea. Intento numero "+cont);
-            if (respuesta == contraseña) {
-                JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-                cont = 4;
+        String nombre = JOptionPane.showInputDialog("¿Como te llamas?");
+        String contraseña = "contraseña";
+        String name = nombre.toUpperCase();
+        int cont = 1;
+        respuesta = JOptionPane.showInputDialog("Instroduzca: contraseña");
+
+        while ((!respuesta.equals(contraseña)) && (cont <= 3)) {
+            respuesta = JOptionPane.showInputDialog("Contraseña erronea. Intento numero " + cont);
+            if (respuesta.equals(contraseña)) {
+                JOptionPane.showMessageDialog(null, "¡Bienvenido " + name + "!");
+                cont = 10;
             } else {
                 cont++;
             }
         }
+        if (cont == 4) {
+            JOptionPane.showMessageDialog(null, "¡" + name + "! Limite de intentos alcanzado.");
+        } else if (cont != 10) {
+            JOptionPane.showMessageDialog(null, "¡Bienvenido " + name + "!");
+        } else {
+        }
     }
-}   */
-
-//respuesta = JOptionPane.showInputDialog("Instroduzca contraseña:");
-//        if (respuesta != contraseña ) {
-//            respuesta = JOptionPane.showInputDialog("Instroduzca contraseña:");
-//        } else {}
-//            JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-//        if (respuesta != contraseña) {
-//            respuesta = JOptionPane.showInputDialog("Prueba otra vez");
-//        } else if (respuesta == contraseña) {
-//            JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-//        }
-//  contadores
-//        do {
-//            respuesta = JOptionPane.showInputDialog("Instroduzca contraseña:");
-//        } while (respuesta == contraseña);
-//        JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-//
-//
-//        Scanner sc = new Scanner(respuesta);
-//        if (respuesta == contraseña) {
-//            JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-//        } else {
-//            for () 
-//        }
-//        
-//
-//        if (respuesta == contraseña) {
-//            JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-//        } else {
-//            respuesta = JOptionPane.showInputDialog("Instroduzca contraseña:");
-//            if (respuesta == contraseña) {
-//                JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-//            } else {
-//                respuesta = JOptionPane.showInputDialog("Instroduzca contraseña:");
-//                if (respuesta == contraseña) {
-//                    JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-//                } else {
-//                        respuesta = JOptionPane.showInputDialog("Instroduzca contraseña:");
-//                        if (respuesta == contraseña) {
-//                            JOptionPane.showMessageDialog(null, "¡ENHORABUENA!");
-//                        } else {
-//                            JOptionPane.showMessageDialog(null, "Escribe bien macho");
-//                        }
-//                }
-//            }
-//        }
+}

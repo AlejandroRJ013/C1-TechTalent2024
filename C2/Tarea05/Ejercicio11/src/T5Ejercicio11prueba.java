@@ -7,28 +7,28 @@ public class T5Ejercicio11prueba {
 
         switch (respuesta) {
             case "lunes":
-                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - dia laboral");
+                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - ¡DIA LABORAL!");
                 break;
             case "martes":
-                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - dia laboral");
+                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - ¡DIA LABORAL!");
                 break;
             case "miercoles":
-                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - dia laboral");
+                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - ¡DIA LABORAL!");
                 break;
             case "jueves":
-                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - dia laboral");
+                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - ¡DIA LABORAL!");
                 break;
             case "viernes":
-                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - dia laboral");
+                JOptionPane.showMessageDialog(null, "Este día te toca trabajar listillo - ¡DIA LABORAL!");
                 break;
             case "sabado":
-                JOptionPane.showMessageDialog(null, "Hoy a disfrutar como un señor - dia festivo");
+                JOptionPane.showMessageDialog(null, "Hoy a disfrutar como un señor - ¡DIA FESTIVO!");
                 break;
             case "domingo":
-                JOptionPane.showMessageDialog(null, "Hoy a disfrutar como un señor - dia festivo");
+                JOptionPane.showMessageDialog(null, "Hoy a disfrutar como un señor - ¡DIA FESTIVO!");
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "-- Escribe un dia de la semana --");
         }
-    } 
+    }
 }
