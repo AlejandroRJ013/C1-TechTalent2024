@@ -6,11 +6,11 @@ public class EjerExtra3 {
         int num = Integer.parseInt(numero);
         int resultado = num;
 
-        for (int suma = (num-1); suma > 0; suma--) {
+        for (int suma = (num - 1); suma > 0; suma--) {
             resultado += suma;
-            System.out.println(num+"+"+suma+" = "+resultado);
+            System.out.println(num + "+" + suma + " = " + resultado);
         }
 
-        JOptionPane.showMessageDialog(null, "La suma de los números precedentes al ingresado es: "+resultado);
+        JOptionPane.showMessageDialog(null, "La suma de los números precedentes al ingresado es: " + resultado);
     }
 }

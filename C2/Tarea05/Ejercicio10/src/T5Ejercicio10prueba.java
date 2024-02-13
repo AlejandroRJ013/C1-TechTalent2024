@@ -1,5 +1,3 @@
-import java.beans.IntrospectionException;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -12,38 +10,20 @@ public class T5Ejercicio10prueba {
         int art = Integer.parseInt(articulos);
         JPanel panel = new JPanel();
 
-            for (int i = 1; i <= art; i++) {
+        for (int i = 1; i <= art; i++) {
             JTextField pre = new JTextField(10);
             panel.add(new JLabel("Articulo " + i + ":"));
             panel.add(pre);
-            
-            int pan = JOptionPane.showConfirmDialog(null, panel,
-            "Introduce el precio del artículo :",
-            JOptionPane.OK_CANCEL_OPTION);
-                if (pan == JOptionPane.OK_OPTION) {
-                String preci = pre.getText().replace(",", ".");
-                double precio = Double.parseDouble(preci);
-                sumventas += precio;
-                }
-            }
-            JOptionPane.showMessageDialog(null, sumventas);
-    }
-}
 
-/*
-        int i = 1;
-        if (i <= art) {
-            JTextField pre = new JTextField(10);
-            panel.add(new JLabel("Articulo " + i + ":"));
-            panel.add(pre);
-            i++;
-        } else if (i > art) {
-            int pan = JOptionPane.showConfirmDialog(null, panel, "Introduce el precio del artículo :",
+            int pan = JOptionPane.showConfirmDialog(null, panel,
+                    "Introduce el precio del artículo :",
                     JOptionPane.OK_CANCEL_OPTION);
             if (pan == JOptionPane.OK_OPTION) {
                 String preci = pre.getText().replace(",", ".");
                 double precio = Double.parseDouble(preci);
                 sumventas += precio;
-            } else {
             }
-             */
+        }
+        JOptionPane.showMessageDialog(null, sumventas);
+    }
+}

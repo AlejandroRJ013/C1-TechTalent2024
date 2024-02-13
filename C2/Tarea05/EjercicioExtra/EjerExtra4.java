@@ -2,22 +2,30 @@ import javax.swing.JOptionPane;
 
 public class EjerExtra4 {
     public static void main(String[] args) {
-        String numero = JOptionPane.showInputDialog(null, "Introduzca el número:");
-        int num = Integer.parseInt(numero);
-        int primos = 0;
-        int solucion = 0;
-        int recursivo = (num-1);
 
-        for (recursivo = (num-1); ((recursivo > 1) && (solucion != 0)); recursivo--) {
-            solucion = Math.floorDiv(num, recursivo);
-        }
-        if (solucion != 0) {
-            primos = num;
-            JOptionPane.showMessageDialog(null, "El numero introducicio: "+num+" es un numero primo"+primos+"\n"+solucion);
-        } else if (solucion == 0) {
-            JOptionPane.showMessageDialog(null, "El numero introducicio: "+num+" no es un numero primo");
+        String numIng = JOptionPane.showInputDialog(null, "Ingresa un numero para saber si es primo:");
+        int num = Integer.parseInt(numIng);
+
+        if (num <= 1) {
+            numIng = JOptionPane.showInputDialog(null, "¡INGRESA UN NUMERO SUPERIOR A 1!");
+            num = Integer.parseInt(numIng);
+        } else if (true == numPrimo(num)) {
+            JOptionPane.showMessageDialog(null, "¡Exacto! El número " + num + " es mi primo ");
         } else {
-            JOptionPane.showMessageDialog(null, "El numero introducicio: "+num+" no es un numero primo");
+            JOptionPane.showMessageDialog(null, "Que lástima, el número " + num + " no es mi primo ");
         }
+    }
+
+    public static boolean numPrimo(int num) {
+        if (num <= 1) {
+            return false;
+
+        }
+        for (int produc = (num - 1); produc >= 2; produc--) {
+            if (num % produc == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
