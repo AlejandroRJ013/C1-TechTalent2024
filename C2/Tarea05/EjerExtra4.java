@@ -11,7 +11,7 @@ public class EjerExtra4 {
             numIng = JOptionPane.showInputDialog(null, "¡INGRESA UN NUMERO SUPERIOR A 1!");
             num = Integer.parseInt(numIng);
         } else if (miprimo = numPrimo(num)) {
-            JOptionPane.showMessageDialog(null, "¡Exacto! El número " + num + " es primo ");
+            JOptionPane.showMessageDialog(null, "¡Exacto! El número " + num + " es mi primo ");
         } else {
             JOptionPane.showMessageDialog(null, "Que lástima, el número " + num + " no es mi primo ");
         }
