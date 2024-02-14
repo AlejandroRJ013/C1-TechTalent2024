@@ -1,24 +1,23 @@
-import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.JOptionPane;
 
 public class Ejercicio06 {
     public static void main(String[] args) {
-        String elnumerito = JOptionPane.showInputDialog("Ingresa un número para saber la cantidad de dígitos que contiene");
-        numero(elnumerito);
-    }
-    
-    public static void numero(String nume) {
-        if (nume.matches("[a-zA-Z]+")){
-            String solonums = nume.replaceAll("[\\a-zA-Z]", "");
-            System.out.println(solonums);
-            int num = Integer.parseInt(nume);
-            if (num <= 0) {
-                JOptionPane.showMessageDialog(null, "Ingresa un número superior a 0");
-            }
-            JOptionPane.showMessageDialog(null, "El numero "+nume+" tiene "+(solonums.length())+" dígitos");
+        String numero = JOptionPane.showInputDialog("Ingrese un numero para saber su numero de cifras");
+        String sinletras = numero.replaceAll("[\\D]", "");
+        if (conteocifras(sinletras) == false) {
+            JOptionPane.showMessageDialog(null, "Ingrese un número superior a 0");
         } else {
-            JOptionPane.showMessageDialog(null, "El numero "+nume+" tiene "+(nume.length())+" dígitos");
+            JOptionPane.showMessageDialog(null,
+                    "El numero " + sinletras + " contiene " + (sinletras.length()) + " dígitos");
         }
-        
+    }
+
+    public static boolean conteocifras(String num) {
+        int numero = Integer.parseInt(num);
+        if (numero <= 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
