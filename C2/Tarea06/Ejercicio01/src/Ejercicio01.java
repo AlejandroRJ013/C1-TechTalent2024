@@ -5,7 +5,7 @@ public class Ejercicio01 {
     public static void main(String[] args) {
         String figuraM = JOptionPane.showInputDialog("¿De que figura quieres calcural su área?");
         String figura = figuraM.toLowerCase();
-        forma(figura);       
+        forma(figura);
     }
 
     public static void forma(String figur) {
@@ -21,7 +21,7 @@ public class Ejercicio01 {
             JOptionPane.showMessageDialog(null, "El área del caudrado es : " + Circulo(radio));
         } else {
             JOptionPane.showMessageDialog(null,
-                    "¿Has escrito bien el nombre de la figura? \n Las opciones son: \n - Cuadrado \n - Triangulo \n - Circulo");
+                    "¿Has escrito bien el nombre de la figura? \n Las opciones son:\n - Cuadrado \n - Triangulo \n - Circulo");
         }
     }
 
