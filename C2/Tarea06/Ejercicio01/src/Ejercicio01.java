@@ -5,16 +5,18 @@ public class Ejercicio01 {
     public static void main(String[] args) {
         String figuraM = JOptionPane.showInputDialog("¿De que figura quieres calcural su área?");
         String figura = figuraM.toLowerCase();
+        forma(figura);       
+    }
 
-        if (figura.equals("cuadrado")) {
-            String lado1 = JOptionPane.showInputDialog("Inserte el tamaño del primer lado");
-            String lado2 = JOptionPane.showInputDialog("Inserte el tamaño del segundo lado");
-            JOptionPane.showMessageDialog(null, "El área del caudrado es : " + Cuadrado(lado1, lado2));
-        } else if (figura.equals("triangulo")) {
+    public static void forma(String figur) {
+        if (figur.equals("cuadrado")) {
+            String costado = JOptionPane.showInputDialog("Inserte el tamaño de un lado de tu cuadrado");
+            JOptionPane.showMessageDialog(null, "El área del caudrado es : " + Cuadrado(costado));
+        } else if (figur.equals("triangulo")) {
             String base = JOptionPane.showInputDialog("Inserte el tamaño de la base del triangulo");
             String altura = JOptionPane.showInputDialog("Inserte la altura del triangulo");
             JOptionPane.showMessageDialog(null, "El área del caudrado es : " + Triangulo(base, altura));
-        } else if (figura.equals("circulo")) {
+        } else if (figur.equals("circulo")) {
             String radio = JOptionPane.showInputDialog("Inserte el tamaño del radio");
             JOptionPane.showMessageDialog(null, "El área del caudrado es : " + Circulo(radio));
         } else {
@@ -23,17 +25,16 @@ public class Ejercicio01 {
         }
     }
 
-    public static int Cuadrado(String lad1, String lad2) {
-        int lado1 = Integer.parseInt(lad1);
-        int lado2 = Integer.parseInt(lad2);
-        int AreaH = lado1 * lado2;
+    public static int Cuadrado(String lado) {
+        int lado1 = Integer.parseInt(lado);
+        int AreaH = lado1 * lado1;
         return AreaH;
     }
 
-    public static int Triangulo(String bas, String altur) {
+    public static double Triangulo(String bas, String altur) {
         int base = Integer.parseInt(bas);
         int altura = Integer.parseInt(altur);
-        int AreaT = (base * altura) / 2;
+        double AreaT = (base * altura) / 2;
         return AreaT;
     }
 
