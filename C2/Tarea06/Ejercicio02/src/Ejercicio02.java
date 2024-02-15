@@ -17,8 +17,8 @@ public class Ejercicio02 {
             if (numero == 0) {
                 numero += 1;
             }
-        juntas.append(numero+", "); 
+            juntas.append(numero + ", ");
         }
-        JOptionPane.showMessageDialog(null, juntas); 
+        JOptionPane.showMessageDialog(null, juntas);
     }
 }
