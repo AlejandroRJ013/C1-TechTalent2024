@@ -2,36 +2,41 @@ import javax.swing.JOptionPane;
 
 public class Ejercicio09 {
     public static void main (String[] args) {
-        String tamano = JOptionPane.showInputDialog("Cantidad de numeros aleatorios geerado:");
+        String tamano = JOptionPane.showInputDialog("Cantidad de numeros aleatorios generado:");
+        while (tamano.equals("")) {
+            tamano = JOptionPane.showInputDialog("Ingrese algun número por favor:");
+        }
         int tamaño = Integer.parseInt(tamano);
         int numaleatorios[] = new int[tamaño];
         rellenar(numaleatorios, tamaño);
+        StringBuilder numesp = new StringBuilder("");
+        tusnums(numaleatorios, numesp, tamaño);
 
     }
 
     public static void rellenar(int numeros[], int tam) {
-        for (int i=0; i<tam; i++) {
-            String intervalo1 = JOptionPane.showInputDialog("Se generará un número mayor al número ingresado: ");
-            String intervalo2 = JOptionPane.showInputDialog("Y uno menor al siguiente número ingresado: ");
-            int inter1 = Integer.parseInt(intervalo1);
-            int inter2 = Integer.parseInt(intervalo2);
-            numeros[i] = inter1 + (Math.random() * (inter2 - inter1)); //operación matematica ayudada por el colega chagpt
-        }
+        int i= 0;
+        while (i<tam) {
+            int mats = (int) (Math.random() * 10);
+            if (mats == 0) {
+                mats = (int) (Math.random() * 10);
+            } else {
+                numeros[i] = mats;
+                i++;
+            }
+        }       
     }
 
-    public static int sumanumeros(int numes[], int tama) {
-        int sumar = 0;
-        for (int e=0; e<tama; e++) {
-            sumar += numes[e];
+    public static void tusnums(int numeros[], StringBuilder numers, int tam) {
+        String todosnums = "";
+        for (int i = 0; i < tam; i++) {
+            int tusnume = numeros[i];
+            numers.append(tusnume).append(" ");
+            
+            todosnums = numers.toString();
+            String aleatorios[] = todosnums.split(" ");
+            numers.append("Tu número aleatorio ").append(i+1).append(" es : "+aleatorios[i]+"\n");
+            JOptionPane.showMessageDialog(null, numers);
         }
-        return sumar;
-    }
-
-    public static String nums(int randoms[]) {
-        StringBuilder numesp = new StringBuilder(" - - ESTOS SON TUS NÚMEROS ALEATORIOS - - \n");
-        for (int numers : randoms) {
-            numesp.append(numers).append(" ");
-        }
-        return numesp;
     }
 }
