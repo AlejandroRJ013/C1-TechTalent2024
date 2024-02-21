@@ -6,24 +6,12 @@ public class Ejercicio10 {
         int tamaño = Integer.parseInt(numtxt);
         int numeros[] = new int[tamaño];
         StringBuilder numerosprim = new StringBuilder("");
-        rellenar(numeros, tamaño, numerosprim);
+        rellenaymuestra(numeros, tamaño, numerosprim);
         String losprimos = numerosprim.toString();
         elmayor(losprimos, tamaño);
     }
 
-    public static boolean primo(int num) {
-        if (num <= 1) {
-            return false;
-        }
-        for (int divisor = (num - 1); divisor >= 2; divisor--) {
-            if (num % divisor == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static void rellenar(int col[], int tam, StringBuilder losprimos) {
+    public static void rellenaymuestra(int col[], int tam, StringBuilder losprimos) {
         int i = 0;
         while (i < tam) {
             String destxt = JOptionPane.showInputDialog("Valor máximo para el intervalo de numeros aleatorio: ");
@@ -42,6 +30,27 @@ public class Ejercicio10 {
         JOptionPane.showMessageDialog(null, "Estos son los numeros primos generados: \n - - " + losprimos + " - - \n");
     }
 
+    public static boolean repes(int[] valor, int aleatorio) {
+        for (int preguntorepe : valor) {
+            if (preguntorepe == aleatorio) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean primo(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int divisor = (num - 1); divisor >= 2; divisor--) {
+            if (num % divisor == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void elmayor(String primos, int tama) {
         String[] nums = primos.split(" ");
         int[] numeros = new int[tama];
@@ -54,14 +63,5 @@ public class Ejercicio10 {
             }
         }
         JOptionPane.showMessageDialog(null, "Y entre ellos el mayor és: " + elgrande);
-    }
-
-    public static boolean repes(int[] valor, int aleatorio) {
-        for (int preguntorepe : valor) {
-            if (preguntorepe == aleatorio) {
-                return true;
-            }
-        }
-        return false;
     }
 }
