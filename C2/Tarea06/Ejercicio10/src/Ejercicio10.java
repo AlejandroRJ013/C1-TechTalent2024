@@ -46,10 +46,10 @@ public class Ejercicio10 {
         String[] nums = primos.split(" ");
         int[] numeros = new int[tama];
         int elgrande = 0;
-        for(int i = 0; i < tama; i++) {
+        for (int i = 0; i < tama; i++) {
             int intnum = Integer.parseInt(nums[i]);
             numeros[i] = intnum;
-            if (elgrande < numeros[i]){
+            if (elgrande < numeros[i]) {
                 elgrande = numeros[i];
             }
         }
