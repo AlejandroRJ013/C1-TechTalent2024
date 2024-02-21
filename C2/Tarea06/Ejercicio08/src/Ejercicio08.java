@@ -3,8 +3,9 @@ import javax.swing.JOptionPane;
 public class Ejercicio08 {
     public static void main(String[] args) {
         int coleccion[] = new int[10];
+        StringBuilder todosnum = new StringBuilder(" - - COLECCIÓN DE NÚMEROS - - \n");
         rellenar(coleccion);
-        JOptionPane.showMessageDialog(null, imprimir(coleccion).toString());
+        JOptionPane.showMessageDialog(null, imprimir(coleccion, todosnum).toString());
     }
 
     public static void rellenar(int valor[]) {
@@ -14,10 +15,11 @@ public class Ejercicio08 {
         }
     }
 
-    public static StringBuilder imprimir(int colec[]) {
-        StringBuilder todosnum = new StringBuilder(" - - COLECCIÓN DE NÚMEROS - - \n");
+    public static StringBuilder imprimir(int colec[], StringBuilder todosnum) {
+        int i = 0;
         for (int junto : colec) {
-            todosnum.append(junto).append(" ");
+            todosnum.append("Indice ["+i+"]: "+junto).append(" \n");
+            i++;
         }
         return todosnum;
     }
