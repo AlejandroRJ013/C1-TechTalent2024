@@ -29,32 +29,39 @@ public class Ejercicio10 {
             String destxt = JOptionPane.showInputDialog("Valor máximo para el intervalo de numeros aleatorio: ");
             int max = Integer.parseInt(destxt);
             int mates = (int) (Math.random() * max);
-            String mat = String.valueOf(mates), loprimo = losprimos.toString();
-            while (!primo(mates) && !mat.equals(loprimo)) {
+
+            while (!primo(mates) || repes(col, mates)) {
                 mates = (int) (Math.random() * max);
-                mat = String.valueOf(mates);
-            } // da primos repetidos
+            }
             if (primo(mates)) {
                 col[i] = mates;
                 losprimos.append(mates + " ");
                 i++;
             }
         }
-        JOptionPane.showMessageDialog(null, "Estos son los numeros primos generados: \n - - " + losprimos + " - - ");
+        JOptionPane.showMessageDialog(null, "Estos son los numeros primos generados: \n - - " + losprimos + " - - \n");
     }
 
     public static void elmayor(String primos, int tama) {
         String[] nums = primos.split(" ");
-        int[] numero = new int[tama];
-        int grande = 0;
-        for (int i = 0; i < tama; i++) {
-            numero[i] = Integer.parseInt(nums[1]);
-        }
-        for (int i = 0; i < tama; i++) {
-            if (grande < numero[i]) {
-                grande = numero[i];
+        int[] numeros = new int[tama];
+        int elgrande = 0;
+        for(int i = 0; i < tama; i++) {
+            int intnum = Integer.parseInt(nums[i]);
+            numeros[i] = intnum;
+            if (elgrande < numeros[i]){
+                elgrande = numeros[i];
             }
         }
-        JOptionPane.showMessageDialog(null, "Y entre ellos el número primo más grande és: " + grande);
+        JOptionPane.showMessageDialog(null, "Y entre ellos el mayor és: " + elgrande);
+    }
+
+    public static boolean repes(int[] valor, int aleatorio) {
+        for (int preguntorepe : valor) {
+            if (preguntorepe == aleatorio) {
+                return true;
+            }
+        }
+        return false;
     }
 }

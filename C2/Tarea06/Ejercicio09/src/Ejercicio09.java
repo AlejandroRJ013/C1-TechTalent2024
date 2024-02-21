@@ -10,29 +10,35 @@ public class Ejercicio09 {
         int numaleatorios[] = new int[tamaño];
         rellenar(numaleatorios, tamaño);
         StringBuilder numesp = new StringBuilder("");
-        int lasuma = sumar(numaleatorios);
-        mostrar(numaleatorios, numesp, lasuma, tamaño);
+        StringBuilder sumacion = new StringBuilder("");
+        sumar(numaleatorios, sumacion, imprimir(numaleatorios, numesp), tamaño);
     }
 
-    public static int sumar(int[] valor) {
+    public static int sumar(int[] valor, StringBuilder sumacion, StringBuilder numesp, int tam) {
         int suma = 0;
+        int i = 0;
         for (int numero : valor) {
             suma += numero;
         }
+        for (int numero : valor) {
+            if (i < tam - 1) {
+                sumacion.append(numero + " + ");
+                i++;
+            } else {
+                sumacion.append(numero + " = ");
+            }
+        }
+        JOptionPane.showMessageDialog(null, "La suma de tus numeros es: \n" + sumacion + suma+"\n\nY tu colección: \n"+numesp);
         return suma;
     }
 
-    public static void mostrar(int[] valor, StringBuilder numesp, int suma, int tam) {
-        for (int numero : valor) {
-            int i = 0;
-            if (i < tam - 1) {
-                numesp.append(numero + " + ");
-                i++;
-            } else {
-                numesp.append(numero + " = ");
-            }
+    public static StringBuilder imprimir(int[] valor, StringBuilder numesp) {
+        int i = 0;
+        for (int junto : valor) {
+            numesp.append("Indice ["+i+"]: "+junto).append(" \n");
+            i++;
         }
-        JOptionPane.showMessageDialog(null, "La suma de tus numeros es: \n" + numesp + suma);
+        return numesp;
     }
 
     public static void rellenar(int valor[], int tam) {
@@ -46,15 +52,15 @@ public class Ejercicio09 {
                 nume = Integer.parseInt(numtxt);
             }
             int aleatorio = (int) (Math.random() * nume);
-
-            if (valor.length >= tam) {
+            if(tam<9) {
+                while (repes(valor, aleatorio)) {
+                    aleatorio = (int) (Math.random() * nume);
+                }
+                valor[i] = aleatorio;
+            } else {
                 aleatorio = (int) (Math.random() * nume);
                 valor[i] = aleatorio;
             }
-            while (repes(valor, aleatorio)) {
-                aleatorio = (int) (Math.random() * nume);
-            }
-            valor[i] = aleatorio;
         }
     }
 
