@@ -11,6 +11,12 @@ public class Ejercicio12 {
 
         String sospecharde = JOptionPane.showInputDialog("Indique el número que se buscará");
         int sospechoso = Integer.parseInt(sospecharde);
+
+        while (!numerocorrecto(sospechoso)) {
+            sospecharde = JOptionPane.showInputDialog("Indique un número entre [0-9]");
+            sospechoso = Integer.parseInt(sospecharde);
+        }
+
         int sos[] = new int[tam];
         StringBuilder sospechosos = new StringBuilder("");
         StringBuilder bonitos = new StringBuilder("");
@@ -73,5 +79,14 @@ public class Ejercicio12 {
                 i++;
             }
         }
+    }
+
+    public static boolean numerocorrecto(int sospechoso) {
+        if (sospechoso < 0) {
+            return false;
+        } else if (sospechoso >= 10) {
+            return false;
+        }
+        return true;
     }
 }
