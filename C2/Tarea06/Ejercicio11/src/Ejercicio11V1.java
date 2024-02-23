@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class Ejercicio11 {
+public class Ejercicio11V1 {
     public static void main(String[] args) {
         String tamaño = JOptionPane.showInputDialog("¿Cual será el tamaño del array?");
         int tam = Integer.parseInt(tamaño);
