@@ -11,9 +11,9 @@ public class Ejercicio07 {
     }
 
     public static void conversor(double euros, String moneda) {
-        double dolares = 1.07;
-        double yenes = 161.48;
-        double libras = 0.85;
+        final double dolares = 1.28611;
+        final double yenes = 129.852;
+        final double libras = 0.86;
 
         switch (moneda) {
             case "dolares":

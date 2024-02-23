@@ -16,10 +16,12 @@ public class Ejercicio10 {
         while (i < tam) {
             String destxt = JOptionPane.showInputDialog("Valor máximo para el intervalo de numeros aleatorio: ");
             int max = Integer.parseInt(destxt);
-            int mates = (int) (Math.random() * max);
+            String mintxt = JOptionPane.showInputDialog("Valor mínimo para el intervalo de numeros aleatorio: ");
+            int min = Integer.parseInt(mintxt);
+            int mates = (int) ((Math.random() * (max - min)) + min);
 
             while (!primo(mates) || repes(col, mates)) {
-                mates = (int) (Math.random() * max);
+                mates = (int) ((Math.random() * (max - min)) + min);
             }
             if (primo(mates)) {
                 col[i] = mates;
