@@ -5,14 +5,15 @@ public class T6Extra05 {
         StringBuilder bonito = new StringBuilder("");
         String sebusca = "a";
         String palabramayus = JOptionPane
-                .showInputDialog("Introduzca una palabra para buscar la segunda y tercera vez que aparece [ a ] :");
+                .showInputDialog("Introduzca una palabra para buscar la " +
+                        "segunda y tercera vez que aparece [ a ] :");
         String palabra = palabramayus.toLowerCase();
         char[] letras = palabra.toCharArray();
         buscarymostrar(bonito, sebusca, palabramayus, palabra, letras);
     }
 
-    public static void buscarymostrar(StringBuilder bonito, String sebusca, String palabramayus, String palabra,
-            char letras[]) {
+    public static void buscarymostrar(StringBuilder bonito, String sebusca,
+            String palabramayus, String palabra, char letras[]) {
         int cont = 0;
         int indice1 = 0;
         int indice2 = 0;
@@ -29,13 +30,13 @@ public class T6Extra05 {
         hacerlobonito(bonito, cont, indice1, indice2, palabra, letras);
         if (cont == 2) {
             JOptionPane.showMessageDialog(null,
-                    "No hay tercera, la segunda [ a ] encontrada en la palabra/frase <" + palabramayus
-                            + "> es la siguiente:\n - Índice: " + indice1 + "\nPosición:" + bonito);
+                    "No hay tercera, la segunda [ a ] encontrada en la palabra/frase <" +
+                            palabramayus + "> es la siguiente:\n - Índice: " + indice1 + "\nPosición:" + bonito);
         } else if (cont > 2) {
             JOptionPane.showMessageDialog(null,
                     "Las [ a ] encontradas en la palabra/frase <" + palabramayus
-                            + "> son las siguientes:\nSegunda:\n - Índice: [" + indice1 + "]\n\nTercera:\n - Índice: ["
-                            + indice2 + "]\n\nPosición:\n" + bonito);
+                            + "> son las siguientes:\nSegunda:\n - Índice: [" + indice1
+                            + "]\n\nTercera:\n - Índice: [" + indice2 + "]\n\nPosición:\n" + bonito);
         } else {
             JOptionPane.showMessageDialog(null,
                     "No se encontraron un mínimo de dos [ a ] para poder hacer el programa");
