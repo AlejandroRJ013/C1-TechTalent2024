@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class T6Extras05 {
+public class T6Extra05 {
     public static void main(String[] args) {
         StringBuilder bonito = new StringBuilder("");
         String sebusca = "a";

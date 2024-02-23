@@ -2,18 +2,17 @@ import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
-public class T6Extras06 {
+public class T6Extra06 {
     public static void main(String[] args) {
         StringBuilder suma = new StringBuilder("");
         int numalumnos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de alumnos a evaluar"));
-        int[] notas = new int[numalumnos];
+        double[] notas = new double[numalumnos];
         Arrays.fill(notas, 5);
         ponernotas(notas);
         promedio(suma, numalumnos, notas);
     }
 
-    public static void ponernotas(int notas[]) {
-        int nota = 0;
+    public static void ponernotas(double notas[]) {
         int cont = 0;
         for (int i = 0; i < notas.length; i++) {
             cont++;
@@ -22,13 +21,13 @@ public class T6Extras06 {
                 JOptionPane.showMessageDialog(null, "Al alumno en la posición " + cont
                         + " no se le ha asignado una nota, de forma automatica hemos asignado un <5>");
             } else {
-                notas[i] = nota = Integer.parseInt(notatxt);
+                notas[i] = Double.parseDouble(notatxt);
             }
         }
     }
 
-    public static void promedio(StringBuilder suma, int numalumnos, int notas[]) {
-        int sumadenotas = 0;
+    public static void promedio(StringBuilder suma, int numalumnos, double notas[]) {
+        double sumadenotas = 0;
         for (int i = 0; i < notas.length; i++) {
             sumadenotas += notas[i];
             if (i == (notas.length - 1)) {
@@ -37,8 +36,10 @@ public class T6Extras06 {
                 suma.append(notas[i] + " + ");
             }
         }
-        int resultado = (sumadenotas / numalumnos);
+        double resultado = (sumadenotas / numalumnos);
+        int resulredondeado = (int) Math.round(resultado);
         JOptionPane.showMessageDialog(null,
-                "El promedio de notas de los alumnos es:\n" + suma + "/" + numalumnos + " = " + resultado);
+                "El promedio de notas de los alumnos es:\n" + suma + "/" + numalumnos + " = " + resulredondeado + " ("
+                        + resultado + ")");
     }
 }
