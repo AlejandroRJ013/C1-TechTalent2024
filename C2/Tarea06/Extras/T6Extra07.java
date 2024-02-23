@@ -14,9 +14,15 @@ public class T6Extra07 {
         }
     }
 
-    public static boolean esta(boolean estaelnum, int array[], String buscar, StringBuilder mostrar) {
+    public static void esta(boolean estaelnum, int array[], String buscar, StringBuilder mostrar) {
         int intbuscar = Integer.parseInt(buscar);
         mostrar.append(" - - Números del array - - \n");
+        for (int i = 0; i < array.length; i++) {
+            
+        }
+        
+        
+        
         for (int valor : array) {
             mostrar.append(valor);
             if (valor == intbuscar) {
