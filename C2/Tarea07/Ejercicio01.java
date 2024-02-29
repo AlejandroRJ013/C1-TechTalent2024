@@ -10,7 +10,7 @@ public class Ejercicio01 {
         int cantNotas = Integer.parseInt(JOptionPane.showInputDialog("Y cuantas notas tienen cada uno?"));
 
         nombrarAlumnoyCadena(alum_notas, nombres_media, cantAlumnos, cantNotas);
-        
+
         JOptionPane.showMessageDialog(null, nombres_media.toString()); //Con un método para varios StringBuilder para mostrar.
     }
 
