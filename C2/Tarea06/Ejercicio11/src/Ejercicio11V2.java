@@ -12,16 +12,16 @@ public class Ejercicio11V2 {
         int aleatorio[] = new int[tam];
         int multiplicado[] = new int[tam];
 
-        rellenararray1(array, tam, coleccion1);
-        rellenararray2(array, aleatorio, tam, coleccion2);
-        rellenararray3(array, aleatorio, multiplicado, tam, coleccion3);
+        rellenarArray1(array, tam, coleccion1);
+        rellenarArray2(array, aleatorio, tam, coleccion2);
+        rellenarArray3(array, aleatorio, multiplicado, tam, coleccion3);
 
         JOptionPane.showMessageDialog(null,
                 "La primera colección contiene: \n - - " + coleccion1 + " - - \n La segunda colección contiene: \n - - "
                         + coleccion2 + " - - \n Y las multiplicaciones dan: \n - - " + coleccion3 + " - - ");
     }
 
-    public static void rellenararray1(int[] array, int tam, StringBuilder coleccion1) {
+    public static void rellenarArray1(int[] array, int tam, StringBuilder coleccion1) {
         int min = 0;
         int max = 10;
         for (int i = 0; i < tam; i++) {
@@ -33,7 +33,7 @@ public class Ejercicio11V2 {
         }
     }
 
-    public static void rellenararray2(int[] array, int[] aleatorio, int tam,
+    public static void rellenarArray2(int[] array, int[] aleatorio, int tam,
             StringBuilder coleccion2) {
         for (int i = 0; i < tam; i++) {
             aleatorio[i] = (int) (Math.random() * (1 + array[i]) - 1);
@@ -41,7 +41,7 @@ public class Ejercicio11V2 {
         }
     }
 
-    public static void rellenararray3(int[] array, int[] aleatorio, int[] multiplicado, int tam,
+    public static void rellenarArray3(int[] array, int[] aleatorio, int[] multiplicado, int tam,
             StringBuilder coleccion3) {
         for (int i = 0; i < tam; i++) {
             multiplicado[i] = array[i] * aleatorio[i];

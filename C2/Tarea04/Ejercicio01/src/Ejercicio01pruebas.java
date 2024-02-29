@@ -34,7 +34,7 @@ public class Ejercicio01pruebas {
         JComboBox<String> comboBox = new JComboBox<>(opciones);
 
         // Crear un botón
-        JButton button = new JButton("Soliucionar");
+        JButton button = new JButton("Solucionar");
 
         // Agregar un ActionListener al botón
         button.addActionListener(new ActionListener() {

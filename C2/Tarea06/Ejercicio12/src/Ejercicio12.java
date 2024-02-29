@@ -2,19 +2,19 @@ import javax.swing.JOptionPane;
 
 public class Ejercicio12 {
     public static void main(String[] args) {
-        StringBuilder tusnumeros = new StringBuilder("");
+        StringBuilder tusNumeros = new StringBuilder("");
         String tamaño = JOptionPane.showInputDialog("Ingrese la cantidad de numeros que se generará");
         int tam = Integer.parseInt(tamaño);
         int col[] = new int[tam];
 
-        rellenar(tam, col, tusnumeros);
+        rellenar(tam, col, tusNumeros);
 
-        String sospecharde = JOptionPane.showInputDialog("Indique el número que se buscará");
-        int sospechoso = Integer.parseInt(sospecharde);
+        String sospecharDe = JOptionPane.showInputDialog("Indique el número que se buscará");
+        int sospechoso = Integer.parseInt(sospecharDe);
 
-        while (!numerocorrecto(sospechoso)) {
-            sospecharde = JOptionPane.showInputDialog("Indique un número entre [0-9]");
-            sospechoso = Integer.parseInt(sospecharde);
+        while (!numeroCorrecto(sospechoso)) {
+            sospecharDe = JOptionPane.showInputDialog("Indique un número entre [0-9]");
+            sospechoso = Integer.parseInt(sospecharDe);
         }
 
         int sos[] = new int[tam];
@@ -22,28 +22,29 @@ public class Ejercicio12 {
 
         detective(sospechoso, col, sos);
 
-        boolean nohaypapeles = false;
+        boolean noHayPapeles = false;
         for (int numero : sos) {
             if (numero != 0) {
-                nohaypapeles = true;
+                noHayPapeles = true;
                 break;
             }
         }
-        if (nohaypapeles) {
+        
+        if (noHayPapeles) {
 
             mostrar(sos, bonitos, sospechoso);
 
         } else {
             JOptionPane.showMessageDialog(null,
-                    "No hay números que terminen en " + sospechoso + "\nTus números generados:\n" + tusnumeros);
+                    "No hay números que terminen en " + sospechoso + "\nTus números generados:\n" + tusNumeros);
         }
     }
 
-    public static void rellenar(int tam, int[] col, StringBuilder tusnumeros) {
+    public static void rellenar(int tam, int[] col, StringBuilder tusNumeros) {
         for (int i = 0; i < tam; i++) {
             int aleatorio = (int) ((Math.random() * 300) + 1);
             col[i] = aleatorio;
-            tusnumeros.append(aleatorio + " ");
+            tusNumeros.append(aleatorio + " ");
         }
     }
 
@@ -74,7 +75,7 @@ public class Ejercicio12 {
         }
     }
 
-    public static boolean numerocorrecto(int sospechoso) {
+    public static boolean numeroCorrecto(int sospechoso) {
         if (sospechoso < 0) {
             return false;
         } else if (sospechoso >= 10) {
