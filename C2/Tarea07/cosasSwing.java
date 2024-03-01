@@ -14,7 +14,7 @@ public class cosasSwing {
         JPanel panel = new JPanel();
 
         // Crear un ComboBox
-        String[] opciones = { "Seleccionar", "Elementos" };
+        String[] opciones = { "Seleccionar", "Elementos", "Elementos" , "Elementos" , "Elementos" };
         JComboBox<String> comboBox = new JComboBox<>(opciones);
 
         // Crear un botón
@@ -22,17 +22,29 @@ public class cosasSwing {
         JButton anadirComboBox = new JButton("Más articulos?");
 
         // Crear una casilla
+        JLabel label = new JLabel("ID");
         JCheckBox casilla = new JCheckBox();
 
+        JLabel abel = new JLabel("Nobre");
+        JCheckBox casill = new JCheckBox();
+
+        JLabel bel = new JLabel("Edades");
+        JCheckBox casil = new JCheckBox();
+
         // Poner texto e imágen con JLabel
-        Icon icono = new ImageIcon("C:\\Users\\aleja\\OneDrive\\Imágenes\\Simba.jpg");
-        JLabel label = new JLabel("Hola neno\n");
-        label.setIcon(icono);
+        // Icon icono = new ImageIcon("C:\\Users\\aleja\\OneDrive\\Imágenes\\Simba.jpg");
+        // JLabel label = new JLabel("Hola neno\n");
+        // label.setIcon(icono);
 
         // Agregar componentes al panel
         panel.add(comboBox);
         panel.add(button);
+        panel.add(label);
         panel.add(casilla);
+        panel.add(abel);
+        panel.add(casill);
+        panel.add(bel);
+        panel.add(casil);
 
         // Agregar el panel al marco
         frame.add(panel);
