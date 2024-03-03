@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Proba {
+public class Ejercicio02 {
     public static void main(String[] args) {
         HashMap<String, Double> cesta = new HashMap<>();
         StringBuilder texto = new StringBuilder("PRECIO DE LOS ARTICULOS\n\n");
