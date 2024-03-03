@@ -7,8 +7,9 @@ public class cosasSwing {
     public static void main(String[] args) {
         // Crear un frame para ir añadiendo paneles, establezco un tamaño mediano
         JFrame frame = new JFrame("Ventana");
-        frame.setSize(300, 150);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 150); // Tamaño
+        frame.setLocationRelativeTo(null); // Posición inicial al medio de la pantalla
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Al cerrar la ventana cierra el programa
 
         // Crear un panel
         JPanel panel = new JPanel();

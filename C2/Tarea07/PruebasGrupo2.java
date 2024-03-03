@@ -60,12 +60,12 @@ public class PruebasGrupo2 {
 
     public static void ventana(HashMap<Integer, HashMap<String, Integer>> primero, HashMap<String, Integer> segundo) {
         JFrame frame = new JFrame("Alumnos curso TechTalent2024");
-        frame.setSize(450, 300); // Tamaño
-        frame.setLocationRelativeTo(null); // Posición inicial al medio de la pantalla
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Al cerrar la ventana cierra el programa
+        frame.setSize(450, 300);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel titul = new JPanel();
-        JLabel titulo = new JLabel(" - - CON QUE VALOR SE ORDENARÁN LOS ALUMNOS - - "); // JLabel titulo
+        JLabel titulo = new JLabel(" - - CON QUE VALOR SE ORDENARÁN LOS ALUMNOS - - ");
         titulo.setVerticalAlignment(SwingConstants.TOP); // Mover el texto al borde superior del JFrame en la posición
                                                          // vertical
         titulo.setHorizontalAlignment(SwingConstants.CENTER); // Mover el texto al centro en la posición horizontal

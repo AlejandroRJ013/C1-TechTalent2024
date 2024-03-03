@@ -1,51 +1,68 @@
 import java.util.HashMap;
 import java.awt.*;
-import java.text.DecimalFormat;
-
 import javax.swing.*;
+import java.awt.event.*;
 
-public class Ejercicio02 {
+public class Proba {
     public static void main(String[] args) {
         HashMap<String, Double> cesta = new HashMap<>();
-        int cantArticulos = Integer.parseInt(JOptionPane.showInputDialog("¿Cuantos articulos quiere comprar?"));
         StringBuilder texto = new StringBuilder("PRECIO DE LOS ARTICULOS\n\n");
         final double IVA = 0.21;
-        DecimalFormat formato = new DecimalFormat("#.##");
-        double suma = 0;
+        final double IVAmin = 0.04;
+        double precioIVA = 0;
+        double totalCompra = 0;
+        JTextField producto;
+        JTextField precio;
 
+        boolean continuar = true;
+        while (continuar) {
+            JPanel infoArticulos = new JPanel(new GridLayout(0, 2));
 
-        for (int i = 0; i<cantArticulos; i++) {
-            JPanel panel = new JPanel(new GridLayout(0, 2)); // GridLayout para organizar los campos de texto en dos columnas
-            
-                panel.add(new JLabel("Nombre del producto: "));
-                JTextField producto = new JTextField(10);
-                panel.add(producto);
+            infoArticulos.add(new JLabel("Nombre del producto: "));
+            producto = new JTextField(10);
+            infoArticulos.add(producto);
 
-                panel.add(new JLabel("Precio:"));
-                JTextField precio = new JTextField(10);
-                panel.add(precio);
+            infoArticulos.add(new JLabel("Precio:"));
+            precio = new JTextField(10);
+            infoArticulos.add(precio);
 
-                int result = JOptionPane.showConfirmDialog(null, panel, "Introduzca información del producto", JOptionPane.OK_CANCEL_OPTION); //OK = 0, CANCEL = 2, CLOSE = -1
-                
-            if (result == JOptionPane.OK_OPTION) {
-                String nombreProducto = producto.getText();
-                double precioProductoDecimales = Double.parseDouble(precio.getText());
-                String precioProducto = formato.format(precioProductoDecimales);
+            infoArticulos.add(new JLabel("¿Más artículos?"));
+            JCheckBox masArticulos = new JCheckBox();
+            infoArticulos.add(masArticulos);
 
-                cesta.put(nombreProducto, precioProducto);
-                double precioIVADecimales = (precioProductoDecimales+(precioProductoDecimales*IVA));
-                String precioIVA = formato.format(precioProductoDecimales);
+            infoArticulos.add(new JLabel("¿Artículo esencial?"));
+            JCheckBox articuloEsencial = new JCheckBox();
+            infoArticulos.add(articuloEsencial);
 
-                texto.append("El articulo <"+ nombreProducto+"> con un precio bruto de "+precioProducto+" con el IVA sale "+precioIVA+"\n");
+            JOptionPane.showMessageDialog(null, infoArticulos);
 
-                // sumaDecimales += precioIVADecimales;
-                // String suma = formato.format(sumaDecimales);
+            String nombreProducto = producto.getText();
+            double precioProducto = Double.parseDouble(precio.getText());
+            cesta.put(nombreProducto, precioProducto);
+
+            if (articuloEsencial.isSelected()) {
+                precioIVA = precioProducto + (precioProducto * IVAmin);
+                texto.append("Producto: <" + nombreProducto + "> Precio: <" + precioProducto + "> Precio IVA[4%]: <"
+                        + precioIVA
+                        + ">\n");
             } else {
-                System.out.println("¡ ¡ OPERACIÓN CANCELADA ! !");
+                precioIVA = precioProducto + (precioProducto * IVA);
+                texto.append("Producto: <" + nombreProducto + "> Precio: <" + precioProducto + "> Precio IVA[21%]: <"
+                        + precioIVA
+                        + ">\n");
+            }
+
+            totalCompra += precioIVA;
+
+            if (!masArticulos.isSelected()) {
+                continuar = false;
             }
         }
-        double dinero = Double.parseDouble(JOptionPane.showInputDialog(null, texto.toString()+"\nEl IVA aplicado a todos los articulos de del 21%\nEn total has comprado ==> "+cantArticulos+" artículos\n\nCon un precio total de ==> "+suma+"€ ¿Con que va ha pagar?"));
-        double vueltos = dinero-suma;
-        JOptionPane.showMessageDialog(null, "Has pagado el precio total de "+suma+" con "+dinero+"\nTus vueltas son ==> "+vueltos);
+
+        double losBilletes = Double
+                .parseDouble(JOptionPane.showInputDialog(null, texto.toString() + "\nTotal a pagar: " + totalCompra));
+        double cambio = losBilletes - totalCompra;
+        JOptionPane.showMessageDialog(null,
+                "Has pagado el precio de " + totalCompra + " con " + losBilletes + "\nTus vueltas son ==> " + cambio);
     }
 }
