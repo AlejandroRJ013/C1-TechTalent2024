@@ -5,25 +5,28 @@ import java.util.HashMap;
 
 public class PruebasGrupo2 {
     public static void main(String[] args) {
-        HashMap<Integer, HashMap<String, Integer>> primero = new HashMap<>();
+        StringBuilder datos = new StringBuilder(" - - ORDEN POR ID - - "+ "\n\n");
+        HashMap<Integer, String> idNombre = new HashMap<>();
+        HashMap<Integer, Integer> idEdad = new HashMap<>();
         int cant = Integer.parseInt(JOptionPane.showInputDialog("Cantidad"));
+
         // segundo.put("Jose", 26);
         // segundo.put("Isabel", 18);
         // segundo.put("Joel", 19);
         // segundo.put("Sebas", 29);
         // segundo.put("Abdellah", 19);
         // segundo.put("Antonio", 23);
-        // segundo.put("Diego", 23);
+        // segundo.put("Diego", 22);
         // segundo.put("Manel", 26);
         // segundo.put("Jessica", 23);
-        // segundo.put("Santos", 23);
+        // segundo.put("Santos", 24);
         // segundo.put("Alex", 23);
-        // segundo.put("Ana María", 23);
-        // segundo.put("Aurora", 23);
+        // segundo.put("Ana María", 29);
+        // segundo.put("Aurora", 30);
         // segundo.put("Laia", 23);
         // segundo.put("Alejandro", 19);
 
-        HashMap<String, Integer> segundo = new HashMap<>();
+        int ultimoID = 0;
         for (int i = 1; i <= cant; i++) {
             JPanel panel = new JPanel(new GridLayout(0, 2)); // GridLayout para organizar los campos de texto en dos
                                                              // columnas
@@ -41,26 +44,28 @@ public class PruebasGrupo2 {
             if (result == JOptionPane.OK_OPTION) {
                 String nombreAlumno = nombre.getText();
                 int edadAlumno = Integer.parseInt(edad.getText());
-                segundo.put(nombreAlumno, edadAlumno);
-                primero.put(i, segundo);
+                idNombre.put(i, nombreAlumno);
+                idEdad.put(i, edadAlumno);
             }
+            ultimoID = i;
         }
 
-        ventana(primero, segundo);
-
-        for (Integer key : primero.keySet()) {
-            System.out.println("ID: " + key);
-            HashMap<String, Integer> alumno = primero.get(key);
-            for (String nombre : alumno.keySet()) {
-                int edad = alumno.get(nombre);
-                System.out.println("Nombre: " + nombre + ", Edad: " + edad);
-            }
+        
+        for (Integer id : idNombre.keySet()) {
+            datos.append("Nombre: " + id+"\n - ID: " + idNombre.get(id)+"\n - Edad: "+idEdad.get(id));
+            
+            
+            System.out.println("ID: " + id+ "ULTIMO id:" +ultimoID);
+            System.out.println(" - Nombre: " + idNombre.get(id)+"\n - Edad: "+idEdad.get(id));
+            
         }
+
+        ventana(datos);
     }
 
-    public static void ventana(HashMap<Integer, HashMap<String, Integer>> primero, HashMap<String, Integer> segundo) {
+    public static void ventana(StringBuilder datos) {
         JFrame frame = new JFrame("Alumnos curso TechTalent2024");
-        frame.setSize(450, 300);
+        frame.setSize(600, 300);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -90,12 +95,12 @@ public class PruebasGrupo2 {
 
         JPanel contenidoDinamico = new JPanel(); // Creamos un panel donde iremos poniendo varios paneles según que
                                                  // quiero mostrar
-        contenidoDinamico.setBounds(100, 25, 350, 280); // Establezco un tamaño y posición fijo
+        contenidoDinamico.setBounds(100, 25, 550, 280); // Establezco un tamaño y posición fijo
         JPanel ordenID = new JPanel();
         // Método para ordenar los alumnos por el ID, concatenandolo a un StringBuilder
         // para mostrarlo en la linea de abajo [ordenID.add(new JLabel("¿Funciona ID?"))
         // --> ordenID.add(new JLabel(StringBuilder.toString))]
-        ordenID.add(new JLabel(primero.toString()));
+        ordenID.add(new JLabel(datos.toString()));
 
         id.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
