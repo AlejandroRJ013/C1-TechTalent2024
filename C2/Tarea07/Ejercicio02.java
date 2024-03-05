@@ -2,11 +2,13 @@ import java.util.HashMap;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
 
 public class Ejercicio02 {
     public static void main(String[] args) {
         HashMap<String, Double> cesta = new HashMap<>();
-        StringBuilder texto = new StringBuilder("PRECIO DE LOS ARTICULOS\n\n");
+        DecimalFormat dosDecimales = new DecimalFormat("#.##");
+        StringBuilder texto = new StringBuilder("PRECIO DE LOS ARTICULOS\n");
         final double IVA = 0.21;
         final double IVAmin = 0.04;
         double precioIVA = 0;
@@ -42,14 +44,14 @@ public class Ejercicio02 {
 
             if (articuloEsencial.isSelected()) {
                 precioIVA = precioProducto + (precioProducto * IVAmin);
-                texto.append("Producto: <" + nombreProducto + "> Precio: <" + precioProducto + "> Precio IVA[4%]: <"
-                        + precioIVA
-                        + ">\n");
+                String precioIVAFormateado = dosDecimales.format(precioIVA);
+                texto.append("Producto: <" + nombreProducto + ">\n    Precio: <" + precioProducto
+                        + ">\n    IVA aplicado [4%]\n    Precio con el IVA: <" + precioIVAFormateado + ">\n\n");
             } else {
                 precioIVA = precioProducto + (precioProducto * IVA);
-                texto.append("Producto: <" + nombreProducto + "> Precio: <" + precioProducto + "> Precio IVA[21%]: <"
-                        + precioIVA
-                        + ">\n");
+                String precioIVAFormateado = dosDecimales.format(precioIVA);
+                texto.append("Producto: <" + nombreProducto + ">\n    Precio: <" + precioProducto
+                        + ">>\n    IVA aplicado [21%]\n    Precio con el IVA: <" + precioIVAFormateado + ">\n\n");
             }
 
             totalCompra += precioIVA;
@@ -59,10 +61,12 @@ public class Ejercicio02 {
             }
         }
 
+        String laMulta = dosDecimales.format(totalCompra);
         double losBilletes = Double
-                .parseDouble(JOptionPane.showInputDialog(null, texto.toString() + "\nTotal a pagar: " + totalCompra));
+                .parseDouble(JOptionPane.showInputDialog(null, texto.toString() + "\nTotal a pagar: " + laMulta));
         double cambio = losBilletes - totalCompra;
+        String laCalderilla = dosDecimales.format(cambio);
         JOptionPane.showMessageDialog(null,
-                "Has pagado el precio de " + totalCompra + " con " + losBilletes + "\nTus vueltas son ==> " + cambio);
+                "Has pagado el precio de " + laMulta + " con " + losBilletes + "\nTus vueltas son ==> " + laCalderilla);
     }
 }
