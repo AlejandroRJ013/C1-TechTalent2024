@@ -21,22 +21,6 @@ public class PruebasGrupo2 {
         AtomicBoolean ordenarNombre = new AtomicBoolean(false);
         AtomicBoolean ordenarEdad = new AtomicBoolean(false);
 
-        // idNombre.put(1, "Jose");
-        // idNombre.put(2, "Isabel");
-        // idNombre.put(3, "Joel");
-        // idNombre.put(4, "Sebas");
-        // idNombre.put(5, "Abdellah");
-        // idNombre.put(6, "Antonio");
-        // idNombre.put(7, "Diego");
-        // idNombre.put(8, "Manel");
-        // idNombre.put(9, "Jessica");
-        // idNombre.put(10, "Santos");
-        // idNombre.put(11, "Alex");
-        // idNombre.put(12, "Ana_María");
-        // idNombre.put(13, "Aurora");
-        // idNombre.put(14, "Laia");
-        // idNombre.put(15, "Alejandro");
-
         panel_informacionAlumnos(idNombre, idEdad);
 
         marcadores(ordenarID, ordenarNombre, ordenarEdad);
@@ -289,7 +273,15 @@ public class PruebasGrupo2 {
         losIntegrantes.setLayout(new BoxLayout(losIntegrantes, BoxLayout.Y_AXIS));
         String[] integrantes = integrantesGrupo.toString().split(" ");
         for (String integrante : integrantes) {
-            JLabel labelIntegrante = new JLabel(" - " + integrante);
+            if (integrante.contains("_")) {
+                String[] nombre_compuesto = integrante.split("_");
+                StringBuilder nombre = new StringBuilder();
+                for (int i = 0; i < nombre_compuesto.length; i++) {
+                    nombre.append(nombre_compuesto[i] + " ");
+                }
+                integrante = nombre.toString();
+            }
+            JLabel labelIntegrante = new JLabel(" -> " + integrante);
             losIntegrantes.add(labelIntegrante);
         }
     }
