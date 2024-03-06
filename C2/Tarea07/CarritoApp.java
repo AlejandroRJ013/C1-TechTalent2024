@@ -1,63 +1,66 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
 
 public class CarritoApp {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Carrito de la compra");
-        frame.setSize(400, 350);
+        frame.setSize(450, 350);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
+        JPanel panel = new JPanel(new BorderLayout());
 
-        ImageIcon icon1 = new ImageIcon(
-                "C:\\Users\\aleja\\Documents\\GitHub\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket.png");
+        ImageIcon icon1 = new ImageIcon("C:\\Users\\Alejandro RJ\\eclipse-workspace\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket.png");
         Image scaledImg1 = icon1.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon1 = new ImageIcon(scaledImg1);
 
-        ImageIcon icon2 = new ImageIcon(
-                "C:\\Users\\aleja\\Documents\\GitHub\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket-fill.png");
+        ImageIcon icon2 = new ImageIcon("C:\\Users\\Alejandro RJ\\eclipse-workspace\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket-fill.png");
         Image scaledImg2 = icon2.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImg2);
 
         JPanel panelBoton = new JPanel();
-        panelBoton.setBounds(340, 0, 45, 45);
+        panelBoton.setLayout(new BoxLayout(panelBoton, BoxLayout.Y_AXIS));
+        // panelBoton.setLayout(new FlowLayout(FlowLayout.CENTER));
         panelBoton.setBackground(Color.LIGHT_GRAY);
 
-        JPanel carritoVacio = new JPanel();
-        carritoVacio.add(new JLabel(scaledIcon1));
+        JLabel agregar_eliminar = new JLabel("Agregar / Eliminar productos");
+        panelBoton.add(agregar_eliminar);
+        
 
-        JPanel carritoLleno = new JPanel();
-        carritoLleno.add(new JLabel(scaledIcon2));
+        JButton carritoVacio = new JButton(scaledIcon1);
+        carritoVacio.setContentAreaFilled(false);
+        carritoVacio.setBorderPainted(false);
 
-        click(panelBoton, carritoVacio, carritoLleno);
+        JButton carritoLleno = new JButton(scaledIcon2);
+        carritoLleno.setContentAreaFilled(false);
+        carritoLleno.setBorderPainted(false);
+        carritoLleno.setVisible(false);
 
         panelBoton.add(carritoVacio);
-        panel.add(panelBoton);
+        panelBoton.add(carritoLleno);
+
+        click(carritoVacio, carritoLleno);
+
+        panel.add(panelBoton, BorderLayout.EAST);
         frame.add(panel);
         frame.setVisible(true);
     }
 
-    public static void click(JPanel panelBoton, JPanel carritoVacio, JPanel carritoLleno) {
-        carritoVacio.addMouseListener(new MouseAdapter() {
+    public static void click(JButton carritoVacio, JButton carritoLleno) {
+        carritoVacio.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                panelBoton.removeAll();
-                panelBoton.add(carritoLleno);
-                panelBoton.revalidate();
-                panelBoton.repaint();
+            public void actionPerformed(ActionEvent e) {
+                carritoVacio.setVisible(false);
+                carritoLleno.setVisible(true);
             }
         });
 
-        carritoLleno.addMouseListener(new MouseAdapter() {
+        carritoLleno.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                panelBoton.removeAll();
-                panelBoton.add(carritoVacio);
-                panelBoton.revalidate();
-                panelBoton.repaint();
+            public void actionPerformed(ActionEvent e) {
+                carritoVacio.setVisible(true);
+                carritoLleno.setVisible(false);
             }
         });
     }
