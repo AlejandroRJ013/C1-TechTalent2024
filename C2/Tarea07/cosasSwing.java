@@ -20,17 +20,13 @@ public class cosasSwing {
 
         // Crear un botón
         JButton button = new JButton("Accion");
-        JButton anadirComboBox = new JButton("Más articulos?");
+        // JButton anadirComboBox = new JButton("Más articulos?");
 
         // Crear una casilla
         JLabel label = new JLabel("ID");
         JCheckBox casilla = new JCheckBox();
 
-        JLabel abel = new JLabel("Nobre");
-        JCheckBox casill = new JCheckBox();
-
-        JLabel bel = new JLabel("Edades");
-        JCheckBox casil = new JCheckBox();
+      
 
         // Poner texto e imágen con JLabel
         // Icon icono = new
@@ -43,10 +39,6 @@ public class cosasSwing {
         panel.add(button);
         panel.add(label);
         panel.add(casilla);
-        panel.add(abel);
-        panel.add(casill);
-        panel.add(bel);
-        panel.add(casil);
 
         // Agregar el panel al marco
         frame.add(panel);
