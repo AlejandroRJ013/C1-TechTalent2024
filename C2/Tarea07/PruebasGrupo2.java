@@ -1,19 +1,17 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 import javafx.scene.layout.GridPane;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PruebasGrupo2 {
     public static void main(String[] args) {
-        StringBuilder grupo1 = new StringBuilder();
-        StringBuilder grupo2 = new StringBuilder();
-        StringBuilder grupo3 = new StringBuilder();
-        StringBuilder grupo4 = new StringBuilder();
-        StringBuilder grupo5 = new StringBuilder();
         HashMap<Integer, String> idNombre = new HashMap<>();
         HashMap<Integer, Integer> idEdad = new HashMap<>();
         ArrayList<Integer> ordenDeLosID = new ArrayList<>();
@@ -29,32 +27,69 @@ public class PruebasGrupo2 {
             System.out.println("Ordenar por ID");
         } else if (ordenarNombre.get()) {
             gruposAlfabetizados(idNombre, ordenDeLosID);
-            anadirInfo_StrBuilder(idNombre, ordenDeLosID, grupo1, grupo2, grupo3, grupo4, grupo5);
         } else if (ordenarEdad.get()) {
-            System.out.println("Ordenar por Edad");
-        } else {
-            System.out.println("3");
+            gruposPorEdad(idEdad, ordenDeLosID);
         }
 
-        ventana(grupo1, grupo2, grupo3, grupo4, grupo5);
+        ventana(idNombre, idEdad, ordenDeLosID);
+    }
+
+    public static void gruposPorEdad(HashMap<Integer, Integer> idEdad, ArrayList<Integer> ordenDeLosID) {
+        ArrayList<Integer> edadesOrdenadas = new ArrayList<>(idEdad.values());
+
+        Collections.sort(edadesOrdenadas);
+
+        for (Integer edadBuscada : edadesOrdenadas) {
+            for (int iDe : idEdad.keySet()) {
+                if (idEdad.get(iDe).equals(edadBuscada)) {
+                    ordenDeLosID.add(iDe);
+                }
+            }
+        }
+    }
+
+    public static void gruposAlfabetizados(HashMap<Integer, String> idNombre, ArrayList<Integer> ordenDeLosID) {
+        ArrayList<String> ordenAlfa = new ArrayList<>();
+        for (String nombre : idNombre.values()) {
+            ordenAlfa.add(nombre);
+        }
+
+        Collections.sort(ordenAlfa);
+
+        for (String nombreBuscado : ordenAlfa) {
+            for (int iDe : idNombre.keySet()) {
+                if (idNombre.get(iDe).equals(nombreBuscado)) {
+                    ordenDeLosID.add(iDe);
+                }
+            }
+        }
     }
 
     public static void panel_informacionAlumnos(HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad) {
-        JPanel panel = new JPanel(new GridLayout(2, 1));
+        JPanel saltoDeLinea = new JPanel();
+        JPanel panel = new JPanel(new GridLayout(4, 1));
         JPanel ejemplo = new JPanel(new GridLayout(1, 2));
         JPanel datosIntroducidos = new JPanel(new GridLayout(1, 2));
 
+        JLabel titulo = new JLabel("- - INGRESE LOS DATOS DE LOS ALUMNOS - -");
+        panel.add(titulo);
+
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
         ejemplo.add(new JLabel("UTILICE EL SIGUIENTE FORMATO   ==>   ==>"));
         ejemplo.add(new JLabel("[ Nombre_compuesto Edad, Nombre_com... ]"));
-        datosIntroducidos.add(new JLabel("   Alumnos del curso TechTalent 2024: "));
+
+        JLabel datosPedidos = new JLabel("Alumnos del curso TechTalent 2024:");
+        datosPedidos.setHorizontalAlignment(SwingConstants.CENTER);
+        datosIntroducidos.add(datosPedidos);
         JTextField alumnos = new JTextField(20);
         datosIntroducidos.add(alumnos);
 
+        panel.add(saltoDeLinea);
         panel.add(ejemplo);
         panel.add(datosIntroducidos);
 
         int result = JOptionPane.showConfirmDialog(null, panel, "Introduzca los datos del alumno",
-                JOptionPane.OK_CANCEL_OPTION);
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         asignarInfo_Hash(result, alumnos, idNombre, idEdad);
     }
@@ -191,85 +226,110 @@ public class PruebasGrupo2 {
         }
     }
 
-    public static void ventana(StringBuilder grupo1,
-            StringBuilder grupo2, StringBuilder grupo3, StringBuilder grupo4, StringBuilder grupo5) {
+    public static void ventana(HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad,
+            ArrayList<Integer> ordenDeLosID) {
         JFrame frame = new JFrame("Alumnos ordenados");
-        frame.setSize(600, 155);
-        frame.setLocationRelativeTo(null);
+        frame.setSize(1000, 1000);
+        frame.setLayout(new GridBagLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel titul = new JPanel();
+        GridBagConstraints posicionPanel = new GridBagConstraints();
+
         JLabel titulo = new JLabel(" - - ALUMNOS DEL CURSO - - ");
         titulo.setVerticalAlignment(SwingConstants.TOP); // Mover el texto al borde superior del JFrame en la posición
                                                          // vertical
         titulo.setHorizontalAlignment(SwingConstants.CENTER); // Mover el texto al centro en la posición horizontal
+        JPanel titul = new JPanel();
         titul.add(titulo);
 
-        JPanel tituloGrupo = new JPanel(new GridLayout(1, 5));
-        tituloGrupo.setBounds(10, 20, 590, 30);
-        JPanel contenidoDinamico = new JPanel(new GridLayout(1, 5)); // Creamos un panel donde iremos poniendo varios
-                                                                     // paneles según que quiero mostrar
-        contenidoDinamico.setBounds(10, 40, 590, 150);
-        JPanel panelGrupo1 = new JPanel();
-        JPanel panelGrupo2 = new JPanel();
-        JPanel panelGrupo3 = new JPanel();
-        JPanel panelGrupo4 = new JPanel();
-        JPanel panelGrupo5 = new JPanel();
+        JPanel tituloGrupo = new JPanel();
+        tituloGrupo.setLayout(new BoxLayout(tituloGrupo, BoxLayout.X_AXIS));
+        tituloGrupo.setBorder(new EmptyBorder(5, 0, 5, 0));
 
-        JLabel grupo1Label = new JLabel();
-        grupo1Label.setText("/ GRUPO 1 /\n");
-        tituloGrupo.add(grupo1Label);
-        JPanel integrantesG1 = new JPanel();
+        JPanel contenidoDinamico = new JPanel(); // Creamos un panel donde iremos poniendo varios
+                                                 // paneles según que quiero mostrar
+        contenidoDinamico.setLayout(new BoxLayout(contenidoDinamico, BoxLayout.X_AXIS));
+        contenidoDinamico.setBorder(new EmptyBorder(5, 0, 5, 0));
 
-        panelIntegrantes(grupo1, integrantesG1);
+        StringBuilder grupo = new StringBuilder();
+        int numGrup = 1;
 
-        JLabel grupo2Label = new JLabel();
-        grupo2Label.setText("/ GRUPO 2 /\n");
-        tituloGrupo.add(grupo2Label);
-        JPanel integrantesG2 = new JPanel();
+        while (ordenDeLosID.size() >= 3) {
+            JPanel panelGrupo = new JPanel();
+            panelGrupo.setLayout(new GridBagLayout());
+            panelGrupo.setBorder(new EmptyBorder(0, 10, 0, 10));
 
-        panelIntegrantes(grupo2, integrantesG2);
+            GridBagConstraints titulo_integrantes = new GridBagConstraints();
 
-        JLabel grupo3Label = new JLabel();
-        grupo3Label.setText("/ GRUPO 3 /\n");
-        tituloGrupo.add(grupo3Label);
-        JPanel integrantesG3 = new JPanel();
+            for (int i = 0; i < 3; i++) {
+                int id = ordenDeLosID.remove(0); // Asignamos el valor a "id" a la vez que lo eliminamos del ArrayList
+                String nombre = idNombre.get(id);
+                grupo.append(nombre).append(" ");
+            }
 
-        panelIntegrantes(grupo3, integrantesG3);
+            JLabel grupoLabel = new JLabel("/ GRUPO " + numGrup + " /\n");
+            grupoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel grupo4Label = new JLabel();
-        grupo4Label.setText("/ GRUPO 4 /\n");
-        tituloGrupo.add(grupo4Label);
-        JPanel integrantesG4 = new JPanel();
+            JPanel integrantes = new JPanel();
+            panelIntegrantes(grupo, integrantes, idNombre, idEdad);
 
-        panelIntegrantes(grupo4, integrantesG4);
+            titulo_integrantes.gridy = 0;
+            panelGrupo.add(grupoLabel, titulo_integrantes);
 
-        JLabel grupo5Label = new JLabel();
-        grupo5Label.setText("/ GRUPO 5 /\n");
-        tituloGrupo.add(grupo5Label);
-        JPanel integrantesG5 = new JPanel();
+            titulo_integrantes.gridy = 1;
+            panelGrupo.add(integrantes, titulo_integrantes);
 
-        panelIntegrantes(grupo5, integrantesG5);
+            contenidoDinamico.add(panelGrupo);
 
-        panelGrupo1.add(integrantesG1);
-        panelGrupo2.add(integrantesG2);
-        panelGrupo3.add(integrantesG3);
-        panelGrupo4.add(integrantesG4);
-        panelGrupo5.add(integrantesG5);
+            grupo.setLength(0);
+            numGrup += 1;
+        }
 
-        contenidoDinamico.add(panelGrupo1);
-        contenidoDinamico.add(panelGrupo2);
-        contenidoDinamico.add(panelGrupo3);
-        contenidoDinamico.add(panelGrupo4);
-        contenidoDinamico.add(panelGrupo5);
+        if (!ordenDeLosID.isEmpty()) {
+            JPanel panelGrupo = new JPanel();
+            panelGrupo.setLayout(new GridBagLayout());
+            GridBagConstraints titulo_integrantes = new GridBagConstraints();
 
-        frame.add(contenidoDinamico);
-        frame.add(tituloGrupo);
-        frame.add(titul);
+            while (!ordenDeLosID.isEmpty()) {
+                int id = ordenDeLosID.remove(0);
+                String nombre = idNombre.get(id);
+                grupo.append(nombre).append(" ");
+            }
+
+            JLabel grupoLabel = new JLabel("/ GRUPO " + numGrup + " /\n");
+            grupoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+            JPanel integrantes = new JPanel();
+            panelIntegrantes(grupo, integrantes, idNombre, idEdad);
+
+            titulo_integrantes.gridy = 0;
+            panelGrupo.add(grupoLabel, titulo_integrantes);
+
+            titulo_integrantes.gridy = 1;
+            panelGrupo.add(integrantes, titulo_integrantes);
+
+            contenidoDinamico.add(panelGrupo);
+        }
+
+        posicionPanel.gridx = 0;
+        posicionPanel.gridy = 0;
+        frame.add(titul, posicionPanel);
+
+        posicionPanel.gridx = 0;
+        posicionPanel.gridy = 1;
+        frame.add(tituloGrupo, posicionPanel);
+
+        posicionPanel.gridx = 0;
+        posicionPanel.gridy = 2;
+        frame.add(contenidoDinamico, posicionPanel);
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true); // Hacer visible el frame
     }
 
-    public static void panelIntegrantes(StringBuilder integrantesGrupo, JPanel losIntegrantes) {
+    public static void panelIntegrantes(StringBuilder integrantesGrupo, JPanel losIntegrantes,
+            HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad) {
         losIntegrantes.setLayout(new BoxLayout(losIntegrantes, BoxLayout.Y_AXIS));
         String[] integrantes = integrantesGrupo.toString().split(" ");
         for (String integrante : integrantes) {
@@ -281,63 +341,31 @@ public class PruebasGrupo2 {
                 }
                 integrante = nombre.toString();
             }
-            JLabel labelIntegrante = new JLabel(" -> " + integrante);
-            losIntegrantes.add(labelIntegrante);
-        }
-    }
-
-    public static void gruposAlfabetizados(HashMap<Integer, String> idNombre, ArrayList<Integer> ordenDeLosID) {
-        ArrayList<String> ordenAlfa = new ArrayList<>();
-        for (String nombre : idNombre.values()) {
-            ordenAlfa.add(nombre);
-        }
-
-        Collections.sort(ordenAlfa);
-
-        for (String nombreBuscado : ordenAlfa) {
             for (int iDe : idNombre.keySet()) {
-                if (idNombre.get(iDe).equals(nombreBuscado)) {
-                    ordenDeLosID.add(iDe);
+                if (idNombre.get(iDe).equals(integrante)) {
+                    JLabel labelIntegrante = new JLabel(
+                            "ID: " + iDe + " Nombre: " + integrante + ", " + idEdad.get(iDe) + " años");
+                    labelIntegrante.setHorizontalAlignment(SwingConstants.CENTER);
+                    losIntegrantes.add(labelIntegrante);
                 }
             }
         }
     }
 
     public static void anadirInfo_StrBuilder(HashMap<Integer, String> idNombre, ArrayList<Integer> ordenDeLosID,
-            StringBuilder grupo1, StringBuilder grupo2, StringBuilder grupo3,
-            StringBuilder grupo4, StringBuilder grupo5) {
-        int cantidadGrupos = (int) Math.ceil((double) ordenDeLosID.size() / 3);
+            StringBuilder grupo, int inicio, int fin) {
 
-        for (int i = 0; i < cantidadGrupos; i++) {
-            StringBuilder grupo = new StringBuilder();
-            int inicio = i * 3;
-            int fin = Math.min(inicio + 3, ordenDeLosID.size());
+        ArrayList<Integer> indicesAEliminar = new ArrayList<>();
 
-            for (int j = inicio; j < fin; j++) {
-                int id = ordenDeLosID.get(j);
-                String nombre = idNombre.get(id);
-                grupo.append(nombre).append(" ");
-            }
+        for (int i = inicio; i < fin; i++) {
+            int id = ordenDeLosID.get(i);
+            String nombre = idNombre.get(id);
+            grupo.append(nombre).append(" ");
+            indicesAEliminar.add(i);
+        }
 
-            switch (i) {
-                case 0:
-                    grupo1.append(grupo.toString());
-                    break;
-                case 1:
-                    grupo2.append(grupo.toString());
-                    break;
-                case 2:
-                    grupo3.append(grupo.toString());
-                    break;
-                case 3:
-                    grupo4.append(grupo.toString());
-                    break;
-                case 4:
-                    grupo5.append(grupo.toString());
-                    break;
-                default:
-                    break;
-            }
+        for (int i = indicesAEliminar.size() - 1; i >= 0; i--) {
+            ordenDeLosID.remove((int) indicesAEliminar.get(i));
         }
     }
 }
