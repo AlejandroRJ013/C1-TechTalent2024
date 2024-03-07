@@ -11,11 +11,19 @@ public class CarritoApp {
 
         JPanel panel = new JPanel(new BorderLayout());
 
-        ImageIcon icon1 = new ImageIcon("C:\\Users\\Alejandro RJ\\eclipse-workspace\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket.png");
+        // ImageIcon icon1 = new ImageIcon("C:\\Users\\Alejandro
+        // RJ\\eclipse-workspace\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket.png"); //
+        // Portátil
+        ImageIcon icon1 = new ImageIcon(
+                "C:\\Users\\aleja\\Documents\\GitHub\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket.png"); // Casa
         Image scaledImg1 = icon1.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon1 = new ImageIcon(scaledImg1);
 
-        ImageIcon icon2 = new ImageIcon("C:\\Users\\Alejandro RJ\\eclipse-workspace\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket-fill.png");
+        // ImageIcon icon2 = new ImageIcon("C:\\Users\\Alejandro
+        // RJ\\eclipse-workspace\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket-fill.png");
+        // // Portátil
+        ImageIcon icon2 = new ImageIcon(
+                "C:\\Users\\aleja\\Documents\\GitHub\\TechTalent2024\\C2\\Tarea07\\Iconos\\basket-fill.png"); // Casa
         Image scaledImg2 = icon2.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImg2);
 
@@ -26,7 +34,6 @@ public class CarritoApp {
 
         JLabel agregar_eliminar = new JLabel("Agregar / Eliminar productos");
         panelBoton.add(agregar_eliminar);
-        
 
         JButton carritoVacio = new JButton(scaledIcon1);
         carritoVacio.setContentAreaFilled(false);

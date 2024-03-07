@@ -28,12 +28,12 @@ public class PruebasGrupo3 {
             gruposPorEdad(idEdad, ordenDeLosID);
         }
 
-        ventana(idNombre, idEdad, ordenDeLosID);
+        ventana(idNombre, idEdad, ordenDeLosID, ordenarID, ordenarNombre, ordenarEdad);
     }
 
     public static void gruposAleatorios(HashMap<Integer, String> idNombre, ArrayList<Integer> ordenDeLosID) {
         ArrayList<Integer> idsOrdenadosAleatoriamente = new ArrayList<>(idNombre.keySet());
-        
+
         // Ordenar los IDs de manera aleatoria
         Collections.shuffle(idsOrdenadosAleatoriamente);
 
@@ -69,7 +69,6 @@ public class PruebasGrupo3 {
         ordenDeLosID.addAll(idsOrdenadosPorEdad);
 
     }
-
 
     public static void panel_informacionAlumnos(HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad) {
         JPanel saltoDeLinea = new JPanel();
@@ -128,7 +127,6 @@ public class PruebasGrupo3 {
         marcadores.setSize(300, 50);
         marcadores.setBorder(new EmptyBorder(10, 5, 3, 5));
 
-
         JPanel boton = new JPanel();
         boton.setSize(300, 50);
 
@@ -150,10 +148,47 @@ public class PruebasGrupo3 {
         texto_casilla_edad.add(new JLabel("Edad: "));
         texto_casilla_edad.add(edad);
 
+        JButton continuar = new JButton("Continuar");
+        continuar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (id.isSelected()) {
+                    ordenarID.set(true);
+                } else if (nombre.isSelected()) {
+                    ordenarNombre.set(true);
+                } else if (edad.isSelected()) {
+                    ordenarEdad.set(true);
+                }
+                frame.dispose(); // Cerrar la ventana actual
+            }
+        });
+
+        accionesCasillas(id, nombre, edad);
+
         marcadores.add(texto_casilla_id);
         marcadores.add(texto_casilla_nombre);
         marcadores.add(texto_casilla_edad);
 
+        boton.setBorder(new EmptyBorder(0, 5, 10, 5));
+        boton.add(continuar);
+
+        // Agregamos los paneles al BorderLayout
+        frame.add(marcadores, BorderLayout.CENTER);
+        frame.add(boton, BorderLayout.SOUTH);
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        // Pausar el hilo mientras se esta ejecutando la ventana
+        while (frame.isVisible()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public static void accionesCasillas(JCheckBox id, JCheckBox nombre, JCheckBox edad) {
         id.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 while (id.isSelected() && nombre.isSelected() || edad.isSelected()) {
@@ -201,44 +236,11 @@ public class PruebasGrupo3 {
                 }
             }
         });
-
-        JButton continuar = new JButton("Continuar");
-        continuar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (id.isSelected()) {
-                    ordenarID.set(true);
-                } else if (nombre.isSelected()) {
-                    ordenarNombre.set(true);
-                } else if (edad.isSelected()) {
-                    ordenarEdad.set(true);
-                }
-                frame.dispose(); // Cerrar la ventana actual
-            }
-        });
-
-        boton.add(continuar);
-        boton.setBorder(new EmptyBorder(0, 5, 10, 5));
-
-
-        // Agregamos los paneles al BorderLayout
-        frame.add(marcadores, BorderLayout.CENTER);
-        frame.add(boton, BorderLayout.SOUTH);
-
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        // Pausar el hilo mientras se esta ejecutando la ventana
-        while (frame.isVisible()) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-        }
     }
 
     public static void ventana(HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad,
-            ArrayList<Integer> ordenDeLosID) {
+            ArrayList<Integer> ordenDeLosID, AtomicBoolean ordenarID, AtomicBoolean ordenarNombre,
+            AtomicBoolean ordenarEdad) {
         JFrame frame = new JFrame("Alumnos ordenados");
         frame.setSize(1000, 1000);
         frame.setLayout(new GridBagLayout());
@@ -262,6 +264,65 @@ public class PruebasGrupo3 {
         contenidoDinamico.setLayout(new BoxLayout(contenidoDinamico, BoxLayout.X_AXIS));
         contenidoDinamico.setBorder(new EmptyBorder(0, 0, 15, 0));
 
+        crearGrupos(idNombre, idEdad, ordenDeLosID, contenidoDinamico);
+
+        posicionPanel.gridx = 0;
+        posicionPanel.gridy = 0;
+        frame.add(titul, posicionPanel);
+
+        posicionPanel.gridx = 0;
+        posicionPanel.gridy = 1;
+        frame.add(tituloGrupo, posicionPanel);
+
+        posicionPanel.gridx = 0;
+        posicionPanel.gridy = 2;
+        frame.add(contenidoDinamico, posicionPanel);
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true); // Hacer visible el frame
+    }
+
+    public static void panelIntegrantes(StringBuilder integrantesGrupo, JPanel losIntegrantes,
+            HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad) {
+        losIntegrantes.setLayout(new BoxLayout(losIntegrantes, BoxLayout.Y_AXIS));
+        String[] integrantes = integrantesGrupo.toString().split(" ");
+        String nombreCompleto = "";
+        for (String integrante : integrantes) {
+            nombreCompleto = integrante;
+            if (integrante.contains("_")) {
+                integrante = integrante.replace("_", " ");
+            }
+            for (int iDe : idNombre.keySet()) {
+                if (idNombre.get(iDe).equals(nombreCompleto)) {
+                    JLabel labelIntegrante = new JLabel(
+                            "ID: " + iDe + " Nombre: " + integrante + ", " + idEdad.get(iDe) + " años");
+                    labelIntegrante.setHorizontalAlignment(SwingConstants.CENTER);
+                    losIntegrantes.add(labelIntegrante);
+                }
+            }
+        }
+    }
+
+    public static void anadirInfo_StrBuilder(HashMap<Integer, String> idNombre, ArrayList<Integer> ordenDeLosID,
+            StringBuilder grupo, int inicio, int fin) {
+
+        ArrayList<Integer> indicesAEliminar = new ArrayList<>();
+
+        for (int i = inicio; i < fin; i++) {
+            int id = ordenDeLosID.get(i);
+            String nombre = idNombre.get(id);
+            grupo.append(nombre).append(" ");
+            indicesAEliminar.add(i);
+        }
+
+        for (int i = indicesAEliminar.size() - 1; i >= 0; i--) {
+            ordenDeLosID.remove((int) indicesAEliminar.get(i));
+        }
+    }
+
+    public static void crearGrupos(HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad,
+            ArrayList<Integer> ordenDeLosID, JPanel contenidoDinamico) {
         StringBuilder grupo = new StringBuilder();
         int numGrup = 1;
 
@@ -289,7 +350,7 @@ public class PruebasGrupo3 {
 
             titulo_integrantes.gridy = 1;
             panelGrupo.add(integrantes, titulo_integrantes);
-         
+
             contenidoDinamico.add(panelGrupo);
 
             grupo.setLength(0);
@@ -320,60 +381,6 @@ public class PruebasGrupo3 {
             panelGrupo.add(integrantes, titulo_integrantes);
 
             contenidoDinamico.add(panelGrupo);
-        }
-
-        posicionPanel.gridx = 0;
-        posicionPanel.gridy = 0;
-        frame.add(titul, posicionPanel);
-
-        posicionPanel.gridx = 0;
-        posicionPanel.gridy = 1;
-        frame.add(tituloGrupo, posicionPanel);
-
-        posicionPanel.gridx = 0;
-        posicionPanel.gridy = 2;
-        frame.add(contenidoDinamico, posicionPanel);
-
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true); // Hacer visible el frame
-    }
-
-    public static void panelIntegrantes(StringBuilder integrantesGrupo, JPanel losIntegrantes,
-            HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad) {
-        losIntegrantes.setLayout(new BoxLayout(losIntegrantes, BoxLayout.Y_AXIS));
-        String[] integrantes = integrantesGrupo.toString().split(" ");
-        String nombreCompleto = "";
-        for (String integrante : integrantes) {
-            nombreCompleto  = integrante;
-            if (integrante.contains("_")) {
-                integrante = integrante.replace("_", " ");
-            }
-            for (int iDe : idNombre.keySet()) {
-                if (idNombre.get(iDe).equals(nombreCompleto)) {
-                    JLabel labelIntegrante = new JLabel(
-                            "ID: " + iDe + " Nombre: " + integrante + ", " + idEdad.get(iDe) + " años");
-                    labelIntegrante.setHorizontalAlignment(SwingConstants.CENTER);
-                    losIntegrantes.add(labelIntegrante);
-                }
-            }
-        }
-    }
-
-    public static void anadirInfo_StrBuilder(HashMap<Integer, String> idNombre, ArrayList<Integer> ordenDeLosID,
-            StringBuilder grupo, int inicio, int fin) {
-
-        ArrayList<Integer> indicesAEliminar = new ArrayList<>();
-
-        for (int i = inicio; i < fin; i++) {
-            int id = ordenDeLosID.get(i);
-            String nombre = idNombre.get(id);
-            grupo.append(nombre).append(" ");
-            indicesAEliminar.add(i);
-        }
-
-        for (int i = indicesAEliminar.size() - 1; i >= 0; i--) {
-            ordenDeLosID.remove((int) indicesAEliminar.get(i));
         }
     }
 }
