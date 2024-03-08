@@ -18,6 +18,12 @@ public class PruebasGrupo3 {
 
         panel_informacionAlumnos(idNombre, idEdad);
 
+        generarGrupos(idNombre, idEdad, ordenDeLosID, ordenarID, ordenarNombre, ordenarEdad);
+    }
+
+    public static void generarGrupos(HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad,
+    ArrayList<Integer> ordenDeLosID, AtomicBoolean ordenarID, AtomicBoolean ordenarNombre,
+    AtomicBoolean ordenarEdad) {
         marcadores(ordenarID, ordenarNombre, ordenarEdad);
 
         if (ordenarID.get()) {
@@ -266,6 +272,18 @@ public class PruebasGrupo3 {
 
         crearGrupos(idNombre, idEdad, ordenDeLosID, contenidoDinamico);
 
+        //NO FUNCIONA
+        /*
+        JButton otroMetodo = new JButton("Otro método");
+        otroMetodo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                while (true) {
+                    generarGrupos(idNombre, idEdad, ordenDeLosID, ordenarID, ordenarNombre, ordenarEdad);
+                  }
+            }
+        });
+ */
+
         posicionPanel.gridx = 0;
         posicionPanel.gridy = 0;
         frame.add(titul, posicionPanel);
@@ -277,6 +295,10 @@ public class PruebasGrupo3 {
         posicionPanel.gridx = 0;
         posicionPanel.gridy = 2;
         frame.add(contenidoDinamico, posicionPanel);
+
+        // posicionPanel.gridx = 0;
+        // posicionPanel.gridy = 3;
+        // frame.add(otroMetodo, posicionPanel);
 
         frame.pack();
         frame.setLocationRelativeTo(null);
