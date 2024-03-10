@@ -4,7 +4,6 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PruebasGrupo3 {
@@ -22,8 +21,8 @@ public class PruebasGrupo3 {
     }
 
     public static void generarGrupos(HashMap<Integer, String> idNombre, HashMap<Integer, Integer> idEdad,
-    ArrayList<Integer> ordenDeLosID, AtomicBoolean ordenarID, AtomicBoolean ordenarNombre,
-    AtomicBoolean ordenarEdad) {
+            ArrayList<Integer> ordenDeLosID, AtomicBoolean ordenarID, AtomicBoolean ordenarNombre,
+            AtomicBoolean ordenarEdad) {
         marcadores(ordenarID, ordenarNombre, ordenarEdad);
 
         if (ordenarID.get()) {
@@ -272,17 +271,18 @@ public class PruebasGrupo3 {
 
         crearGrupos(idNombre, idEdad, ordenDeLosID, contenidoDinamico);
 
-        //NO FUNCIONA
+        // NO FUNCIONA
         /*
-        JButton otroMetodo = new JButton("Otro método");
-        otroMetodo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                while (true) {
-                    generarGrupos(idNombre, idEdad, ordenDeLosID, ordenarID, ordenarNombre, ordenarEdad);
-                  }
-            }
-        });
- */
+         * JButton otroMetodo = new JButton("Otro método");
+         * otroMetodo.addActionListener(new ActionListener() {
+         * public void actionPerformed(ActionEvent e) {
+         * while (true) {
+         * generarGrupos(idNombre, idEdad, ordenDeLosID, ordenarID, ordenarNombre,
+         * ordenarEdad);
+         * }
+         * }
+         * });
+         */
 
         posicionPanel.gridx = 0;
         posicionPanel.gridy = 0;
