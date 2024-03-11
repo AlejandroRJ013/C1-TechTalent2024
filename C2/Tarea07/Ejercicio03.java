@@ -77,7 +77,7 @@ public class Ejercicio03 {
     public static void panelTitulo(JPanel tituloLIDL) {
         tituloLIDL.setBackground(Color.BLUE);
         JLabel titulArticulos = new JLabel("ARTICULOS LIDL");
-        titulArticulos.setFont(new Font("Arial", Font.BOLD, 22));
+        titulArticulos.setFont(new Font("Arial", Font.BOLD, 35));
         titulArticulos.setForeground(Color.YELLOW);
         titulArticulos.setAlignmentX(Component.CENTER_ALIGNMENT);
         titulArticulos.setBorder(new EmptyBorder(5, 10, 5, 10));
@@ -114,7 +114,7 @@ public class Ejercicio03 {
         botones.setLayout(new GridLayout(1, 3));
         botones.setBackground(Color.GRAY);
 
-        JButton cesta = new JButton(escalarImagen("Iconos\\basket.png"));
+        JButton cesta = new JButton(escalarImagen("Iconos\\cart-plus.png"));
         modificarBoton(cesta);
         JButton lista = new JButton(escalarImagen("Iconos\\list-task.png"));
         modificarBoton(lista);
@@ -138,7 +138,7 @@ public class Ejercicio03 {
 
     public static ImageIcon escalarImagen(String ruta) {
         ImageIcon imagen = new ImageIcon(ruta);
-        ImageIcon imagenEscalada = new ImageIcon(imagen.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon imagenEscalada = new ImageIcon(imagen.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH));
         return imagenEscalada;
     }
 

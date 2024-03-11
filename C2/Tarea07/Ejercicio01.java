@@ -11,7 +11,7 @@ public class Ejercicio01 {
 
         nombrarAlumnoyCadena(alum_notas, nombres_media, cantAlumnos, cantNotas);
 
-        JOptionPane.showMessageDialog(null, nombres_media.toString()); //Con un método para varios StringBuilder para mostrar.
+        JOptionPane.showMessageDialog(null, nombres_media.toString(), "Medias de los alumnos", JOptionPane.PLAIN_MESSAGE);
     }
 
     // Calcular nota media de un alumno

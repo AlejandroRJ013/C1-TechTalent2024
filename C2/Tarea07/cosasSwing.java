@@ -45,7 +45,7 @@ public class cosasSwing {
 
         // Hacer que los botones hagan cosas (Mostrar texto y foto; y agregar articulos)
         // [NO FUNCIONA]
-        anadirComboBox.addActionListener(new ActionListener() {
+        button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JPanel masCompra = new JPanel();
                 masCompra.add(label);

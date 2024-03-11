@@ -18,10 +18,10 @@ public class PruebaHash {
             }    
         }
 
-        ingresarAlumno(nombre, edad);
+        ingresarAlumno(edadesAlumnos, nombre, edad);
     }
 
-    public static void ingresarAlumno(String nombre, int edad) {
+    public static void ingresarAlumno(HashMap<String, Integer> edadesAlumnos, String nombre, int edad) {
         edadesAlumnos.put(nombre, edad);
     }
 }

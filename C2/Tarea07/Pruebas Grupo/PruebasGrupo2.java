@@ -1,13 +1,10 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-import javafx.scene.layout.GridPane;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PruebasGrupo2 {

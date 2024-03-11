@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
 
-public class PruebasGrupo2 {
+public class PruebasGrupo {
     public static void main(String[] args) {
         StringBuilder datos = new StringBuilder(" - - ORDEN POR ID - - "+ "\n\n");
         HashMap<Integer, String> idNombre = new HashMap<>();

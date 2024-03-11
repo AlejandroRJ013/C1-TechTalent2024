@@ -1,7 +1,6 @@
 import java.util.HashMap;
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 import java.text.DecimalFormat;
 
 public class Ejercicio02 {
