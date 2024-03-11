@@ -1,3 +1,5 @@
+import java.awt.*;
+import java.awt.event.*;
 import java.util.HashMap;
 
 import javax.swing.*;
@@ -26,22 +28,93 @@ public class Ejercicio04 {
         productoStock.put("Frutas y verduras", 200);
 
         JFrame frame = new JFrame();
-        frame.setSize(500,500);
-        frame.setLocationRelativeTo(null);
+        frame.setSize(1000, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
-        String[] productos = new String[productoStock.size()];
-        int i = 0;
+        JPanel principal = new JPanel();
+        principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
+
+        JPanel estatico = new JPanel();
+        estatico.setLayout(new GridLayout(2, 1));
+        JComboBox<String> productosBox = seleccionable(productoStock);
+        estatico.add(productosBox);
+
+        JPanel panelSeleccionables = new JPanel();
+        panelSeleccionables.setLayout(new BoxLayout(panelSeleccionables, BoxLayout.Y_AXIS));
+
+        JButton recopilarInformacion = new JButton("QUE HAY");
+        recopilarInformacion.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                for (Component component : panelSeleccionables.getComponents()) {
+                    if (component instanceof JComboBox) {
+                        JComboBox<String> comboBox = (JComboBox<String>) component;
+                        Object seleccion = comboBox.getSelectedItem();
+                        if (seleccion != null && !seleccion.equals("- Seleccionar producto -")) {
+                            String productoSeleccionado = seleccion.toString();
+                            System.out.println("Producto seleccionado: " + productoSeleccionado);
+                            // Aquí puedes guardar la información en algún lugar, como una lista o un mapa
+                        }
+                    }
+                }
+            }
+        });
+        estatico.add(recopilarInformacion);
+
+        JLabel texto = new JLabel("¿Quieres añadir más productos?");
+        JCheckBox anadirProducto = new JCheckBox();
+        accionCasilla(anadirProducto, productosBox, panelSeleccionables, frame, productoStock);
+        estatico.add(texto);
+        estatico.add(anadirProducto);
+
+        principal.add(panelSeleccionables);
+        principal.add(estatico);
+        frame.add(principal);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    public static JComboBox<String> seleccionable(HashMap<String, Integer> productoStock) {
+        String[] productos = new String[(productoStock.size() + 1)];
+        productos[0] = "- Seleccionar producto -";
+        int i = 1;
         for (String producto : productoStock.keySet()) {
             productos[i] = producto;
             i++;
         }
-        JComboBox<String> prueba = new JComboBox<>(productos);
-        prueba.setSize(100, 30);
-        
-        panel.add(prueba);
-        frame.add(panel);
-        frame.setVisible(true);
+        JComboBox<String> productosBox = new JComboBox<>(productos);
+        productosBox.setSize(100, 30);
+
+        return productosBox;
+    }
+
+    public static void accionCasilla(JCheckBox anadirProducto, JComboBox<String> productosBox,
+            JPanel panelSeleccionables, JFrame frame,
+            HashMap<String, Integer> productoStock) {
+        anadirProducto.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (anadirProducto.isSelected()) {
+                    if (productosBox != null && productosBox.getSelectedItem() != "- Seleccionar producto -") {
+                        String productoSeleccionado = String.valueOf(productosBox.getSelectedItem());
+                        System.out.println("Producto seleccionado: " + productoSeleccionado);
+
+                        anadirProducto.setSelected(false);
+                        frame.setSize(1000, 1000);
+
+                        JComboBox<String> productosBox = seleccionable(productoStock);
+                        panelSeleccionables.add(productosBox);
+                        panelSeleccionables.add(Box.createVerticalStrut(5));
+                        panelSeleccionables.repaint();
+                        panelSeleccionables.revalidate();
+
+                        frame.pack();
+                        frame.setLocationRelativeTo(null);
+                    } else {
+                        System.out.println("Ningún producto seleccionado.");
+                        anadirProducto.setSelected(false);
+                    }
+                }
+            }
+        });
     }
 }
