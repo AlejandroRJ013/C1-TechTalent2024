@@ -152,7 +152,6 @@ public class Prueba {
                         anadirProducto.setSelected(false);
                         frame.setSize(1000, 1000);
 
-                        JPanel 
                         JComboBox<String> productosBox = seleccionable(productoStock);
                         panelSeleccionables.add(productosBox);
                         panelSeleccionables.add(Box.createVerticalStrut(5));

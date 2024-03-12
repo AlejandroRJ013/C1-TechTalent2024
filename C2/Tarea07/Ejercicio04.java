@@ -45,6 +45,7 @@ public class Ejercicio04 {
         JPanel panelSeleccionables = new JPanel();
         panelSeleccionables.setLayout(new BoxLayout(panelSeleccionables, BoxLayout.Y_AXIS));
 
+        AtomicBoolean esencial = new AtomicBoolean(false);
         AtomicBoolean vacio = new AtomicBoolean(false);
         AtomicBoolean repetido = new AtomicBoolean(false);
         AtomicBoolean listar = new AtomicBoolean(false);
