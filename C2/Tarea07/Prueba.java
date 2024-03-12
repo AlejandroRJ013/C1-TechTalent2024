@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.swing.*;
 
-public class Ejercicio04 {
+public class Prueba {
     public static void main(String[] args) {
         /*
          * Hacer la interfaz del ejercicio 3 pero poner un checkbox a cada producto,
@@ -17,6 +17,9 @@ public class Ejercicio04 {
          * la cantidad que se a comprado del stock que habia del producto}
          */
 
+        AtomicBoolean vacio = new AtomicBoolean(false);
+        AtomicBoolean repetido = new AtomicBoolean(false);
+        AtomicBoolean listar = new AtomicBoolean(false);
         ArrayList<String> arrayProductos = new ArrayList<>();
         HashMap<String, Integer> productoStock = new HashMap<>();
         productoStock.put("Leche", 100);
@@ -38,16 +41,13 @@ public class Ejercicio04 {
         principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
 
         JPanel estatico = new JPanel();
-        estatico.setLayout(new GridLayout(2, 1));
-        JComboBox<String> productosBox = seleccionable(productoStock);
-        estatico.add(productosBox);
+        estatico.setLayout(new GridLayout(2, 0));
 
         JPanel panelSeleccionables = new JPanel();
         panelSeleccionables.setLayout(new BoxLayout(panelSeleccionables, BoxLayout.Y_AXIS));
-
-        AtomicBoolean vacio = new AtomicBoolean(false);
-        AtomicBoolean repetido = new AtomicBoolean(false);
-        AtomicBoolean listar = new AtomicBoolean(false);
+        JComboBox<String> productosBox = seleccionable(productoStock);
+        panelSeleccionables.add(productosBox);
+        panelSeleccionables.add(Box.createVerticalStrut(5));
 
         JButton recopilarInformacion = new JButton("QUE HAY");
         recopilarInformacion.addActionListener(new ActionListener() {
@@ -61,11 +61,13 @@ public class Ejercicio04 {
 
         estatico.add(recopilarInformacion);
 
+        JPanel casillero = new JPanel();
         JLabel texto = new JLabel("¿Quieres añadir más productos?");
         JCheckBox anadirProducto = new JCheckBox();
         accionCasilla(anadirProducto, productosBox, panelSeleccionables, frame, productoStock);
-        estatico.add(texto);
-        estatico.add(anadirProducto);
+        casillero.add(texto);
+        casillero.add(anadirProducto);
+        estatico.add(casillero);
 
         principal.add(panelSeleccionables);
         principal.add(estatico);
@@ -150,6 +152,7 @@ public class Ejercicio04 {
                         anadirProducto.setSelected(false);
                         frame.setSize(1000, 1000);
 
+                        JPanel 
                         JComboBox<String> productosBox = seleccionable(productoStock);
                         panelSeleccionables.add(productosBox);
                         panelSeleccionables.add(Box.createVerticalStrut(5));
