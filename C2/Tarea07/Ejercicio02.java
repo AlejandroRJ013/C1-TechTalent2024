@@ -59,7 +59,10 @@ public class Ejercicio02 {
                 continuar = false;
             }
         }
+        ticket(dosDecimales, texto, totalCompra);
+    }
 
+    public static void ticket(DecimalFormat dosDecimales, StringBuilder texto, double totalCompra) {
         String laMulta = dosDecimales.format(totalCompra);
         double losBilletes = Double
                 .parseDouble(JOptionPane.showInputDialog(null, texto.toString() + "\nTotal a pagar: " + laMulta));

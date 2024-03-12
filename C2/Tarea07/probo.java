@@ -1,10 +1,6 @@
-import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import java.util.*;
+import java.awt.*;
+import javax.swing.*;
 
 public class probo {
     public static void main(String[] args) {
@@ -36,17 +32,36 @@ public class probo {
         for (String producto : productoStock.keySet()) {
             arrayProductos.add(producto);
         }
+        boolean continuar = true;
+        String eliminar = "";
+        while (continuar) {
+            arrayProductos.remove(eliminar);
 
-        JPanel panel = new JPanel();
-        JComboBox<String> seleccionable = crearSeleccionable(arrayProductos);
-        panel.add(seleccionable);
-        JOptionPane.showMessageDialog(null, panel, "Titulo", JOptionPane.PLAIN_MESSAGE);
+            JPanel infoArticulos = new JPanel(new GridLayout(0, 2));
 
-        panel.removeAll();
-        arrayProductos.remove(seleccionable.getSelectedItem());
-        JComboBox<String> seleccionable2 = crearSeleccionable(arrayProductos);
-        panel.add(seleccionable2);
-        JOptionPane.showMessageDialog(null, panel, "Titulo", JOptionPane.PLAIN_MESSAGE);
+            infoArticulos.add(new JLabel("Nombre del producto: "));
+            JComboBox<String> seleccionable = crearSeleccionable(arrayProductos);
+            infoArticulos.add(seleccionable);
+
+            infoArticulos.add(new JLabel("Cantidad:"));
+            JTextField precio = new JTextField(10);
+            infoArticulos.add(precio);
+
+            infoArticulos.add(new JLabel("¿Más artículos?"));
+            JCheckBox masArticulos = new JCheckBox();
+            infoArticulos.add(masArticulos);
+
+            infoArticulos.add(new JLabel("¿Artículo esencial?"));
+            JCheckBox articuloEsencial = new JCheckBox();
+            infoArticulos.add(articuloEsencial);
+
+            JOptionPane.showMessageDialog(null, infoArticulos, "Titulo", JOptionPane.PLAIN_MESSAGE);
+
+            eliminar = (String) seleccionable.getSelectedItem();
+            if (!masArticulos.isSelected() || eliminar.equals("- Seleccionar producto -")) {
+                continuar = false;
+            }
+        }
 
     }
 
