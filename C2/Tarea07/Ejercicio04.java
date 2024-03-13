@@ -81,7 +81,6 @@ public class Ejercicio04 {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
     }
 
     public static void panelTitulo(JPanel tituloLIDL) {
@@ -121,7 +120,7 @@ public class Ejercicio04 {
     public static void panelBotones(JFrame frame, JPanel botones, JPanel productos, HashMap<String, Integer> productoStock,
             HashMap<String, Double> productoPrecio, StringBuilder productosTXT, ArrayList<String> arrayProductos, HashMap<String, Integer> cesta,
             DecimalFormat dosDecimales, StringBuilder texto, double totalCompra, double totalProducto) {
-        botones.setLayout(new GridLayout(1, 4));
+        botones.setLayout(new GridLayout(0, 4));
         botones.setBackground(Color.GRAY);
 
         JButton anadir = new JButton(escalarImagen("Iconos\\cart-plus.png"));
@@ -136,7 +135,7 @@ public class Ejercicio04 {
         accionesAnadir(frame, anadir, productos, productosTXT, productoStock, productoPrecio);
         accionesLista(lista, productosTXT);
         accionesLupa(lupa, productoPrecio);
-        accionesComprar(frame, productos, productosTXT, productoStock, comprar, arrayProductos, productoPrecio, cesta, dosDecimales, texto, totalCompra, totalProducto);
+        accionesComprar(frame, productos, productosTXT,  productoStock, comprar, arrayProductos, productoPrecio, cesta, dosDecimales, texto, totalCompra, totalProducto);
 
         botones.add(comprar);
         botones.add(anadir);
@@ -173,7 +172,7 @@ public class Ejercicio04 {
             public void actionPerformed(ActionEvent e) {
                 String productName = JOptionPane.showInputDialog(null, "Ingrese el nombre del nuevo producto:",
                         "Producto", JOptionPane.PLAIN_MESSAGE);
-                if (productName != null && !productName.isEmpty()) {
+                if (productName != null && !productName.isEmpty()) { //redundante
                     double precio = Double
                             .parseDouble(JOptionPane.showInputDialog(null, "Ingrese el precio del artículo:",
                                     "Precio", JOptionPane.PLAIN_MESSAGE));
@@ -270,6 +269,7 @@ public class Ejercicio04 {
                 }
             }
 
+            //aqui va
             int stockProducto = 0;
             int stockFinal = 0;
             for (String nomProducto : cesta.keySet()) {
@@ -280,6 +280,15 @@ public class Ejercicio04 {
                         stockFinal = stockProducto - cantidadProducto;
 
                         productoStock.put(productoLista, stockFinal);
+                        // if (cesta.get(nomProducto) <= productoStock.get(productoLista)) {
+                        //     stockProducto = productoStock.get(productoLista);
+
+                        //     stockFinal = stockProducto - cantidadProducto;
+
+                        //     productoStock.put(productoLista, stockFinal);
+                        // } else {
+                        //     JOptionPane.showMessageDialog(null, "Has ingresado más articulos de los que puede comprar", "Compra superior al stock", JOptionPane.WARNING_MESSAGE);
+                        // }
                     }
                 }
             }
