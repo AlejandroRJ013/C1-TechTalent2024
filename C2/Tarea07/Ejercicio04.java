@@ -172,7 +172,7 @@ public class Ejercicio04 {
             public void actionPerformed(ActionEvent e) {
                 String productName = JOptionPane.showInputDialog(null, "Ingrese el nombre del nuevo producto:",
                         "Producto", JOptionPane.PLAIN_MESSAGE);
-                if (productName != null && !productName.isEmpty()) { //redundante
+                if (productName != null && !productName.isEmpty()) { //no lo es redundante
                     double precio = Double
                             .parseDouble(JOptionPane.showInputDialog(null, "Ingrese el precio del artículo:",
                                     "Precio", JOptionPane.PLAIN_MESSAGE));
@@ -279,16 +279,16 @@ public class Ejercicio04 {
 
                         stockFinal = stockProducto - cantidadProducto;
 
-                        productoStock.put(productoLista, stockFinal);
-                        // if (cesta.get(nomProducto) <= productoStock.get(productoLista)) {
-                        //     stockProducto = productoStock.get(productoLista);
+                        // productoStock.put(productoLista, stockFinal);
+                        if (cesta.get(nomProducto) <= productoStock.get(productoLista)) {
+                            stockProducto = productoStock.get(productoLista);
 
-                        //     stockFinal = stockProducto - cantidadProducto;
+                            stockFinal = stockProducto - cantidadProducto;
 
-                        //     productoStock.put(productoLista, stockFinal);
-                        // } else {
-                        //     JOptionPane.showMessageDialog(null, "Has ingresado más articulos de los que puede comprar", "Compra superior al stock", JOptionPane.WARNING_MESSAGE);
-                        // }
+                            productoStock.put(productoLista, stockFinal);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Has ingresado más articulos de los que puede comprar", "Compra superior al stock", JOptionPane.WARNING_MESSAGE);
+                        }
                     }
                 }
             }
