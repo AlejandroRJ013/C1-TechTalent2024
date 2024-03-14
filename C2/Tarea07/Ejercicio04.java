@@ -277,7 +277,7 @@ public class Ejercicio04 {
                 }
             }
 
-            // aqui va
+            // no esta del todo terminado, faltan posibilidades
             int stockProducto = 0;
             int stockFinal = 0;
             for (String nomProducto : cesta.keySet()) {
@@ -287,17 +287,7 @@ public class Ejercicio04 {
 
                         stockFinal = stockProducto - cantidadProducto;
 
-                        // productoStock.put(productoLista, stockFinal);
-                        if (cesta.get(nomProducto) <= productoStock.get(productoLista)) {
-                            stockProducto = productoStock.get(productoLista);
-
-                            stockFinal = stockProducto - cantidadProducto;
-
-                            productoStock.put(productoLista, stockFinal);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Has ingresado más articulos de los que puede comprar",
-                                    "Compra superior al stock", JOptionPane.WARNING_MESSAGE);
-                        }
+                        productoStock.put(productoLista, stockFinal);
                     }
                 }
             }
@@ -306,7 +296,8 @@ public class Ejercicio04 {
                 continuar = false;
             } else if (eliminar.equals("- Seleccionar producto -") || cantidad.getText().isEmpty()
                     || cantidad.getText().equals("0")) {
-                JOptionPane.showMessageDialog(null, "Ingrese un producto o un precio superior a 0", "Ingrese valores",
+                JOptionPane.showMessageDialog(null, "Ingrese un producto o un precio " +
+             "superior a 0", "Ingrese valores",
                         JOptionPane.WARNING_MESSAGE);
             } else {
                 arrayProductos.remove(eliminar);

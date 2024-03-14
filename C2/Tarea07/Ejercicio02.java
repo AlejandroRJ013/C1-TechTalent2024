@@ -8,23 +8,19 @@ public class Ejercicio02 {
         HashMap<String, Double> cesta = new HashMap<>();
         DecimalFormat dosDecimales = new DecimalFormat("#.##");
         StringBuilder texto = new StringBuilder("PRECIO DE LOS ARTICULOS\n");
-        final double IVA = 0.21;
-        final double IVAmin = 0.04;
         double precioIVA = 0;
         double totalCompra = 0;
-        JTextField producto;
-        JTextField precio;
 
         boolean continuar = true;
         while (continuar) {
             JPanel infoArticulos = new JPanel(new GridLayout(0, 2));
 
             infoArticulos.add(new JLabel("Nombre del producto: "));
-            producto = new JTextField(10);
+            JTextField producto = new JTextField(10);
             infoArticulos.add(producto);
 
             infoArticulos.add(new JLabel("Precio:"));
-            precio = new JTextField(10);
+            JTextField precio = new JTextField(10);
             infoArticulos.add(precio);
 
             infoArticulos.add(new JLabel("¿Más artículos?"));
@@ -42,23 +38,23 @@ public class Ejercicio02 {
             cesta.put(nombreProducto, precioProducto);
 
             if (articuloEsencial.isSelected()) {
-                precioIVA = precioProducto + (precioProducto * IVAmin);
+                precioIVA = precioProducto * 1.04;
                 String precioIVAFormateado = dosDecimales.format(precioIVA);
                 texto.append("Producto: <" + nombreProducto + ">\n    Precio: <" + precioProducto
                         + ">\n    IVA aplicado [4%]\n    Precio con el IVA: <" + precioIVAFormateado + ">\n\n");
             } else {
-                precioIVA = precioProducto + (precioProducto * IVA);
+                precioIVA = precioProducto * 1.21;
                 String precioIVAFormateado = dosDecimales.format(precioIVA);
                 texto.append("Producto: <" + nombreProducto + ">\n    Precio: <" + precioProducto
-                        + ">>\n    IVA aplicado [21%]\n    Precio con el IVA: <" + precioIVAFormateado + ">\n\n");
+                        + ">\n    IVA aplicado [21%]\n    Precio con el IVA: <" + precioIVAFormateado + ">\n\n");
             }
-
             totalCompra += precioIVA;
 
             if (!masArticulos.isSelected()) {
                 continuar = false;
             }
         }
+
         ticket(dosDecimales, texto, totalCompra);
     }
 
