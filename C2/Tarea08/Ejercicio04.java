@@ -7,14 +7,8 @@ import javax.swing.border.*;
 
 public class Ejercicio04 {
     public static void main(String[] args) {
+        articulosApp articulos = new articulosApp();
         StringBuilder productosTXT = new StringBuilder("");
-        StringBuilder texto = new StringBuilder("PRECIO DE LOS ARTICULOS\n");
-        DecimalFormat dosDecimales = new DecimalFormat("#.##");
-        ArrayList<String> arrayProductos = new ArrayList<>();
-        double totalCompra = 0;
-        double totalProducto = 0;
-
-        HashMap<String, Integer> cesta = new HashMap<>();
 
         HashMap<String, Integer> productoStock = new HashMap<>();
         productoStock.put("Leche", 100);
@@ -40,13 +34,11 @@ public class Ejercicio04 {
         productoPrecio.put("Yogur", 2.25);
         productoPrecio.put("Frutas y verduras", 15.0);
 
-        ventana(productoStock, productoPrecio, productosTXT, arrayProductos, cesta, dosDecimales, texto, totalCompra,
-                totalProducto);
+        ventana(productoStock, productoPrecio, productosTXT, articulos);
     }
 
     public static void ventana(HashMap<String, Integer> productoStock, HashMap<String, Double> productoPrecio,
-            StringBuilder productosTXT, ArrayList<String> arrayProductos, HashMap<String, Integer> cesta,
-            DecimalFormat dosDecimales, StringBuilder texto, double totalCompra, double totalProducto) {
+            StringBuilder productosTXT, articulosApp articulos) {
         JFrame frame = new JFrame("Almacen LIDL");
         frame.setSize(1000, 1000);
         frame.setLayout(new BorderLayout());
@@ -63,8 +55,7 @@ public class Ejercicio04 {
         JPanel productos = new JPanel();
 
         panelTitulo(tituloLIDL);
-        panelBotones(frame, botones, productos, productoStock, productoPrecio, productosTXT, arrayProductos, cesta,
-                dosDecimales, texto, totalCompra, totalProducto);
+        panelBotones(frame, botones, productos, productoStock, productoPrecio, productosTXT, articulos);
         panelProductos(productoStock, productoPrecio, productos, productosTXT);
 
         posicion.gridy = 0;
@@ -119,9 +110,7 @@ public class Ejercicio04 {
 
     public static void panelBotones(JFrame frame, JPanel botones, JPanel productos,
             HashMap<String, Integer> productoStock,
-            HashMap<String, Double> productoPrecio, StringBuilder productosTXT, ArrayList<String> arrayProductos,
-            HashMap<String, Integer> cesta,
-            DecimalFormat dosDecimales, StringBuilder texto, double totalCompra, double totalProducto) {
+            HashMap<String, Double> productoPrecio, StringBuilder productosTXT, articulosApp articulos) {
         botones.setLayout(new GridLayout(0, 4));
         botones.setBackground(Color.GRAY);
 
@@ -137,8 +126,7 @@ public class Ejercicio04 {
         accionesAnadir(frame, anadir, productos, productosTXT, productoStock, productoPrecio);
         accionesLista(lista, productosTXT);
         accionesLupa(lupa, productoPrecio);
-        accionesComprar(frame, productos, productosTXT, productoStock, comprar, arrayProductos, productoPrecio, cesta,
-                dosDecimales, texto, totalCompra, totalProducto);
+        accionesComprar(frame, productos, productosTXT, productoStock, comprar, productoPrecio, articulos);
 
         botones.add(comprar);
         botones.add(anadir);
@@ -219,16 +207,16 @@ public class Ejercicio04 {
     }
 
     public static void accionesComprar(JFrame frame, JPanel productos, StringBuilder productosTXT,
-            HashMap<String, Integer> productoStock, JButton comprar, ArrayList<String> arrayProductos,
-            HashMap<String, Double> productoPrecio, HashMap<String, Integer> cesta, DecimalFormat dosDecimales,
-            StringBuilder texto, double totalCompra, double totalProducto) {
+            HashMap<String, Integer> productoStock, JButton comprar,
+            HashMap<String, Double> productoPrecio, articulosApp articulos) {
+        DecimalFormat dosDecimales = new DecimalFormat("0.00");
+        ArrayList<String> arrayProductos = new ArrayList<>();
         comprar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 for (String producto : productoStock.keySet()) {
                     arrayProductos.add(producto);
                 }
-                panelCrearTicket(arrayProductos, productoStock, productoPrecio, cesta, dosDecimales, texto, totalCompra,
-                        totalProducto);
+                panelCrearTicket(arrayProductos, productoStock, productoPrecio, dosDecimales, articulos);
 
                 actualizarProductos(frame, productoStock, productoPrecio, productos, productosTXT);
             }
@@ -236,12 +224,16 @@ public class Ejercicio04 {
     }
 
     public static void panelCrearTicket(ArrayList<String> arrayProductos, HashMap<String, Integer> productoStock,
-            HashMap<String, Double> productoPrecio, HashMap<String, Integer> cesta, DecimalFormat dosDecimales,
-            StringBuilder texto, double totalCompra, double totalProducto) {
-        boolean continuar = true;
-        String eliminar = "";
-        while (continuar) {
-
+            HashMap<String, Double> productoPrecio, DecimalFormat dosDecimales, articulosApp articulos) {
+        StringBuilder texto = new StringBuilder("PRECIO DE LOS ARTICULOS\n");
+        String producto = "";
+        int cantidad = 0;
+        double precioIVA = 0.0;
+        double totalCompra = 0.0;
+        double totalProducto = 0.0;
+        boolean masArticulos = false;
+        boolean articuloEsencial = false;
+        do {
             JPanel infoArticulos = new JPanel(new GridLayout(0, 2));
 
             infoArticulos.add(new JLabel("Nombre del producto: "));
@@ -249,81 +241,42 @@ public class Ejercicio04 {
             infoArticulos.add(seleccionable);
 
             infoArticulos.add(new JLabel("Cantidad:"));
-            JTextField cantidad = new JTextField(10);
-            infoArticulos.add(cantidad);
+            JTextField cantidadTxt = new JTextField(10);
+            infoArticulos.add(cantidadTxt);
 
             infoArticulos.add(new JLabel("¿Más artículos?"));
-            JCheckBox masArticulos = new JCheckBox();
-            infoArticulos.add(masArticulos);
+            JCheckBox masArticulosCheck = new JCheckBox();
+            infoArticulos.add(masArticulosCheck);
 
             infoArticulos.add(new JLabel("¿Artículo esencial?"));
-            JCheckBox articuloEsencial = new JCheckBox();
-            infoArticulos.add(articuloEsencial);
+            JCheckBox articuloEsencialCheck = new JCheckBox();
+            infoArticulos.add(articuloEsencialCheck);
 
             JOptionPane.showMessageDialog(null, infoArticulos, "Titulo", JOptionPane.PLAIN_MESSAGE);
 
-            eliminar = (String) seleccionable.getSelectedItem();
+            masArticulos = masArticulosCheck.isSelected() ? true : false;
+            articuloEsencial = articuloEsencialCheck.isSelected() ? true : false;
 
-            int cantidadProducto = Integer.parseInt(cantidad.getText());
-            cesta.put(eliminar, cantidadProducto);
+            producto = policiaProducto(seleccionable, producto);
 
-            double precioProducto = 0;
-            double precioIVA = 0;
-            for (String nomProducto : cesta.keySet()) {
-                for (String productoLista : productoPrecio.keySet()) {
-                    if (productoLista.equals(nomProducto)) {
-                        precioProducto = productoPrecio.get(productoLista);
-                    }
-                }
-            }
+            cantidad = policiaCantidad(cantidadTxt, cantidad);
 
-            // no esta del todo terminado, faltan posibilidades
-            int stockProducto = 0;
-            int stockFinal = 0;
-            for (String nomProducto : cesta.keySet()) {
-                for (String productoLista : productoStock.keySet()) {
-                    if (productoLista.equals(nomProducto)) {
-                        stockProducto = productoStock.get(productoLista);
+            int stockFinal = revisorCantidades(productoStock, cantidad, cantidad, producto);
+            productoStock.put(producto, stockFinal);
 
-                        stockFinal = stockProducto - cantidadProducto;
+            precioIVA = precioArticuloConIva(productoPrecio, precioIVA, articuloEsencial, producto);
 
-                        productoStock.put(productoLista, stockFinal);
-                    }
-                }
-            }
+            articulos.setTodos(producto, cantidad, precioIVA);
 
-            if (!masArticulos.isSelected()) {
-                continuar = false;
-            } else if (eliminar.equals("- Seleccionar producto -") || cantidad.getText().isEmpty()
-                    || cantidad.getText().equals("0")) {
-                JOptionPane.showMessageDialog(null, "Ingrese un producto o un precio " +
-             "superior a 0", "Ingrese valores",
-                        JOptionPane.WARNING_MESSAGE);
-            } else {
-                arrayProductos.remove(eliminar);
-            }
+            totalProducto = precioIVA * cantidad;
+            String totalFormateado = dosDecimales.format(totalProducto);
+            texto.append("Producto: '" + producto + "'\n    Precio/unidad: <" + precioIVA
+                    + "> / <" + cantidad + ">\n    Precio total: <" + totalFormateado + ">\n\n");
 
-            if (articuloEsencial.isSelected()) {
-                precioIVA = precioProducto * 1.04;
-                totalProducto = precioIVA * cantidadProducto;
-
-                String precioIVAFormateado = dosDecimales.format(precioIVA);
-                String totalFormateado = dosDecimales.format(totalProducto);
-                texto.append("Producto: '" + eliminar + "'\n    Precio/unidad: <" + precioProducto
-                        + "> / <" + cantidadProducto + ">\n    IVA aplicado [4%] => PrecioIVA/unidad ["
-                        + precioIVAFormateado + "]\n    Precio total: <" + totalFormateado + ">\n\n");
-            } else {
-                precioIVA = precioProducto * 1.21;
-                totalProducto = precioIVA * cantidadProducto;
-
-                String precioIVAFormateado = dosDecimales.format(precioIVA);
-                String totalFormateado = dosDecimales.format(totalProducto);
-                texto.append("Producto: '" + eliminar + "'\n    Precio/unidad: <" + precioProducto
-                        + "> / <" + cantidadProducto + ">\n    IVA aplicado [21%] => PrecioIVA/unidad ["
-                        + precioIVAFormateado + "]\n    Precio total: <" + totalFormateado + ">\n\n");
-            }
             totalCompra += totalProducto;
-        }
+
+            arrayProductos.remove(producto);
+        } while (masArticulos);
         ticket(dosDecimales, texto, totalCompra);
     }
 
@@ -348,6 +301,60 @@ public class Ejercicio04 {
         JComboBox<String> seleccionable = new JComboBox<>(productos);
 
         return seleccionable;
+    }
+
+    public static String policiaProducto(JComboBox<String> seleccionable, String producto) {
+        producto = (String) seleccionable.getSelectedItem();
+
+        if (seleccionable == null || producto.equals("- Seleccionar producto -")) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un producto.", "Error", JOptionPane.ERROR_MESSAGE);
+            return "PRODUCTO NO VÁLIDO";
+        } else {
+            return producto;
+        }
+    }
+
+    public static int policiaCantidad(JTextField cantidadTxt, int cantidad) {
+        try {
+            cantidad = Integer.parseInt(cantidadTxt.getText());
+            return cantidad;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Cantidad debe ser un número entero.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
+    }
+
+    public static int revisorCantidades(HashMap<String, Integer> productoStock, int stockFinal, int cantidad,
+            String producto) {
+        int stockProducto = productoStock.get(producto);
+
+        if (cantidad > stockProducto) {
+            JOptionPane.showMessageDialog(null, "El stock del producto es de " + stockProducto
+                    + " y usted esta intentando comprar " + cantidad, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        } else {
+            stockFinal = stockProducto - cantidad;
+            return stockFinal;
+        }
+    }
+
+    public static double precioArticuloConIva(HashMap<String, Double> productoPrecio, double precioIVA,
+            boolean articuloEsencial, String producto) {
+        double precio = 0.0;
+        for (String productoLista : productoPrecio.keySet()) {
+            if (productoLista.toLowerCase().equals(producto.toLowerCase())) {
+                precio = productoPrecio.get(productoLista);
+            }
+        }
+
+        if (articuloEsencial) {
+            precioIVA = precio * (1.04);
+            return precioIVA;
+        } else {
+            precioIVA = precio * (1.21);
+            return precioIVA;
+        }
     }
 
     public static void actualizarProductos(JFrame frame, HashMap<String, Integer> productoStock,
