@@ -7,6 +7,9 @@ import javax.swing.border.*;
 
 public class Ejercicio04 {
     public static void main(String[] args) {
+        // Crear un arrayList que contenga todos los obejtoArticulos
+        // Crear un objeto para (Articulo, precio, stock)
+
         HashMap<String, Integer> productoStock = new HashMap<>();
         productoStock.put("Leche", 100);
         productoStock.put("Pan", 150);
@@ -88,10 +91,11 @@ public class Ejercicio04 {
         productos.setBorder(new EmptyBorder(5, 10, 7, 10));
         DecimalFormat decimales = new DecimalFormat("0.00");
         int i = 1;
-        for (String producto : productoStock.keySet()) {
-            double precio = productoPrecio.get(producto);
+        for (String producto : productoStock.keySet()) { // Recorrer sobre el arraylist --> objeto.getArticulo (crear el
+                                                         // metodo)
+            double precio = productoPrecio.get(producto); // objeto.getPrecio (crear el metodo)
             String precioFormateado = decimales.format(precio);
-            int stock = productoStock.get(producto);
+            int stock = productoStock.get(producto); // objeto.getStock (crear el metodo)
             JLabel labelProductos = new JLabel(
                     "Artículo " + i + " >  " + producto + ": " + precioFormateado + "€ / " + stock
                             + " unidades en stock");
@@ -168,6 +172,7 @@ public class Ejercicio04 {
                     int stock = Integer
                             .parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad en stock:", "Stock",
                                     JOptionPane.PLAIN_MESSAGE));
+                    // objeto.setTodo(articulo, precio, stock)
                     productoStock.put(producto, stock);
                     productoPrecio.put(producto, precio);
 
@@ -185,9 +190,9 @@ public class Ejercicio04 {
                         null, JOptionPane.PLAIN_MESSAGE);
                 if (productoBuscado != null && !productoBuscado.isEmpty()) {
                     StringBuilder productosCoicidentes = new StringBuilder();
-                    for (String producto : productoPrecio.keySet()) {
+                    for (String producto : productoPrecio.keySet()) { // Recorrer arraylist
                         if (producto.toLowerCase().contains(productoBuscado.toLowerCase())) {
-                            double precio = productoPrecio.get(producto);
+                            double precio = productoPrecio.get(producto); // objeto.getPrecio
                             String precioFormateado = decimales.format(precio);
                             productosCoicidentes
                                     .append(/* "\t" + */producto + " > " + precioFormateado + "€/u.\n");
@@ -212,7 +217,8 @@ public class Ejercicio04 {
         comprar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 arrayProductos.removeAll(arrayProductos);
-                for (String producto : productoStock.keySet()) {
+                for (String producto : productoStock.keySet()) { // Recorrer arraylist
+                    // objeto.getStock
                     arrayProductos.add(producto);
                 }
                 panelCrearTicket(arrayProductos, productoStock, productoPrecio, dosDecimales);
@@ -272,6 +278,7 @@ public class Ejercicio04 {
                 error = true;
             }
 
+            // objeto.reStock(articulo, nuevoStock) (crear el metodo)
             productoStock.put(producto, stockFinal);
 
             precioIVA = precioArticuloConIva(productoPrecio, precioIVA, articuloEsencial, producto);
