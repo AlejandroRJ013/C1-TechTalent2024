@@ -38,7 +38,7 @@ public class PruebasEjer08 {
         String producto = "";
         int cantidad = 0;
         double precioIVA = 0.0;
-        boolean masArticulos = false;
+        // boolean masArticulos = false;
         boolean articuloEsencial = false;
 
         JPanel infoArticulos = new JPanel(new GridLayout(0, 2));
@@ -51,9 +51,9 @@ public class PruebasEjer08 {
         JTextField cantidadTxt = new JTextField(10);
         infoArticulos.add(cantidadTxt);
 
-        infoArticulos.add(new JLabel("¿Más artículos?"));
-        JCheckBox masArticulosCheck = new JCheckBox();
-        infoArticulos.add(masArticulosCheck);
+        // infoArticulos.add(new JLabel("¿Más artículos?"));
+        // JCheckBox masArticulosCheck = new JCheckBox();
+        // infoArticulos.add(masArticulosCheck);
 
         infoArticulos.add(new JLabel("¿Artículo esencial?"));
         JCheckBox articuloEsencialCheck = new JCheckBox();
@@ -70,7 +70,7 @@ public class PruebasEjer08 {
 
         precioIVA = precioArticuloConIva(productoPrecio, precioIVA, articuloEsencial, producto);
 
-        masArticulos = masArticulosCheck.isSelected() ? true : false;
+        // masArticulos = masArticulosCheck.isSelected() ? true : false;
         articuloEsencial = articuloEsencialCheck.isSelected() ? true : false;
 
         articulos.setTodos(producto, cantidad, precioIVA);
