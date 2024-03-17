@@ -7,8 +7,7 @@ public class Password {
     int longitud;
     final int LONG_PRED = 8;
     String pass;
-    final String[] abecedario = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
-            "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+    final String[] simbolos = { "!", "@", "#", "$", "%", "^", "&", "*", "-", "_", "+", "=", "~", "/", "<", ">" };
 
     // CONSTRUCTORES
     public Password() {
@@ -17,18 +16,25 @@ public class Password {
         Random numAleatorio = new Random();
         StringBuilder pass = new StringBuilder();
         for (int i = 1; i <= longitud; i++) {
-            int indiceLetra = numAleatorio.nextInt(abecedario.length);
-            int min_mayus = numAleatorio.nextInt(2);
-            if (min_mayus == 1) {
-                System.out.println(indiceLetra + " --> " + abecedario[indiceLetra].toUpperCase()); // Mostrar
-                pass.append(abecedario[indiceLetra].toUpperCase());
+            int indiceLetra = numAleatorio.nextInt(10000);
+            if (indiceLetra % 5 == 0) {
+                indiceLetra = numAleatorio.nextInt(simbolos.length);
+                pass.append(simbolos[indiceLetra]);
+            } else if (indiceLetra % 3 == 0) {
+                indiceLetra = numAleatorio.nextInt(10) + 48;
+                char character = (char) indiceLetra;
+                pass.append(character);
+            } else if (indiceLetra % 2 == 0) {
+                indiceLetra = numAleatorio.nextInt(26) + 65;
+                char character = (char) indiceLetra;
+                pass.append(character);
             } else {
-                System.out.println(indiceLetra + " --> " + abecedario[indiceLetra]); // Mostrar
-                pass.append(abecedario[indiceLetra]);
+                indiceLetra = numAleatorio.nextInt(26) + 97;
+                char character = (char) indiceLetra;
+                pass.append(character);
             }
-
         }
-        System.out.println(pass.toString() + " / OPCIÓN PREDETERMINADA"); // Mostrar
+        System.out.println(pass.toString()); // Mostrar en consola
         this.pass = pass.toString();
     }
 
@@ -38,18 +44,25 @@ public class Password {
         Random numAleatorio = new Random();
         StringBuilder pass = new StringBuilder();
         for (int i = 1; i <= longitud; i++) {
-            int indiceLetra = numAleatorio.nextInt(abecedario.length);
-            int min_mayus = numAleatorio.nextInt(2);
-            if (min_mayus == 1) {
-                System.out.println(indiceLetra + " --> " + abecedario[indiceLetra].toUpperCase()); // Mostrar
-                pass.append(abecedario[indiceLetra].toUpperCase());
+            int indiceLetra = numAleatorio.nextInt(10000);
+            if (indiceLetra % 13 == 0) {
+                indiceLetra = numAleatorio.nextInt(simbolos.length);
+                pass.append(simbolos[indiceLetra]);
+            } else if (indiceLetra % 7 == 0) {
+                indiceLetra = numAleatorio.nextInt(10) + 48;
+                char character = (char) indiceLetra;
+                pass.append(character);
+            } else if (indiceLetra % 2 == 0) {
+                indiceLetra = numAleatorio.nextInt(26) + 65;
+                char character = (char) indiceLetra;
+                pass.append(character);
             } else {
-                System.out.println(indiceLetra + " --> " + abecedario[indiceLetra]); // Mostrar
-                pass.append(abecedario[indiceLetra]);
+                indiceLetra = numAleatorio.nextInt(26) + 97;
+                char character = (char) indiceLetra;
+                pass.append(character);
             }
-
         }
-        System.out.println(pass.toString()); // Mostrar
+        System.out.println(pass.toString()); // Mostrar en consola
         this.pass = pass.toString();
     }
 
@@ -91,7 +104,8 @@ public class Password {
             JOptionPane.showMessageDialog(null, "Tu contraseña será:\n" + contra + "\n\nOPCIÓN PREDETERMINADA.",
                     "Password", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Tu contraseña será:\n" + contra + "\n\nGENERADA ALEATORIAMENTE.",
+            JOptionPane.showMessageDialog(null,
+                    "Tu contraseña será:\n" + contra + "\n\nGENERADA ALEATORIAMENTE.",
                     "Password", JOptionPane.INFORMATION_MESSAGE);
         }
     }
