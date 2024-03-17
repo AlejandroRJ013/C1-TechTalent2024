@@ -25,7 +25,8 @@ public class Persona {
         this.altura = 0.0;
     }
 
-    public Persona(String nombre, int edad, String sexo, String dni, double peso, double altura) {
+    public Persona(String nombre, int edad, String sexo,
+            String dni, double peso, double altura) {
         this.nombre = nombre;
         this.edad = edad;
         this.sexo = sexo;
@@ -37,7 +38,7 @@ public class Persona {
     // METODOS
     @Override
     public String toString() {
-        return "Persona\t{" +
+        return "  -  Persona:\n\t{" +
                 "nombre='" + nombre + '\'' +
                 ", edad='" + edad + '\'' +
                 ", sexo=" + sexo + '\'' +
