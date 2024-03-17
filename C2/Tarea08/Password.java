@@ -7,7 +7,9 @@ public class Password {
     int longitud;
     final int LONG_PRED = 8;
     String pass;
-    final String[] simbolos = { "!", "@", "#", "$", "%", "^", "&", "*", "-", "_", "+", "=", "~", "/", "<", ">" };
+    final String[] simbolos = { "!", "@",
+            "#", "$", "%", "^", "&", "*", "-", "_",
+            "+", "=", "~", "/", "<", ">" };
 
     // CONSTRUCTORES
     public Password() {
@@ -15,25 +17,7 @@ public class Password {
 
         Random numAleatorio = new Random();
         StringBuilder pass = new StringBuilder();
-        for (int i = 1; i <= longitud; i++) {
-            int indiceLetra = numAleatorio.nextInt(10000);
-            if (indiceLetra % 5 == 0) {
-                indiceLetra = numAleatorio.nextInt(simbolos.length);
-                pass.append(simbolos[indiceLetra]);
-            } else if (indiceLetra % 3 == 0) {
-                indiceLetra = numAleatorio.nextInt(10) + 48;
-                char character = (char) indiceLetra;
-                pass.append(character);
-            } else if (indiceLetra % 2 == 0) {
-                indiceLetra = numAleatorio.nextInt(26) + 65;
-                char character = (char) indiceLetra;
-                pass.append(character);
-            } else {
-                indiceLetra = numAleatorio.nextInt(26) + 97;
-                char character = (char) indiceLetra;
-                pass.append(character);
-            }
-        }
+        filtroGeneracion(simbolos, pass, longitud, numAleatorio);
         System.out.println(pass.toString()); // Mostrar en consola
         this.pass = pass.toString();
     }
@@ -43,25 +27,7 @@ public class Password {
 
         Random numAleatorio = new Random();
         StringBuilder pass = new StringBuilder();
-        for (int i = 1; i <= longitud; i++) {
-            int indiceLetra = numAleatorio.nextInt(10000);
-            if (indiceLetra % 13 == 0) {
-                indiceLetra = numAleatorio.nextInt(simbolos.length);
-                pass.append(simbolos[indiceLetra]);
-            } else if (indiceLetra % 7 == 0) {
-                indiceLetra = numAleatorio.nextInt(10) + 48;
-                char character = (char) indiceLetra;
-                pass.append(character);
-            } else if (indiceLetra % 2 == 0) {
-                indiceLetra = numAleatorio.nextInt(26) + 65;
-                char character = (char) indiceLetra;
-                pass.append(character);
-            } else {
-                indiceLetra = numAleatorio.nextInt(26) + 97;
-                char character = (char) indiceLetra;
-                pass.append(character);
-            }
-        }
+        filtroGeneracion(simbolos, pass, longitud, numAleatorio);
         System.out.println(pass.toString()); // Mostrar en consola
         this.pass = pass.toString();
     }
@@ -107,6 +73,28 @@ public class Password {
             JOptionPane.showMessageDialog(null,
                     "Tu contraseña será:\n" + contra + "\n\nGENERADA ALEATORIAMENTE.",
                     "Password", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public static void filtroGeneracion(String[] simbolos, StringBuilder pass, int longitud, Random numAleatorio) {
+        for (int i = 1; i <= longitud; i++) {
+            int indiceLetra = numAleatorio.nextInt(10000);
+            if (indiceLetra % 13 == 0) {
+                indiceLetra = numAleatorio.nextInt(simbolos.length);
+                pass.append(simbolos[indiceLetra]);
+            } else if (indiceLetra % 7 == 0) {
+                indiceLetra = numAleatorio.nextInt(10) + 48;
+                char character = (char) indiceLetra;
+                pass.append(character);
+            } else if (indiceLetra % 2 == 0) {
+                indiceLetra = numAleatorio.nextInt(26) + 65;
+                char character = (char) indiceLetra;
+                pass.append(character);
+            } else {
+                indiceLetra = numAleatorio.nextInt(26) + 97;
+                char character = (char) indiceLetra;
+                pass.append(character);
+            }
         }
     }
 }
