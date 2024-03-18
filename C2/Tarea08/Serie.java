@@ -39,7 +39,7 @@ public class Serie {
     // METODOS
     @Override
     public String toString() {
-        return "Electrodomestico\t{" +
+        return "  -   Serie\n\t{" +
                 "titulo='" + titulo + '\'' +
                 ", temporadas=" + temporadas + '\'' +
                 ", entregado=" + entregado + '\'' +
