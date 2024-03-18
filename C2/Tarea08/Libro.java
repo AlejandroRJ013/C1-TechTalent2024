@@ -4,7 +4,7 @@ public class Libro {
     String autor;
     int fechaEstreno;
 
-    //CONSTRUCTORES
+    // CONSTRUCTORES
     public Libro() {
         this.titulo = "";
         this.autor = "";
@@ -16,9 +16,8 @@ public class Libro {
         this.autor = autor;
         this.fechaEstreno = fechaEstreno;
     }
-    
 
-    //METODOS
+    // METODOS
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -30,7 +29,7 @@ public class Libro {
     public void setAutor(String autor) {
         this.autor = autor;
     }
-    
+
     public String getAutor() {
         return autor;
     }
@@ -38,7 +37,7 @@ public class Libro {
     public void setFecha(int fechaEstreno) {
         this.fechaEstreno = fechaEstreno;
     }
-    
+
     public int getFecha() {
         return fechaEstreno;
     }
@@ -57,7 +56,7 @@ public class Libro {
         libro1.setTitulo("Antimatéria, mágia y poesía");
         libro1.setAutor("José Edelstein y Andrés Gomberoff");
         libro1.setFecha(2021);
-        System.out.println("\n"+libro1.getTitulo()+", "+libro1.getAutor()+", "+libro1.getFecha());
+        System.out.println("\n" + libro1.getTitulo() + ", " + libro1.getAutor() + ", " + libro1.getFecha());
 
     }
 }

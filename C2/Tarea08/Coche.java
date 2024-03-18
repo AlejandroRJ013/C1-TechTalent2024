@@ -4,7 +4,7 @@ public class Coche {
     String modelo;
     int fechaSalida;
 
-    //CONSTRUCTORES
+    // CONSTRUCTORES
     public Coche() {
         this.marca = "";
         this.modelo = "";
@@ -16,9 +16,8 @@ public class Coche {
         this.modelo = modelo;
         this.fechaSalida = fechaSalida;
     }
-    
 
-    //METODOS
+    // METODOS
     public void setMarca(String marca) {
         this.marca = marca;
     }
@@ -30,7 +29,7 @@ public class Coche {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    
+
     public String getModelo() {
         return modelo;
     }
@@ -38,7 +37,7 @@ public class Coche {
     public void setFecha(int fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
-    
+
     public int getFecha() {
         return fechaSalida;
     }
@@ -57,7 +56,7 @@ public class Coche {
         coche1.setMarca("Renault");
         coche1.setModelo("Clio");
         coche1.setFecha(2005);
-        System.out.println("\n"+coche1.getMarca()+", "+coche1.getModelo()+", "+coche1.getFecha());
+        System.out.println("\n" + coche1.getMarca() + ", " + coche1.getModelo() + ", " + coche1.getFecha());
 
     }
 }
