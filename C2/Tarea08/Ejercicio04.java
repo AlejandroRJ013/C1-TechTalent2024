@@ -10,6 +10,8 @@ public class Ejercicio04 {
         // Crear un arrayList que contenga todos los obejtoArticulos
         // Crear un objeto para (Articulo, precio, stock)
 
+        //
+
         HashMap<String, Integer> productoStock = new HashMap<>();
         productoStock.put("Leche", 100);
         productoStock.put("Pan", 150);
