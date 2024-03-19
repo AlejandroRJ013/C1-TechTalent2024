@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -13,23 +14,39 @@ public class Password {
 
     // CONSTRUCTORES
     public Password() {
+        boolean otraVez = false;
         this.longitud = LONG_PRED;
 
-        Random numAleatorio = new Random();
-        StringBuilder pass = new StringBuilder();
-        filtroGeneracion(simbolos, pass, longitud, numAleatorio);
-        System.out.println(pass.toString()); // Mostrar en consola
-        this.pass = pass.toString();
+        do {
+            Random numAleatorio = new Random();
+            StringBuilder pass = new StringBuilder();
+            filtroGeneracion(simbolos, pass, longitud, numAleatorio);
+            if (filtroMarc(simbolos, pass.toString())) {
+                System.out.println(pass.toString()); // Mostrar en consola
+                this.pass = pass.toString();
+                otraVez = false;
+            } else {
+                otraVez = true;
+            }
+        } while (otraVez);
     }
 
     public Password(int longitud) {
+        boolean otraVez = false;
         this.longitud = longitud;
 
-        Random numAleatorio = new Random();
-        StringBuilder pass = new StringBuilder();
-        filtroGeneracion(simbolos, pass, longitud, numAleatorio);
-        System.out.println(pass.toString()); // Mostrar en consola
-        this.pass = pass.toString();
+        do {
+            Random numAleatorio = new Random();
+            StringBuilder pass = new StringBuilder();
+            filtroGeneracion(simbolos, pass, longitud, numAleatorio);
+            if (filtroMarc(simbolos, pass.toString())) {
+                System.out.println(pass.toString()); // Mostrar en consola
+                this.pass = pass.toString();
+                otraVez = false;
+            } else {
+                otraVez = true;
+            }
+        } while (otraVez);        
     }
 
     // METODOS
@@ -41,6 +58,7 @@ public class Password {
         return pass;
     }
 
+    //apllicar filtro para un porcentaje minimo ;)
     public static void main(String[] args) {
         boolean mal = false;
         boolean pred = false;
@@ -95,6 +113,31 @@ public class Password {
                 char character = (char) indiceLetra;
                 pass.append(character);
             }
+        }
+    }
+
+    public static boolean filtroMarc(String[] simbolos, String contra) {
+        int cantidadSimbolos = 0;
+        double veintePorcientoDouble = contra.length()/5;
+        int veintePorcientoInt = contra.length()/5;
+        int veintePorciento = 0;
+        if (veintePorcientoDouble - veintePorcientoInt != 0) {
+            veintePorciento = veintePorcientoInt+1;
+        } else {
+            veintePorciento = veintePorcientoInt;
+        }
+
+        char[] caracteres = contra.toCharArray();
+        for (char caracter : caracteres) {
+            String simbolo = String.valueOf(caracter);
+            if (Arrays.asList(simbolos).contains(simbolo)) {
+                cantidadSimbolos++;
+            }
+        }
+        if (cantidadSimbolos == veintePorciento) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
