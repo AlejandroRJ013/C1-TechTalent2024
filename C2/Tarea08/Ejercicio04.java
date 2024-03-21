@@ -168,9 +168,11 @@ public class Ejercicio04 {
                         "Producto", JOptionPane.PLAIN_MESSAGE);
                 if (producto != null && !producto.isEmpty()) {
                     producto = producto.substring(0, 1).toUpperCase() + producto.substring(1).toLowerCase();
+                    //Revisar no ingresar 0
                     double precio = Double
                             .parseDouble(JOptionPane.showInputDialog(null, "Ingrese el precio del artículo:",
                                     "Precio", JOptionPane.PLAIN_MESSAGE));
+                    //Revisar no ingresar 0
                     int stock = Integer
                             .parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad en stock:", "Stock",
                                     JOptionPane.PLAIN_MESSAGE));
@@ -236,6 +238,7 @@ public class Ejercicio04 {
         articulosApp articulos = new articulosApp();
         String producto = "";
         int cantidad = 0;
+        int stockFinal = 0;
         double precioIVA = 0.0;
         double totalCompra = 0.0;
         double totalProducto = 0.0;
@@ -261,24 +264,30 @@ public class Ejercicio04 {
             JCheckBox articuloEsencialCheck = new JCheckBox();
             infoArticulos.add(articuloEsencialCheck);
 
-            JOptionPane.showMessageDialog(null, infoArticulos, "Titulo", JOptionPane.PLAIN_MESSAGE);
+            do {
+                JOptionPane.showMessageDialog(null, infoArticulos, "Titulo", JOptionPane.PLAIN_MESSAGE);
 
-            masArticulos = masArticulosCheck.isSelected() ? true : false;
-            articuloEsencial = articuloEsencialCheck.isSelected() ? true : false;
+                masArticulos = masArticulosCheck.isSelected() ? true : false;
+                articuloEsencial = articuloEsencialCheck.isSelected() ? true : false;
 
-            producto = policiaProducto(seleccionable, producto);
-            if (producto.equals("- Seleccionar producto -")) {
-                error = true;
-            }
-            cantidad = policiaCantidad(cantidadTxt, cantidad);
-            if (cantidad == 0) {
-                error = true;
-            }
-
-            int stockFinal = revisorCantidades(productoStock, cantidad, cantidad, producto);
-            if (stockFinal == 0) {
-                error = true;
-            }
+                producto = policiaProducto(seleccionable, producto);
+                if (producto.equals("- Seleccionar producto -")) {
+                    error = true;
+                } else {
+                    cantidad = policiaCantidad(cantidadTxt, cantidad);
+                    if (cantidad == 0) {
+                        error = true;
+                    } else {
+                        int stockProducto = productoStock.get(producto);
+                        stockFinal = revisorCantidades(productoStock, stockProducto, stockFinal, cantidad, producto);
+                        if (stockFinal == 0) {
+                            error = true;
+                        } else {
+                            error = false;
+                        }
+                    }
+                }
+            } while (error);
 
             // objeto.reStock(articulo, nuevoStock) (crear el metodo)
             productoStock.put(producto, stockFinal);
@@ -304,9 +313,8 @@ public class Ejercicio04 {
 
             arrayProductos.remove(producto);
         } while (masArticulos);
-        if (!error) {
-            ticket(dosDecimales, texto, totalCompra);
-        }
+        
+        ticket(dosDecimales, texto, totalCompra);
     }
 
     public static void ticket(DecimalFormat dosDecimales, StringBuilder texto, double totalCompra) {
@@ -354,14 +362,12 @@ public class Ejercicio04 {
         }
     }
 
-    public static int revisorCantidades(HashMap<String, Integer> productoStock, int stockFinal, int cantidad,
+    public static int revisorCantidades(HashMap<String, Integer> productoStock, int stockProducto, int stockFinal, int cantidad,
             String producto) {
-        int stockProducto = productoStock.get(producto);
-
         if (cantidad > stockProducto) {
             JOptionPane.showMessageDialog(null, "El stock del producto es de " + stockProducto
                     + " y usted esta intentando comprar " + cantidad, "Error", JOptionPane.ERROR_MESSAGE);
-            return 0;
+            return stockProducto;
         } else {
             stockFinal = stockProducto - cantidad;
             return stockFinal;

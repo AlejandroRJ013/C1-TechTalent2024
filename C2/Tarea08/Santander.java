@@ -1,3 +1,5 @@
+//enum
+
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -6,26 +8,26 @@ import java.awt.event.*;
 
 public class Santander {
     // ATRIBUTOS
-    int numeroCuenta;
-    double saldo;
+    private long numeroCuenta;
+    private double saldo;
 
     // CONSTRUCTORES
     public Santander() {
-        this.numeroCuenta = 0000000000;
+        this.numeroCuenta = 0;
         this.saldo = 0.0;
     }
 
-    public Santander(int numeroCuenta, double saldo) {
+    public Santander(long numeroCuenta, double saldo) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
     }
 
     // METODOS
-    public void setNumeroCuenta(int numeroCuenta) {
+    public void setNumeroCuenta(long numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
 
-    public int getNumeroCuenta() {
+    public long getNumeroCuenta() {
         return numeroCuenta;
     }
 
@@ -47,41 +49,41 @@ public class Santander {
 
     @Override
     public String toString() {
-        return  "┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐\n" +
-                          "│ \t\t\t╔═══════════════════════╗\t\t\t│\n" +
-                          "│ \t\t\t║ Tu cuenta Santander ;)║\t\t\t│\n" +
-                          "│ \t\t\t╚═══════════════════════╝\t\t\t│\n│\t" +
-                
-                "░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░\t│\n" +
-                "├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┬ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┤\n│\t"+
-                "   Número de cuenta \t    │\t   Salario disponible\t\t│\n"+
-                "├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┤\n│\t"+
-                "      " + numeroCuenta + "\t    │\t\t " + saldo + "\t\t\t│\n"+
-                "└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┴ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘";
+        return  "│\t      " + numeroCuenta + "\t    │\t\t " + saldo + "\t\t│\n"+
+        "├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┤";
     }
 
     public static void main(String[] args) {
         
         boolean error = false;
-        int numeroCuenta = preguntarNumeroCuenta(error);
+        long numeroCuenta = preguntarNumeroCuenta(error);
         double salario = preguntarSalarioCuenta(error);
         Santander cuentaUsuario1 = new Santander(numeroCuenta, salario);
+        System.out.println("┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ "+
+        "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐\n" +
+        "│ \t\t\t╔═══════════════════════╗\t\t\t│\n" +
+        "│ \t\t\t║ Tu cuenta Santander ;)║\t\t\t│\n" +
+        "│ \t\t\t╚═══════════════════════╝\t\t\t│\n│\t" +
+        "░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"+
+        "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░\t│\n" +
+        "├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┬ ─ ─ ─ "+
+        "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┤");
         System.out.println(cuentaUsuario1.toString());
         
         creacionFrame(cuentaUsuario1);
     }
 
-    public static int preguntarNumeroCuenta(boolean error) {
-        int numeroDiezDigitos = 0;
+    public static long preguntarNumeroCuenta(boolean error) {
+        long numeroDiezDigitos = 0;
         
         do {
             String numCuentaInput = "";
             do {
-                numCuentaInput = JOptionPane.showInputDialog(null, "Ingrese su número de cuenta",
-                        "Tu cuenta Santander",
+                numCuentaInput = JOptionPane.showInputDialog(null, 
+                "Ingrese su número de cuenta", "Tu cuenta Santander",
                         JOptionPane.QUESTION_MESSAGE);
                 try {
-                    numeroDiezDigitos = Integer.parseInt(numCuentaInput);
+                    numeroDiezDigitos = Long.parseLong(numCuentaInput);
                     error = false;
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Solo puede contener números", "ERROR 404",
@@ -91,7 +93,8 @@ public class Santander {
             } while (error);
 
             if (numCuentaInput.length() != 10) {
-                JOptionPane.showMessageDialog(null, "El número de cuenta debe tener 10 dígitos", "ERROR 404",
+                JOptionPane.showMessageDialog(null, 
+                "El número de cuenta debe tener 10 dígitos", "ERROR 404",
                         JOptionPane.ERROR_MESSAGE);
                 error = true;
             }
@@ -170,7 +173,7 @@ public class Santander {
 
     public static ImageIcon escalarImagen(String ruta) {
         ImageIcon imagen = new ImageIcon(ruta);
-        ImageIcon imagenEscalada = new ImageIcon(imagen.getImage().getScaledInstance(45, 25, Image.SCALE_SMOOTH));
+        ImageIcon imagenEscalada = new ImageIcon(imagen.getImage().getScaledInstance(55, 25, Image.SCALE_SMOOTH));
         return imagenEscalada;
     }
 
@@ -181,17 +184,19 @@ public class Santander {
                 boolean invalido = false;
                 double ingreso = 0.0;
                 do {
-                    String ingresoTxt = JOptionPane.showInputDialog(null, "Indique la cantidad de dinero a ingresar a la cuente", "INGRESO", JOptionPane.PLAIN_MESSAGE);
+                    String ingresoTxt = JOptionPane.showInputDialog(null, 
+                    "Indique la cantidad de dinero a ingresar a la cuente", "INGRESO", JOptionPane.PLAIN_MESSAGE);
                     try {
                         ingreso = Double.parseDouble(ingresoTxt);
                         invalido = false;
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Ingrese un número válido, por favor", "ERROR 404", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, 
+                        "Ingrese un número válido, por favor", "ERROR 404", JOptionPane.ERROR_MESSAGE);
                         invalido = true;
                     }
                 } while (invalido);
                 cuentaUsuario1.meter(ingreso);
-                System.out.println(cuentaUsuario1.toString());
+                System.out.println(cuentaUsuario1.toString() +  "  INGRESO +" + ingreso);
             }
         });
 
@@ -201,17 +206,19 @@ public class Santander {
                 boolean invalido = false;
                 double extracto = 0.0;
                 do {
-                    String extractoTxt = JOptionPane.showInputDialog(null, "Indique la cantidad de dinero a ingresar a la cuente", "INGRESO", JOptionPane.PLAIN_MESSAGE);
+                    String extractoTxt = JOptionPane.showInputDialog(null,
+                     "Indique la cantidad de dinero a ingresar a la cuente", "INGRESO", JOptionPane.PLAIN_MESSAGE);
                     try {
                         extracto = Double.parseDouble(extractoTxt);
                         invalido = false;
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Ingrese un número válido, por favor", "ERROR 404", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, 
+                        "Ingrese un número válido, por favor", "ERROR 404", JOptionPane.ERROR_MESSAGE);
                         invalido = true;
                     }
                 } while (invalido);
                 cuentaUsuario1.sacar(extracto);
-                System.out.println(cuentaUsuario1.toString());
+                System.out.println(cuentaUsuario1.toString() +  "  EXTRACCIÓN -" + extracto);
             }
         });
     }

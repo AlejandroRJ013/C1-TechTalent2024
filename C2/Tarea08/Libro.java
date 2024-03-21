@@ -1,8 +1,8 @@
 public class Libro {
     // ATRIBUTOS
-    String titulo;
-    String autor;
-    int fechaEstreno;
+    private String titulo;
+    private String autor;
+    private int fechaEstreno;
 
     // CONSTRUCTORES
     public Libro() {
@@ -57,6 +57,5 @@ public class Libro {
         libro1.setAutor("José Edelstein y Andrés Gomberoff");
         libro1.setFecha(2021);
         System.out.println("\n" + libro1.getTitulo() + ", " + libro1.getAutor() + ", " + libro1.getFecha());
-
     }
 }
