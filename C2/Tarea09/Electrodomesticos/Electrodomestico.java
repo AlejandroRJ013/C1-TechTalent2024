@@ -119,7 +119,7 @@ public class Electrodomestico {
 
     @Override
     public String toString() {
-        return "Artículo:\n\tPrecio base: " + precio + " €\n\tColor: " + color + "\n\tConsumo energético: " + consumo + "\n\tPeso: " + peso + " kg\n\tPrecio final: "+precioFinal();
+        return "Electrodoméstico:\n\tPrecio base: " + precio + " €\n\tColor: " + color + "\n\tConsumo energético: " + consumo + "\n\tPeso: " + peso + " kg\n    Precio final: "+precioFinal();
     }
 
     public static void main(String[] args) {

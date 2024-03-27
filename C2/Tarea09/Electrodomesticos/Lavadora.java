@@ -5,19 +5,15 @@ public class Lavadora extends Electrodomestico{
 
     //  CONSTRUCTORES
     public Lavadora() {
-    	this.precio=PRECIO_PREDETERMINADO;
-    	this.peso=PESO_PREDETERMINADO;
-    	this.color=COLOR_PREDETERMINADO;
-    	this.consumo=CONSUMO_PREDETERMINADO;
-    	this.carga =CARGA_PREDETERMINADA;
+        super();
+
+    	this.carga = CARGA_PREDETERMINADA;
     }
 
     public Lavadora(double precio, double peso) {
-    	this.precio=precio;
-    	this.peso=peso;
-    	this.color=COLOR_PREDETERMINADO;
-    	this.consumo=CONSUMO_PREDETERMINADO;
-    	this.carga =CARGA_PREDETERMINADA;
+        super(precio, peso);
+
+    	this.carga = CARGA_PREDETERMINADA;
     }
 
     public Lavadora(double carga, double precio, double peso, String color, char consumo) {
@@ -41,6 +37,9 @@ public class Lavadora extends Electrodomestico{
         return precioFinal;
     }
 
+    public String toString() {
+        return "Lavadora:\n\tPrecio base: " + precio + " €\n\tColor: " + color + "\n\tConsumo energético: " + consumo + "\n\tPeso: " + peso + " kg\n\tCarga: "+carga+"\n    Precio final: "+precioFinal();
+    }
 
     public static void main(String[] args) {
         Lavadora lav = new Lavadora(50, 5.2, 4, "rojo", 'f');
