@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="ComentarioVariasLineas/src/|ClaseInteger1/src/|ComentarioLinea/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="ClaseInteger1/src"/>
+	<classpathentry kind="src" path="ComentarioLinea/src"/>
+	<classpathentry kind="src" path="ComentarioVariasLineas/src"/>
+	<classpathentry kind="output" path="ClaseInteger1/bin"/>
+</classpath>
