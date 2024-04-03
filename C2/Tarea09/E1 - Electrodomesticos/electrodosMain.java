@@ -1,5 +1,5 @@
-import java.text.DecimalFormat;
-import java.util.ArrayList;
+import java.text.*;
+import java.util.*;
 
 public class electrodosMain {
     public static void main(String[] args) {
@@ -17,16 +17,7 @@ public class electrodosMain {
         Lavadora lavadora5 = new Lavadora(10, 599.95, 60.0, "blanco", 'E');
 
         ArrayList<Object> electrodomesticos = new ArrayList<>();
-        electrodomesticos.add(television1);
-        electrodomesticos.add(television2);
-        electrodomesticos.add(television3);
-        electrodomesticos.add(television4);
-        electrodomesticos.add(television5);
-        electrodomesticos.add(lavadora1);
-        electrodomesticos.add(lavadora2);
-        electrodomesticos.add(lavadora3);
-        electrodomesticos.add(lavadora4);
-        electrodomesticos.add(lavadora5);
+        electrodomesticos.addAll(List.of(television1, television2, television3, television4, television5, lavadora1, lavadora2, lavadora3, lavadora4, lavadora5));
 
         double precioElectrodomesticos = 0.0;
         double precioLavadoras = 0.0;

@@ -51,8 +51,9 @@ public class Television extends Electrodomestico{
         return precioFinal;
     }
 
+    @Override
     public String toString() {
-        return "Television:\n\tPrecio base: " + precio + " €\n\tColor: " + color + "\n\tConsumo energético: " + consumo + "\n\tPeso: " + peso + " kg\n\tResolución: "+resolucion+"\n\tSintonización TDT: "+sintonizador+"\n    Precio final: "+precioFinal();
+        return "Television:\n\tPrecio base: " + precio + " €\n\tColor: " + color + "\n\tConsumo energético: " + consumo + "\n\tPeso: " + peso + " kg\n\tResolución: " + resolucion + "\n\tSintonización TDT: " + sintonizador + "\n    Precio final: " + precioFinal();
     }
 
     public static void main(String[] args) {

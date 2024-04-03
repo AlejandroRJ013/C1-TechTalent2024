@@ -37,8 +37,9 @@ public class Lavadora extends Electrodomestico{
         return precioFinal;
     }
 
+    @Override
     public String toString() {
-        return "Lavadora:\n\tPrecio base: " + precio + " €\n\tColor: " + color + "\n\tConsumo energético: " + consumo + "\n\tPeso: " + peso + " kg\n\tCarga: "+carga+"\n    Precio final: "+precioFinal();
+        return "Lavadora:\n\tPrecio base: " + precio + " €\n\tColor: " + color + "\n\tConsumo energético: " + consumo + "\n\tPeso: " + peso + " kg\n\tCarga: " + carga + "\n    Precio final: " + precioFinal();
     }
 
     public static void main(String[] args) {

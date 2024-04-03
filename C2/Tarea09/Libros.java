@@ -1,14 +1,6 @@
-import java.lang.annotation.Retention;
-import java.text.DecimalFormat;
-import java.time.InstantSource;
-
-import javax.swing.JOptionPane;
-
 public class Libros {
     //  ATRIBUTOS
     private Long ISBN;
-    private final DecimalFormat formatoISBN10 = new DecimalFormat("0-000-00000-0");
-    private final DecimalFormat formatoISBN13 = new DecimalFormat("000-0-000-00000-0");
     private String titulo;
     private String autor;
     private int paginas;
@@ -63,18 +55,20 @@ public class Libros {
 
     @Override
     public String toString() {
-        return "El libro <" + titulo + "> con ISBN : '" + ISBN + "' creado por " + autor + " tiene "+paginas;
+        return "El libro <" + titulo + "> con ISBN : '" + 
+        ISBN + "' creado por " + autor + " tiene "+paginas;
     }
 
+    //  MAIN
     public static void main(String[] args) {
         Libros libro1 = new Libros(9788408284550L, "Alas de sangre", "Rebecca Yarros", 896, false);
         Libros libro2 = new Libros(9788496735712L, "Wonder", "R.J. PALACIO", 424, false);
-
         System.out.println(libro1.toString());
         System.out.println(libro2.toString());
-
         if (libro1.getPaginas() > libro2.getPaginas()) {
-            System.out.println("El libro con mayor cantidad de páginas es el primero con " + libro1.getPaginas() + "páginas, el segundo "+ libro2.getPaginas());
+            System.out.println("El libro con mayor cantidad de páginas es \"" + libro1.getTitulo() + "\" con '" + libro1.getPaginas() + "' páginas, el segundo '"+ libro2.getPaginas() + "'");
+        } else {
+            System.out.println("El libro con mayor cantidad de páginas es \"" + libro2.getTitulo() + "\" con '" + libro2.getPaginas() + "' páginas, el segundo '"+ libro1.getPaginas() + "'");
         }
     }
 }
