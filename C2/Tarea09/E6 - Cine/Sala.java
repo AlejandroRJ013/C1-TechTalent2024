@@ -58,7 +58,8 @@ public class Sala {
         this.precioEntrada = precio;
     }
 
-    public String asignarAsiento(Espectador espectador, ArrayList<Espectador> espectadores, HashMap<String, Espectador> espectador_asiento, ArrayList<String> posicionAsientos) {
+    public String asignarAsiento(Espectador espectador, ArrayList<Espectador> espectadores, 
+    HashMap<String, Espectador> espectador_asiento, ArrayList<String> posicionAsientos) {
         Random numAleatorio = new Random();
         String texto = "";
         boolean repetir = true;
@@ -66,13 +67,16 @@ public class Sala {
             int numFila = numAleatorio.nextInt(filasAsientos);
             int numColumna = numAleatorio.nextInt(columnasAsientos);
             if (espectadores.size()>(filasAsientos*columnasAsientos)) {
-                texto = "La capacidad de la sala es menor a la cantidad de espectadores.\n Capacidad de la sala: " + (filasAsientos*columnasAsientos) + "\n Número de espectadores: " + espectadores.size();
+                texto = "La capacidad de la sala es menor a la cantidad de espectadores.\n " + 
+                "Capacidad de la sala: " + (filasAsientos*columnasAsientos) + 
+                "\n Número de espectadores: " + espectadores.size();
                 repetir = false;
             } else if (!asientosAsignados[numFila][numColumna]) {
                 int letraASCII = 64 + (numColumna + 1);
-                posicionAsientos.add(String.valueOf(numFila + 1) + String.valueOf((char) letraASCII));
-                texto = "\"" + espectador.getNombre()+"\" irá en el asiento "+(numFila + 1)+String.valueOf((char) letraASCII) + "\n";
-                espectador_asiento.put(String.valueOf(numFila + 1) + String.valueOf((char) letraASCII), espectador);
+                String posicionSentado = String.valueOf(numFila + 1) + "" + String.valueOf((char) letraASCII);
+                posicionAsientos.add(posicionSentado);
+                texto = "\"" + espectador.getNombre()+"\" irá en el asiento "+ posicionSentado + "\n";
+                espectador_asiento.put(posicionSentado, espectador);
                 asientosAsignados[numFila][numColumna] = true;
                 repetir = false;
             }
