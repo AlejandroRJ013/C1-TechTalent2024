@@ -88,15 +88,15 @@ public class Raices {
         System.out.println("\n");
 
         Raices raiz_cuadratica = new Raices(a, b, c);
-        double negro = raiz_cuadratica.getDiscriminate();
+        double adolfHitler = raiz_cuadratica.getDiscriminate();
         raiz_cuadratica.calcular();
-        System.out.println("Discriminante: "+negro);
-        if(!raiz_cuadratica.tieneRaiz(negro) && !raiz_cuadratica.tieneRaices(negro)) {
-            System.out.print("No tiene raices esta ecuación");
-        } else if(raiz_cuadratica.tieneRaices(negro)) {
+        System.out.println("Discriminante: "+adolfHitler);
+        if(raiz_cuadratica.tieneRaices(adolfHitler)) {
             System.out.print(raiz_cuadratica.obtenerRaices());
-        } else {
+        } else if(raiz_cuadratica.tieneRaiz(adolfHitler)) {
             System.out.print(raiz_cuadratica.obtenerRaiz());
+        } else {
+            System.out.print("No tiene soluciones reales, a imaginar a otro lado");
         }
         scaner.close();
     }

@@ -62,8 +62,24 @@ public class mainColegio {
         ArrayList<Estudiantes> suspendidos = Estudiantes.alumnosNOAprobados(estudiantes);
 
         Aula aulaFilosofia = new Aula(1, estudiantes.size(), "filosofia", cantidadEnClase, profesor);
-        
-        if (aulaFilosofia.sePuedeDarClase()) {
+
+            if (aulaFilosofia.sePuedeDarClase()) {
+                System.out.println("\t- - ALUMNOS MUJERES - -\n");
+            for (Estudiantes estudiante : estudiantes) {
+                if (estudiante.getSexo().equals("M")) {
+                    System.out.println(estudiante.getNombre()+" es mujer.");
+                }
+            }
+            System.out.println("\n");
+
+            System.out.println("\t- - ALUMNOS HOMBRES - -\n");
+            for (Estudiantes estudiante : estudiantes) {
+                if (estudiante.getSexo().equals("H")) {
+                    System.out.println(estudiante.getNombre()+" es hombre.");
+                }
+            }
+            System.out.println("\n");
+            
             System.out.println("\t- - ALUMNOS APROBADOS ["+aprobados.size()+"] - -\n");
             for (Estudiantes alumno : aprobados) {
                 if (ausentes.contains(alumno)) {

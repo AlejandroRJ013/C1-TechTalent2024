@@ -30,6 +30,10 @@ public class Personas implements MetodosPersonas {
         return nombre;
     }
 
+    public String getSexo() {
+        return sexo;
+    }
+
     @Override
     public boolean falta() {
         return false;
