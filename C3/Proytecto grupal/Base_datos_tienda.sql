@@ -1,0 +1,11 @@
+USE Tienda;
+
+CREATE TABLE cliente (
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    id_ticket INT AUTO_INCREMENT PRIMARY KEY
+)
+
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    contrasena INT
+)

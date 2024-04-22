@@ -12,7 +12,7 @@ dni VARCHAR(8),
 nombre_apellidos NVARCHAR(255),
 facultad INT,
 PRIMARY KEY (dni),
-FOREIGN KEY (facultad) REFERENCES facultades (codigo)
+FOREIGN KEY (facultad) REFERENCES facultades (codigo) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE equipos (
@@ -20,7 +20,7 @@ num_serie NVARCHAR(4),
 nombre NVARCHAR(100),
 facultad INT,
 PRIMARY KEY (num_serie),
-FOREIGN KEY (facultad) REFERENCES facultades (codigo)
+FOREIGN KEY (facultad) REFERENCES facultades (codigo) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE reserva (
