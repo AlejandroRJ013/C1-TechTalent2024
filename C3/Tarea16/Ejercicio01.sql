@@ -1,5 +1,6 @@
 USE ejercicio03;
 
+-- INSERCIONES
 INSERT INTO fabricantes VALUES 
     (0, 'Juan Magan'),
     (1, 'Antonio Sobera'),
@@ -55,18 +56,31 @@ SELECT nombre,precio FROM articulos WHERE precio>=180 ORDER BY precio DESC, nomb
 SELECT * FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo;
 
 -- 1.11
-SELECT articulos.nombre, articulos.precio, fabricantes.nombre FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo;
+SELECT articulos.nombre, precio, fabricantes.nombre FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo;
 
 --1.12
-SELECT fabricantes.codigo, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY articulos.fabricante;
+SELECT codigo, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante;
 
 -- 1.13
-SELECT fabricantes.codigo, fabricantes.nombre, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY articulos.fabricante;
+SELECT codigo, fabricantes.nombre, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante;
 
 -- 1.14
-SELECT fabricantes.nombre, precio FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY articulos.fabricante HAVING AVG(precio)>=150;
+SELECT fabricantes.nombre, precio FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante HAVING AVG(precio)>=150;
 
 -- 1.15
 SELECT nombre, precio FROM articulos ORDER BY precio ASC LIMIT 1;
 
 -- 1.16
+SELECT fabricantes.nombre, articulos.nombre, precio FROM articulos INNER JOIN fabricantes ON articulos.fabricante = fabricantes.codigo WHERE precio IN (SELECT MAX(precio) FROM articulos GROUP BY fabricante);
+
+-- 1.17
+INSERT INTO articulos (codigo, nombre, precio, fabricante) VALUES (13, 'Altavoces', 70, 2);
+
+-- 1.18
+UPDATE articulos SET nombre='Impresora Laser' WHERE codigo=8;
+
+-- 1.19
+UPDATE articulos SET precio=precio*0.9;
+
+--1.20
+UPDATE articulos SET precio=precio-10 WHERE precio>=120;
