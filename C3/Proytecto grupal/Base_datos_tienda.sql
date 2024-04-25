@@ -1,7 +1,7 @@
 USE Tienda;
 
-CREATE TABLE cliente (
-    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE ticket (
+    id_compra INT AUTO_INCREMENT PRIMARY KEY,
     id_ticket INT AUTO_INCREMENT PRIMARY KEY
 )
 

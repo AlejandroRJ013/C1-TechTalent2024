@@ -59,10 +59,10 @@ SELECT * FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricant
 SELECT articulos.nombre, precio, fabricantes.nombre FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo;
 
 --1.12
-SELECT codigo, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante;
+SELECT articulos.codigo, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante;
 
 -- 1.13
-SELECT codigo, fabricantes.nombre, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante;
+SELECT articulos.codigo, fabricantes.nombre, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante;
 
 -- 1.14
 SELECT fabricantes.nombre, precio FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante HAVING AVG(precio)>=150;
