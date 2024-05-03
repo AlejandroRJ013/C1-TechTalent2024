@@ -50,30 +50,33 @@ SELECT AVG(valor) FROM cajas GROUP BY almacen;
 SELECT almacen FROM cajas GROUP BY almacen HAVING AVG(valor)>150;
 
 -- 3.7
-SELECT num_referencia, lugar FROM cajas INNER JOIN almacenes ON cajas.almacen=almacenes.codigo;
+SELECT num_referencia, lugar FROM cajas ca INNER JOIN almacenes al ON ca.almacen=al.codigo;
 
 -- 3.8
-SELECT COUNT(num_referencia), codigo, lugar FROM cajas INNER JOIN almacenes ON cajas.almacen=almacenes.codigo GROUP BY almacen;
+SELECT COUNT(num_referencia), codigo, lugar FROM cajas ca INNER JOIN almacenes al ON ca.almacen=al.codigo GROUP BY almacen;
 
 -- 3.9
-SELECT almacen, lugar, capacidad FROM cajas INNER JOIN almacenes ON cajas.almacen=almacenes.codigo GROUP BY almacen HAVING capacidad<COUNT(num_referencia);
+SELECT almacen, lugar, capacidad FROM cajas ca INNER JOIN almacenes al ON ca.almacen=al.codigo GROUP BY almacen HAVING capacidad<COUNT(num_referencia);
 
 -- 3.10
-SELECT num_referencia FROM cajas INNER JOIN almacenes ON cajas.almacen=almacenes.codigo WHERE lugar='Bilbao';
+SELECT num_referencia FROM cajas ca INNER JOIN almacenes al ON ca.almacen=al.codigo WHERE lugar='Bilbao';
 
 -- 3.11
-INSERT INTO almacenes (codigo, lugar, capacidad) VALUES (11, 'Barcelona', 3),
+INSERT INTO almacenes (codigo, lugar, capacidad) VALUES (11, 'Barcelona', 3);
 
 -- 3.12
 INSERT INTO cajas (num_referencia, contenido, valor, almacen) VALUES ('H5RT', 'Papel', 200, 2);
 
 -- 3.13
 UPDATE cajas SET valor=valor*0.85;
+
 -- 3.14
 UPDATE cajas SET valor=valor*0.8 WHERE valor>(SELECT AVG(valor) FROM cajas);
 
 -- 3.15
-DELETE * FROM cajas WHERE valor<100;
+DELETE FROM cajas WHERE valor<100;
 
 -- 3.16
-DELETE * FROM cajas INNER JOIN almacenes ON cajas.almacen=almacenes.codigo GROUP BY almacen HAVING capacidad<COUNT(num_referencia);
+DELETE FROM cajas WHERE almacen IN (SELECT codigo FROM almacenes a JOIN (SELECT almacen, COUNT(*) AS 'conteo' FROM cajas GROUP BY almacen ) c ON a.codigo = c.almacen WHERE capacidad < conteo);
+-- DELETE FROM cajas WHERE almacen IN (SELECT codigo FROM almacenes al INNER JOIN cajas ca ON al.codigo=ca.almacen GROUP BY almacen HAVING capacidad<COUNT(*));
+-- DELETE FROM cajas ca INNER JOIN almacenes al ON ca.almacen=al.codigo GROUP BY almacen HAVING capacidad<COUNT(num_referencia);

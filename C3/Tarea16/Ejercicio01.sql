@@ -23,7 +23,10 @@ INSERT INTO articulos VALUES
     (6, 'Gasolina', 750,5),
     (7, 'Peine', 10, 3),
     (8, 'Harina', 400, 9),
-    (9, 'Queso', 8, 7);
+    (9, 'Queso', 8, 7),
+    (10, 'Portatil', 113, 6),
+    (11, 'Papel', 14, 8),
+    (12, 'Rinonera', 20, 7);
 
 -- 1.1
 SELECT nombre FROM articulos;
@@ -53,25 +56,25 @@ SELECT COUNT(*) FROM articulos WHERE precio>=180;
 SELECT nombre,precio FROM articulos WHERE precio>=180 ORDER BY precio DESC, nombre ASC;
 
 -- 1.10
-SELECT * FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo;
+SELECT * FROM articulos ar INNER JOIN fabricantes fa ON ar.fabricante=fa.codigo;
 
 -- 1.11
-SELECT articulos.nombre, precio, fabricantes.nombre FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo;
+SELECT ar.nombre, precio, fa.nombre FROM articulos ar INNER JOIN fabricantes fa ON ar.fabricante=fa.codigo;
 
 --1.12
-SELECT articulos.codigo, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante;
+SELECT ar.codigo, AVG(precio) FROM articulos ar INNER JOIN fabricantes fa ON ar.fabricante=fa.codigo GROUP BY fabricante;
 
 -- 1.13
-SELECT articulos.codigo, fabricantes.nombre, AVG(precio) FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante;
+SELECT ar.codigo, fa.nombre, AVG(precio) FROM articulos ar INNER JOIN fabricantes fa ON ar.fabricante=fa.codigo GROUP BY fabricante;
 
 -- 1.14
-SELECT fabricantes.nombre, precio FROM articulos INNER JOIN fabricantes ON articulos.fabricante=fabricantes.codigo GROUP BY fabricante HAVING AVG(precio)>=150;
+SELECT fa.nombre, precio FROM articulos ar INNER JOIN fabricantes fa ON ar.fabricante=fa.codigo GROUP BY fabricante HAVING AVG(precio)>=150;
 
 -- 1.15
 SELECT nombre, precio FROM articulos ORDER BY precio ASC LIMIT 1;
 
 -- 1.16
-SELECT fabricantes.nombre, articulos.nombre, precio FROM articulos INNER JOIN fabricantes ON articulos.fabricante = fabricantes.codigo WHERE precio IN (SELECT MAX(precio) FROM articulos GROUP BY fabricante);
+SELECT fa.nombre, ar.nombre, precio FROM articulos ar INNER JOIN fabricantes fa ON ar.fabricante=fa.codigo WHERE precio IN (SELECT MAX(precio) FROM articulos GROUP BY fabricante);
 
 -- 1.17
 INSERT INTO articulos (codigo, nombre, precio, fabricante) VALUES (13, 'Altavoces', 70, 2);

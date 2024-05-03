@@ -41,13 +41,13 @@ SELECT * FROM peliculas WHERE restriccion_edad IS NULL;
 SELECT nombre FROM salas WHERE pelicula IS NULL;
 
 -- 4.5
-SELECT salas.*, peliculas.* FROM salas LEFT JOIN peliculas ON salas.pelicula=peliculas.codigo;
+SELECT sa.*, pe.* FROM salas sa LEFT JOIN peliculas pe ON sa.pelicula=pe.codigo;
 
 -- 4.6
-SELECT peliculas.*, salas.* FROM peliculas LEFT JOIN salas ON peliculas.codigo=salas.pelicula;
+SELECT pe.*, sa.* FROM peliculas pe LEFT JOIN salas sa ON pe.codigo=sa.pelicula;
 
 -- 4.7
-SELECT nombre FROM peliculas WHERE codigo NOT IN (SELECT pelicula FROM salas); /* No me va */
+SELECT p.nombre FROM peliculas p LEFT JOIN salas s ON p.codigo = s.pelicula WHERE s.codigo IS NULL;
 
 -- 4.8
 INSERT INTO peliculas (codigo, nombre, restriccion_edad) VALUES (11, 'Uno, Dos, Tres', 7);
