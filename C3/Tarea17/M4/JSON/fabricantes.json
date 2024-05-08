@@ -1,0 +1,15 @@
+{
+    "_id" : ObjectId("6638b7cc94d00964653262da"),
+    "codigo" : NumberInt(1),
+    "nombre" : "Juan Magan"
+}
+{
+    "_id" : ObjectId("6638b7cc94d00964653262db"),
+    "codigo" : NumberInt(2),
+    "nombre" : "Antonio Banderas"
+}
+{
+    "_id" : ObjectId("6638b7cc94d00964653262dc"),
+    "codigo" : NumberInt(3),
+    "nombre" : "Abraham Mateo"
+}

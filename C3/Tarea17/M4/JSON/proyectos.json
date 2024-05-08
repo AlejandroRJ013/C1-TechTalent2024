@@ -1,0 +1,18 @@
+{
+    "_id" : ObjectId("6638b85805312c784764a8f2"),
+    "id" : NumberInt(1),
+    "nombre" : "Proyecto A",
+    "horas" : NumberInt(100)
+}
+{
+    "_id" : ObjectId("6638b85805312c784764a8f3"),
+    "id" : NumberInt(2),
+    "nombre" : "Proyecto B",
+    "horas" : NumberInt(200)
+}
+{
+    "_id" : ObjectId("6638b85805312c784764a8f4"),
+    "id" : NumberInt(3),
+    "nombre" : "Proyecto C",
+    "horas" : NumberInt(150)
+}

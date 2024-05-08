@@ -1,0 +1,36 @@
+{
+    "_id" : ObjectId("6638b8503ccd968aaed7c04a"),
+    "codigoPieza" : NumberInt(1),
+    "idProveedor" : NumberInt(1),
+    "precio" : 0.5
+}
+{
+    "_id" : ObjectId("6638b8503ccd968aaed7c04b"),
+    "codigoPieza" : NumberInt(1),
+    "idProveedor" : NumberInt(2),
+    "precio" : 0.6
+}
+{
+    "_id" : ObjectId("6638b8503ccd968aaed7c04c"),
+    "codigoPieza" : NumberInt(2),
+    "idProveedor" : NumberInt(2),
+    "precio" : 0.7
+}
+{
+    "_id" : ObjectId("6638b8503ccd968aaed7c04d"),
+    "codigoPieza" : NumberInt(2),
+    "idProveedor" : NumberInt(3),
+    "precio" : 0.8
+}
+{
+    "_id" : ObjectId("6638b8503ccd968aaed7c04e"),
+    "codigoPieza" : NumberInt(3),
+    "idProveedor" : NumberInt(1),
+    "precio" : 0.3
+}
+{
+    "_id" : ObjectId("6638b8503ccd968aaed7c04f"),
+    "codigoPieza" : NumberInt(3),
+    "idProveedor" : NumberInt(3),
+    "precio" : 0.4
+}

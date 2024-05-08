@@ -1,0 +1,42 @@
+{
+    "_id" : ObjectId("6638b84853c3d0e089b1ea87"),
+    "num_ref" : NumberInt(1),
+    "contenido" : "Pilas",
+    "valor" : 2.2,
+    "almacen" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6638b84853c3d0e089b1ea88"),
+    "num_ref" : NumberInt(3),
+    "contenido" : "Ropa",
+    "valor" : 10.5,
+    "almacen" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6638b84853c3d0e089b1ea89"),
+    "num_ref" : NumberInt(1),
+    "contenido" : "Juguetes",
+    "valor" : 3.75,
+    "almacen" : NumberInt(3)
+}
+{
+    "_id" : ObjectId("6638b84853c3d0e089b1ea8a"),
+    "num_ref" : NumberInt(2),
+    "contenido" : "Sartenes",
+    "valor" : 29.99,
+    "almacen" : NumberInt(3)
+}
+{
+    "_id" : ObjectId("6638b84853c3d0e089b1ea8b"),
+    "num_ref" : NumberInt(3),
+    "contenido" : "Platos",
+    "valor" : 12.3,
+    "almacen" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6638b84853c3d0e089b1ea8c"),
+    "num_ref" : NumberInt(2),
+    "contenido" : "Trapos",
+    "valor" : 6.6,
+    "almacen" : NumberInt(1)
+}

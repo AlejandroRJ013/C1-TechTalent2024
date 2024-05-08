@@ -1,0 +1,15 @@
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39fe6"),
+    "numero" : NumberInt(1),
+    "capacidad" : NumberInt(5)
+}
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39fe7"),
+    "numero" : NumberInt(2),
+    "capacidad" : NumberInt(8)
+}
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39fe8"),
+    "numero" : NumberInt(3),
+    "capacidad" : NumberInt(10)
+}

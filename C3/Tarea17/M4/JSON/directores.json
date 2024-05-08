@@ -1,0 +1,42 @@
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39fe9"),
+    "dni" : "12345678A",
+    "nombre" : "Juan",
+    "dni_jefe" : null,
+    "despacho" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39fea"),
+    "dni" : "23456789B",
+    "nombre" : "Maria",
+    "dni_jefe" : "12345678A",
+    "despacho" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39feb"),
+    "dni" : "34567890C",
+    "nombre" : "Pedro",
+    "dni_jefe" : "12345678A",
+    "despacho" : NumberInt(3)
+}
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39fec"),
+    "dni" : "45678901D",
+    "nombre" : "Ana",
+    "dni_jefe" : "23456789B",
+    "despacho" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39fed"),
+    "dni" : "56789012E",
+    "nombre" : "Laura",
+    "dni_jefe" : "23456789B",
+    "despacho" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6638b84ddaf0168917c39fee"),
+    "dni" : "67890123F",
+    "nombre" : "Carlos",
+    "dni_jefe" : "34567890C",
+    "despacho" : NumberInt(3)
+}

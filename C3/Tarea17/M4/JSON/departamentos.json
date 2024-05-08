@@ -1,0 +1,18 @@
+{
+    "_id" : ObjectId("6638b84394d00964653262e3"),
+    "codigo" : NumberInt(1),
+    "nombre" : "Marketing",
+    "presupuesto" : NumberInt(60000)
+}
+{
+    "_id" : ObjectId("6638b84394d00964653262e4"),
+    "codigo" : NumberInt(2),
+    "nombre" : "Informatica",
+    "presupuesto" : NumberInt(75500)
+}
+{
+    "_id" : ObjectId("6638b84394d00964653262e5"),
+    "codigo" : NumberInt(3),
+    "nombre" : "Construccion",
+    "presupuesto" : NumberInt(100000)
+}

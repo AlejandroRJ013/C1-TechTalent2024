@@ -1,0 +1,18 @@
+{
+    "_id" : ObjectId("6638b853b44b83df2f1ff3f0"),
+    "cajero" : NumberInt(101),
+    "maquina" : NumberInt(201),
+    "producto" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6638b853b44b83df2f1ff3f1"),
+    "cajero" : NumberInt(102),
+    "maquina" : NumberInt(202),
+    "producto" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6638b853b44b83df2f1ff3f2"),
+    "cajero" : NumberInt(103),
+    "maquina" : NumberInt(203),
+    "producto" : NumberInt(3)
+}

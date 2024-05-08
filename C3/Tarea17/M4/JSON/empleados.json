@@ -1,0 +1,42 @@
+{
+    "_id" : ObjectId("6638b84394d00964653262e6"),
+    "DNI" : "11111111",
+    "nombre" : "Juan Manuel",
+    "apellidos" : "Magan",
+    "departamentos" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6638b84394d00964653262e7"),
+    "DNI" : "22222222",
+    "nombre" : "Mario",
+    "apellidos" : "Vaquerizo",
+    "departamentos" : NumberInt(3)
+}
+{
+    "_id" : ObjectId("6638b84394d00964653262e8"),
+    "DNI" : "33333333",
+    "nombre" : "Figero",
+    "apellidos" : "Almibar",
+    "departamentos" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6638b84394d00964653262e9"),
+    "DNI" : "25252525",
+    "nombre" : "Pedro",
+    "apellidos" : "Ruibal",
+    "departamentos" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6638b84394d00964653262ea"),
+    "DNI" : "38383838",
+    "nombre" : "Javier",
+    "apellidos" : "Santaolalla",
+    "departamentos" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6638b84394d00964653262eb"),
+    "DNI" : "41414141",
+    "nombre" : "Francisco",
+    "apellidos" : "Bahamonde",
+    "departamentos" : NumberInt(3)
+}

@@ -1,0 +1,18 @@
+{
+    "_id" : ObjectId("6638b84aae6848038679093f"),
+    "codigo" : NumberInt(1),
+    "nombre" : "Sala A",
+    "pelicula" : NumberInt(101)
+}
+{
+    "_id" : ObjectId("6638b84aae68480386790940"),
+    "codigo" : NumberInt(2),
+    "nombre" : "Sala B",
+    "pelicula" : NumberInt(103)
+}
+{
+    "_id" : ObjectId("6638b84aae68480386790941"),
+    "codigo" : NumberInt(3),
+    "nombre" : "Sala C",
+    "pelicula" : NumberInt(105)
+}

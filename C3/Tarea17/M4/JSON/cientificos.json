@@ -1,0 +1,15 @@
+{
+    "_id" : ObjectId("6638b85805312c784764a8ef"),
+    "dni" : "12345678A",
+    "NomApels" : "Juan Pérez"
+}
+{
+    "_id" : ObjectId("6638b85805312c784764a8f0"),
+    "dni" : "23456789B",
+    "NomApels" : "María López"
+}
+{
+    "_id" : ObjectId("6638b85805312c784764a8f1"),
+    "dni" : "34567890C",
+    "NomApels" : "Pedro Gómez"
+}

@@ -1,0 +1,18 @@
+{
+    "_id" : ObjectId("6638b84753c3d0e089b1ea84"),
+    "codigo" : NumberInt(1),
+    "lugar" : "Bilbao",
+    "capacidad" : NumberInt(25)
+}
+{
+    "_id" : ObjectId("6638b84753c3d0e089b1ea85"),
+    "codigo" : NumberInt(2),
+    "lugar" : "Madrid",
+    "capacidad" : NumberInt(10)
+}
+{
+    "_id" : ObjectId("6638b84753c3d0e089b1ea86"),
+    "codigo" : NumberInt(3),
+    "lugar" : "Lanzarote",
+    "capacidad" : NumberInt(32)
+}
