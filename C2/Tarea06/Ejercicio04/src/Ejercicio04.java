@@ -9,8 +9,8 @@ public class Ejercicio04 {
     }
 
     public static int factorial(int fac) {
-        int resul = 1;
-        for (int operador = fac; operador > 1; operador--) {
+        int resul = fac;
+        for (int operador = (fac-1); operador >= 1; operador--) {
             resul *= operador;
         }
         return resul;
