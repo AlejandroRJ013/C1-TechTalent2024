@@ -38,12 +38,6 @@ public class ejercicio04 {
                     verificacion(operador1, "1");
                     verificacion(operador2, "2");
                     double resultado = Double.parseDouble(operador1.getText()) + Double.parseDouble(operador2.getText());
-                    // double resultado = Double.parseDouble(operador1.getText()) - Double.parseDouble(operador2.getText()); // BOTÓN RESTAR
-                    // double resultado = Double.parseDouble(operador1.getText()) / Double.parseDouble(operador2.getText()); // BOTÓN DIVIDIR
-                    // double resultado = Double.parseDouble(operador1.getText()) * Double.parseDouble(operador2.getText()); // BOTÓN MULTIPLICAR
-                    // double resultado = Math.pow(Double.parseDouble(operador1.getText()), Double.parseDouble(operador2.getText())); // BOTÓN POTENCIA
-                    // double resultado1 = Math.sqrt(Double.parseDouble(operador1.getText())); // BOTÓN RAÍZ CUADRADA
-                    // double resultado1 = Math.cbrt(Double.parseDouble(operador1.getText())); // BOTÓN CÚBICA
                     mostrarMensaje(frame, panelResultado, Double.parseDouble(operador1.getText()), Double.parseDouble(operador2.getText()), "+", resultadoStringFormat(resultado));
                 } catch (CustomEx custom) {
                     System.out.println(custom.getMessage());
