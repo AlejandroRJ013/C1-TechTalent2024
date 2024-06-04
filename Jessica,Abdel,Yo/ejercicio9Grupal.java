@@ -66,7 +66,7 @@ public class ejercicio9Grupal extends JFrame {
                         secondButton.setEnabled(false);
                     } else {
                         try {
-                            Thread.sleep(500); // "threat ese de mierda"
+                            Thread.sleep(500);
                         } catch (InterruptedException ex) {
                             System.out.println("El hilo fue interrumpido.");
                         }
