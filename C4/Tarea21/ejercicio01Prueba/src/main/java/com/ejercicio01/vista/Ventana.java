@@ -104,19 +104,4 @@ public class Ventana extends JFrame{
     public void actualizarPantalla(String texto) {
         pantalla.setText(texto);
     }
-    
-    public String obtenerTextoPantalla() {
-        return pantalla.getText();
-    }
-
-    public void eliminarCaracter() {
-        StringBuilder operacion = new StringBuilder(obtenerTextoPantalla());
-        operacion.setLength(operacion.length()-1);
-        pantalla.setText(operacion.toString());
-    }
-
-    public void limpiarPantalla() {
-        StringBuilder operacion = new StringBuilder("0");
-        pantalla.setText(operacion.toString());
-    }
 }
