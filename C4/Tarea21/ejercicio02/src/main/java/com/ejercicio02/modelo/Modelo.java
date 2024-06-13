@@ -1,4 +1,4 @@
-package com.ejercicio01.modelo;
+package com.ejercicio02.modelo;
 
 import java.util.*;
 
@@ -8,9 +8,11 @@ public class Modelo {
     private ArrayList<Character> simbolosOperaciones;
     private StringBuilder operacion = new StringBuilder();
     private StringBuilder historial = new StringBuilder();
+    private double eulier = Math.E;
+    private double pi = Math.PI;
 
     {
-        simbolosOperaciones = new ArrayList<>(Arrays.asList('+', '-', 'x', '/'));
+        simbolosOperaciones = new ArrayList<>(Arrays.asList('+', '-', 'x', '/', '*'));
     }
 
     public Modelo() {
@@ -28,8 +30,22 @@ public class Modelo {
             if (!entrada.equals(".")) {
                 operacion.setLength(0);
             }
-        }
+        } /*
+           * else if (operacion.toString().matches("-?\\d+(\\.\\d+)?")) {
+           * if (entrada.matches("\\d")) {
+           * operacion.setLength(0);
+           * }
+           * }
+           */
         operacion.append(entrada);
+    }
+
+    public double getE() {
+        return eulier;
+    }
+
+    public double getPI() {
+        return pi;
     }
 
     public String getOperacion() {
@@ -37,10 +53,16 @@ public class Modelo {
     }
 
     public void leerYOperar(String parteOperacion) {
-        StringBuilder numDecimal = new StringBuilder();
+        leer(parteOperacion);
+
+        operar(numerosOp, simbolosOp);
+    }
+
+    public void leer(String parteOperacion) {
         numerosOp.clear();
         simbolosOp.clear();
         char[] partesOper = parteOperacion.toCharArray();
+        StringBuilder numDecimal = new StringBuilder();
 
         for (int i = 0; i < partesOper.length; i++) {
             Character caracterOp = partesOper[i];
@@ -48,13 +70,56 @@ public class Modelo {
                     || (caracterOp == '-' && (i == 0 || Character.isDigit(partesOper[i + 1])))) {
                 numDecimal.append(caracterOp);
             } else if (simbolosOperaciones.contains(caracterOp)) {
-                agregarNumero(numDecimal);
-                simbolosOp.add(caracterOp);
+                if (!Character.isLetter(partesOper[i + 1])) {
+                    agregarNumero(numDecimal);
+                    simbolosOp.add(caracterOp);
+                }
+            }
+        }
+        agregarNumero(numDecimal);
+    }
+
+    public boolean hayModExp() {
+        ArrayList<String> partesOp = new ArrayList<>(Arrays.asList(operacion.toString().split(" ")));
+        return (partesOp.contains("exp")) ? true : (partesOp.contains("mod")) ? true : false;
+    }
+
+    public void modExp() {
+        ArrayList<String> partesOp = new ArrayList<>(Arrays.asList(operacion.toString().split(" ")));
+        double resultado = 0;
+        for (int i = 0; i < partesOp.size(); i++) {
+            switch (partesOp.get(i)) {
+                case "exp":
+                    double num11 = Double.parseDouble(partesOp.get(i - 1));
+                    double num12 = Double.parseDouble(partesOp.get(i + 1));
+                    double diezElevado = Math.pow(10, num12);
+                    resultado = num11 * diezElevado;
+                    partesOp.set(i, String.valueOf(resultado));
+                    partesOp.remove(i + 1);
+                    partesOp.remove(i - 1);
+                    historial.append("\n& " + resultado + " = exp(" + num11 + " x 10 ^ " + num12
+                            + ") // Pertenece a la siguiente operación");
+                    System.out.println(historial.toString());
+                    break;
+
+                case "mod":
+                    double num21 = Double.parseDouble(partesOp.get(i - 1));
+                    double num22 = Double.parseDouble(partesOp.get(i + 1));
+                    resultado = num21 % num22;
+                    partesOp.set(i, String.valueOf(resultado));
+                    partesOp.remove(i + 1);
+                    partesOp.remove(i - 1);
+                    historial.append("\n& " + resultado + " = mod(" + num21 + " % " + num22
+                            + ") // Pertenece a la siguiente operación");
+                    System.out.println(historial.toString());
+                    break;
+
+                default:
+                    break;
             }
         }
 
-        agregarNumero(numDecimal);
-        operar(numerosOp, simbolosOp);
+        operacion = new StringBuilder(String.join(" ", partesOp));
     }
 
     private void agregarNumero(StringBuilder numDecimal) {
@@ -73,9 +138,19 @@ public class Modelo {
             ArrayList<Double> resultados = new ArrayList<>(numeros);
             ArrayList<Character> ops = new ArrayList<>(simbolos);
 
-            procesarOperaciones(resultados, ops, '^', '$');
-            procesarOperaciones(resultados, ops, 'x', '/');
-            procesarOperaciones(resultados, ops, '+', '-');
+            if (hayModExp()) {
+                modExp();
+                resultados.clear();
+                simbolos.clear();
+                leer(operacion.toString());
+                resultados.addAll(numerosOp);
+            }
+
+            if (resultados.size() > 1) {
+                procesarOperaciones(resultados, ops, '^', '$');
+                procesarOperaciones(resultados, ops, 'x', '/');
+                procesarOperaciones(resultados, ops, '+', '-');
+            }
 
             if (resultados.size() == 1) {
                 String operacionTxt = operacion.toString();
@@ -144,7 +219,43 @@ public class Modelo {
         double ultimoNumero = Integer.parseInt(recogerUltimoValor(operacion));
         double resultado = 1 / ultimoNumero;
         actualizarUltimoValor(resultado);
-        historial.append("\n& " + resultado + " = " + "(1/" + ultimoNumero + ") // Pertenece a la siguiente operación");
+        historial.append("\n& " + resultado + " = (1/" + ultimoNumero + ") // Pertenece a la siguiente operación");
+        System.out.println(historial.toString());
+    }
+
+    public void factorial(String operacion) {
+        double ultimoNumero = Integer.parseInt(recogerUltimoValor(operacion));
+        double resultado = 1;
+        for (int i = 1; i <= ultimoNumero; i++) {
+            resultado *= i;
+        }
+        actualizarUltimoValor(resultado);
+        historial.append("\n& " + resultado + " = " + ultimoNumero + "! // Pertenece a la siguiente operación");
+        System.out.println(historial.toString());
+    }
+
+    public void valorAbsoluto(String operacion) {
+        double ultimoNumero = Integer.parseInt(recogerUltimoValor(operacion));
+        double resultado = Math.abs(ultimoNumero);
+        actualizarUltimoValor(resultado);
+        historial.append("\n& " + resultado + " = valor absoluto ( " + (ultimoNumero * -1) + " || " + ultimoNumero
+                + " ) // Pertenece a la siguiente operación");
+        System.out.println(historial.toString());
+    }
+
+    public void log(String operacion) {
+        double ultimoNumero = Integer.parseInt(recogerUltimoValor(operacion));
+        double resultado = Math.log10(ultimoNumero);
+        actualizarUltimoValor(resultado);
+        historial.append("\n& " + resultado + " = log(" + ultimoNumero + ") // Pertenece a la siguiente operación");
+        System.out.println(historial.toString());
+    }
+
+    public void logaritmoNeperiano(String operacion) {
+        double ultimoNumero = Integer.parseInt(recogerUltimoValor(operacion));
+        double resultado = Math.log(ultimoNumero);
+        actualizarUltimoValor(resultado);
+        historial.append("\n& " + resultado + " = log(" + ultimoNumero + ") // Pertenece a la siguiente operación");
         System.out.println(historial.toString());
     }
 
@@ -152,7 +263,30 @@ public class Modelo {
         double ultimoNumero = Integer.parseInt(recogerUltimoValor(operacion));
         double resultado = Math.pow(ultimoNumero, 2);
         actualizarUltimoValor(resultado);
-        historial.append("\n& " + resultado + " = " + "(" + ultimoNumero + "^2) // Pertenece a la siguiente operación");
+        historial.append("\n& " + resultado + " = (" + ultimoNumero + "^2) // Pertenece a la siguiente operación");
+        System.out.println(historial.toString());
+    }
+
+    public void potenciaDeDiez(String operacion) {
+        double ultimoNumero = Integer.parseInt(recogerUltimoValor(operacion));
+        double resultado = Math.pow(10, ultimoNumero);
+        actualizarUltimoValor(resultado);
+        historial.append(
+                "\n& " + resultado + " = (" + 10 + "^" + ultimoNumero + ") // Pertenece a la siguiente operación");
+        System.out.println(historial.toString());
+    }
+
+    public void elevarY(String operacionEntrada) {
+        ArrayList<String> partesOp = new ArrayList<>(Arrays.asList(operacionEntrada.toString().split(" ")));
+        double valorElevado = Integer.parseInt(partesOp.get(partesOp.size() - 3));
+        double potencia = Integer.parseInt(recogerUltimoValor(operacionEntrada));
+        double resultado = Math.pow(valorElevado, potencia);
+        partesOp.remove(partesOp.size() - 3);
+        partesOp.remove(partesOp.size() - 2);
+        operacion = new StringBuilder(String.join(" ", partesOp));
+        actualizarUltimoValor(resultado);
+        historial.append("\n& " + resultado + " = (" + valorElevado + "^" + potencia
+                + ") // Pertenece a la siguiente operación");
         System.out.println(historial.toString());
     }
 
@@ -163,23 +297,6 @@ public class Modelo {
         historial.append(
                 "\n& " + resultado + " = " + "(\u221A" + ultimoNumero + ") // Pertenece a la siguiente operación");
         System.out.println(historial.toString());
-    }
-
-    public void porcentaje(String operacion) {
-        try {
-            String[] partes = operacion.split(" ");
-            if (partes.length >= 3) {
-                double numPorcentual = Double.parseDouble(partes[partes.length - 1]);
-                double numOperador = Double.parseDouble(partes[partes.length - 3]);
-                double porcentaje = (numOperador / 100) * numPorcentual;
-                actualizarUltimoValor(porcentaje);
-                historial.append("\n& " + porcentaje + " = " + "(" + numPorcentual + "% de " + numOperador
-                        + ") // Pertenece a la siguiente operación");
-                System.out.println(historial.toString());
-            }
-        } catch (ArithmeticException e) {
-            manejarError(e);
-        }
     }
 
     public void cambiarSentido(String operacion) {

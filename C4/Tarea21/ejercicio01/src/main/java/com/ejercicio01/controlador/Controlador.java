@@ -22,7 +22,7 @@ public class Controlador {
             JButton boton = (JButton) e.getSource();
             String textoBoton = boton.getText();
             if (textoBoton.equals("=")) {
-                modelo.leerOperacion();
+                modelo.leerYOperar(modelo.getOperacion());
                 vista.actualizarPantalla(modelo.getOperacion());
                 modelo.limpiarOperacion();
             } else if (textoBoton.equals("CE")) {
@@ -35,19 +35,19 @@ public class Controlador {
                 modelo.borrarUno();
                 vista.actualizarPantalla(modelo.getOperacion());
             } else if (textoBoton.equals("1/x")) {
-                modelo.fraccion();
+                modelo.fraccion(modelo.getOperacion());
                 vista.actualizarPantalla(modelo.getOperacion());
             } else if (textoBoton.equals("x^2")) {
-                modelo.elevar();
+                modelo.elevar(modelo.getOperacion());
                 vista.actualizarPantalla(modelo.getOperacion());
             } else if (textoBoton.equals("²√x")) {
-                modelo.raiz();
+                modelo.raiz(modelo.getOperacion());
                 vista.actualizarPantalla(modelo.getOperacion());
             } else if (textoBoton.equals("%")) {
-                modelo.porcentaje();
+                modelo.porcentaje(modelo.getOperacion().toString());
                 vista.actualizarPantalla(modelo.getOperacion());
             } else if (textoBoton.equals("+/-")) {
-                modelo.cambiarSentido();
+                modelo.cambiarSentido(modelo.getOperacion());
                 vista.actualizarPantalla(modelo.getOperacion());
             } else {
                 modelo.setEntrada(textoBoton);

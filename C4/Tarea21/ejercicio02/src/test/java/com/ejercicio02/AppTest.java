@@ -1,4 +1,4 @@
-package com.ejercicio01;
+package com.ejercicio02;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

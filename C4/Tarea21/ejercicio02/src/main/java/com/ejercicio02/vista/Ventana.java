@@ -1,4 +1,4 @@
-package com.ejercicio01.vista;
+package com.ejercicio02.vista;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -9,13 +9,13 @@ import java.util.*;
 
 public class Ventana extends JFrame {
     private JTextPane pantalla = new JTextPane();
-    private String[] simbolosCalculadora = { "%", "CE", "C", "<-", "1/x", "x^2", "²√x", " / ", " x ", " + ", " - ",
-            "+/-", ".", "=" };
-    private String[] numerosCalculadora = { "9", "8", "7", "6", "5", "4", "3", "2", " 1", "0" };
+    private String[] simbolosCalculadora = { "π", "e", "CE", "C", "<-", "x²", "1/x", "|x|", " exp ", " mod ", "²√x",
+            "(", ")", "n!", " / ", "x^y", " x ", "10^x", " - ", "log", " + ", "ln", "+/-", ".", "=" };
+    private String[] numerosCalculadora = { "9", "8", "7", "6", "5", "4", "3", "2", "1", "0" };
     JPanel panelBotones;
 
     public Ventana() {
-        setTitle("Calculadora Estándar");
+        setTitle("Calculadora Científica");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         JPanel panelPrincipal = new JPanel();
@@ -71,13 +71,14 @@ public class Ventana extends JFrame {
         posicionBot.weighty = 1.0;
         int contadorSim = 0;
         int contadorNum = 0;
-        for (int i = 1; i <= 6; i++) {
-            for (int j = 1; j <= 4; j++) {
+        for (int i = 1; i <= 7; i++) {
+            for (int j = 1; j <= 5; j++) {
                 posicionBot.gridx = (j - 1);
                 posicionBot.gridy = (i - 1);
                 JButton boton;
                 String tipo = "";
-                if (j != 2 && i == 6 || Arrays.asList(1, 2).contains(i) || j % 4 == 0) {
+                if ((i == 7 && Arrays.asList(2, 4).contains(j)) || Arrays.asList(1, 2, 3).contains(i) || j == 1
+                        || j == 5) {
                     if (contadorSim == simbolosCalculadora.length - 1) {
                         tipo = "ig";
                     } else {
