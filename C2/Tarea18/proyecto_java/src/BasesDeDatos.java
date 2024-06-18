@@ -1,4 +1,3 @@
-import java.lang.ref.Reference;
 import java.sql.*;
 import java.util.logging.*;
 import java.util.*;
@@ -239,7 +238,9 @@ public class BasesDeDatos {
             // DESCONECTARSE DE LA CONEXIÓN ESPEFICIDADA //
             System.out.println(rojo("Conexion cerrada"));
         } catch (SQLException e) {
-            Logger.getLogger(ejemplo.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(rojo("Error") + " : " + e.getMessage() +
+                    amarillo("\n\nTipo") + " : " + e.getClass() +
+                    cyan("\n\nCausa") + " : " + e.getCause());
         }
         return conexion;
     }
