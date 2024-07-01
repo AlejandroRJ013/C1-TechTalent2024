@@ -1,0 +1,29 @@
+#cuadrados {
+  display: grid;
+  grid-template-rows: repeat(2, 25vh);
+  grid-template-columns: repeat(4, 1fr);
+}
+.azul {
+  background-color: #465b6f;
+}
+.rojo {
+  background-color: #a72825;
+}
+.gris {
+  background-color: #949da0;
+}
+.negro {
+  background-color: #2c2827;
+}
+.marron {
+  background-color: #473228;
+}
+.bronce {
+  background-color: #934c28;
+}
+.blanco {
+  background-color: #c2b4a7;
+}
+.crema {
+  background-color: #bd9167;
+}
