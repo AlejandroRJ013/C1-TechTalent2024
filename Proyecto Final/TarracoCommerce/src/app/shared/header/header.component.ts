@@ -10,6 +10,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   img {
     margin-right: 5px;
   }
+  button:hover {
+    cursor: pointer;
+  }
   input:focus {
     outline: none;
   }
@@ -22,10 +25,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     // background: linear-gradient(to right, #1D1D1D 15%, #252422 45% 55%, #1D1D1D 85%);
     display: flex;
   }
-  #empresa > a{
+  #empresa > a {
     text-decoration: none;
   }
-  #empresa > p{
+  #empresa > p {
     margin-top: 0;
   }
   #superior {
@@ -138,11 +141,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     width: 120px;
   }
   .primero {
-    border-left: 0;
+    border-right: 1px solid #fff;
     width: 120px;
   }
   .ultimo {
-    border-right: 0;
+    border-left: 1px solid #fff;
     width: 120px;
   }
   `,
