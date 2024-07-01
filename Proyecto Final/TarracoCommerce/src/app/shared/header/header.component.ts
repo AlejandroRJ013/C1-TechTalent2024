@@ -96,15 +96,29 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   }
   .desplegable:hover .elementos-desplegable {
     display: grid;
-    gap: 10px;
+    grid-template: repeat(5, 1fr) / repeat(3, 1fr);
+    grid-auto-flow: column;
+    grid-auto-rows: auto;
+    grid-auto-columns: auto;
+    row-gap: 10px;
+    column-gap: 2px;
   }
   .elementos-desplegable {
     display: none;
     position: absolute;
-    background: linear-gradient(#444 90%, #fff); // CAMBIAR
+    background: rgba(240, 240, 240);
+    justify-content: stretch;
+    align-content: stretch;
     z-index: 1;
     top: 100%;
     left: 0;
+  }
+  .elementos-desplegable > div > a {
+    color: white;
+    text-decoration: none;
+  }
+  .elementos-desplegable  > * {
+    background-color: black;
   }
   .barraBusqueda {
     display: flex;
@@ -121,12 +135,15 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   #inferior > .bordes {
     border-left: 1px solid #fff;
     border-right: 1px solid #fff;
+    width: 120px;
   }
   .primero {
     border-left: 0;
+    width: 120px;
   }
   .ultimo {
     border-right: 0;
+    width: 120px;
   }
   `,
 })
