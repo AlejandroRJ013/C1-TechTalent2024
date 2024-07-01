@@ -1,0 +1,94 @@
+body {
+  background-image: url("../IMG/ac.jpg");
+}
+
+div {
+  width: 175px;
+  height: 175px;
+  background-color: transparent;
+}
+
+#contenedor {
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  width: 950px;
+  height: 700px;
+}
+
+#fondoI {
+  background: linear-gradient(to left, #596644, #d1f755);
+}
+
+#fondoJ {
+  background: linear-gradient(#ecb69e, #903814 75%, #7a2604 80%, #b46647);
+}
+
+#fondoK {
+  background: linear-gradient(white, #387130);
+}
+
+#fondoL {
+  background: linear-gradient(transparent, #32712e);
+}
+
+.mantel {
+  background-image: url("../IMG/back_mantel.jpg");
+}
+
+.personaC {
+  background-image: url("../IMG/dh.jpg");
+  background-size: contain;
+}
+
+.personaCH {
+  background-image: url("../IMG/dh_2.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-color: #ebf2f5;
+}
+
+.personaCV {
+  background-image: url("../IMG/dh_3.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-color: #ebf2f5;
+}
+
+.bordeTranparente {
+  border: 20px solid transparent;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.bordeVisible {
+  border: 20px solid #ebf2f5;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.unTrozo {
+  background-size: contain;
+}
+
+.filas {
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.filas > div {
+  border: 1px solid black;
+  text-align: center;
+  line-height: 3.75;
+}

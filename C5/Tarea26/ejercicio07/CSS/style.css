@@ -1,0 +1,32 @@
+body {
+  background-color: lightgray;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.fondoBlanco {
+  background-color: white;
+}
+
+h1 {
+  color: #5f8f11;
+  text-align: center;
+}
+
+h2 {
+  color: #70af0a;
+}
+
+h3 {
+  color: #ca823b;
+}
+
+#nombre {
+  color: #bf823b;
+}
+
+.recuadro {
+  margin: 20px;
+  margin-bottom: 0px;
+  border: 2px solid lightgray;
+  padding: 15px;
+}

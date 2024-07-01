@@ -1,0 +1,37 @@
+table {
+  background-color: #2da4c8;
+  border-spacing: 3px 3px;
+  width: 100%;
+}
+
+th {
+  background-color: #003333;
+  border-color: white;
+  color: #c3f6c6;
+}
+
+td {
+  background-color: #ccffcc;
+  border-color: white;
+  font-weight: bold;
+}
+
+#bordesGrises {
+  border-top: 5px solid white;
+  border-left: 5px solid white;
+  border-right: 5px solid gray;
+  border-bottom: 5px solid gray;
+}
+
+#recuadro {
+  border: 1px solid #2da4c8;
+  width: 450px;
+}
+
+.oscurecido > td {
+  background-color: #99cc99;
+}
+
+.centrar {
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+div {
+  background-image: url("../IMG/pinguino.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50%;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  width: 500px;
+  background-color: #d4d5aa;
+  border-top: 3px solid darkgray;
+  border-left: 3px solid darkgray;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+td {
+  background-color: #feff99;
+  text-align: center;
+}
+
+#encabezado {
+  background-color: #fffefd;
+}

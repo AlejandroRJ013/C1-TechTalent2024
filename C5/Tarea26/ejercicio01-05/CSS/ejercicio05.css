@@ -1,0 +1,22 @@
+body {
+  background-color: #fff9ef;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  background-color: #ffdb8f;
+}
+h2 {
+  color: #6f9dbe;
+  font-style: italic;
+}
+.haciaDentro {
+  margin-left: 30px;
+}
+.aclaraciones {
+  color: #8280a0;
+  font-style: italic;
+}
+.titulos {
+  color: #678090;
+  font-weight: bold;
+}

@@ -1,0 +1,108 @@
+body {
+  background-image: url("../IMG/fondoBing.png");
+  background-repeat: no-repeat;
+  position: relative;
+  height: 830px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  color: white;
+  font-size: small;
+  align-items: start;
+}
+
+footer {
+  background-color: #333333;
+  color: lightgray;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: small;
+  padding: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#copyright {
+  display: grid;
+  justify-content: end;
+}
+
+#primerDiv {
+  width: 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 25px;
+  align-items: center;
+}
+
+#segundoDiv {
+  width: 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 2fr 1fr;
+  gap: 15px;
+  align-items: center;
+}
+
+.textoImagen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  border-radius: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.textoImagen:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#contenido {
+  display: grid;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+#buscador {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: white;
+  width: 450px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+#galeriaFotos {
+  background-color: aqua;
+  height: 100%;
+  display: grid;
+}
+
+input {
+  margin-bottom: 7px;
+  width: 100%;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+#buscador > section {
+  justify-self: end;
+}
+
+#buscador > section > img {
+  padding: 5px;
+}
