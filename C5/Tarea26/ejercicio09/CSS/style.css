@@ -1,5 +1,6 @@
 body {
   width: 900px;
+  margin: 10px auto;
   background-color: lightgray;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -15,6 +16,27 @@ h2 {
 
 h3 {
   color: #ca823b;
+}
+
+#nombre {
+  color: #bf823b;
+}
+
+.fondoBlanco {
+  background-color: white;
+  padding: 5px;
+}
+
+.recuadro {
+  margin: 20px;
+  margin-bottom: 0px;
+  border: 2px solid lightgray;
+  padding: 15px;
+}
+
+.contenido {
+  display: flex;
+  flex-direction: row;
 }
 
 ul {
@@ -35,6 +57,7 @@ li {
 
 li:hover {
   background-color: #bdd77b;
+  cursor: pointer;
 }
 
 a {
@@ -48,24 +71,4 @@ a {
 
 #inicio:hover {
   background-color: #ceb9a2;
-}
-
-#nombre {
-  color: #bf823b;
-}
-
-.fondoBlanco {
-  background-color: white;
-  padding: 5px;
-}
-
-.contenido {
-  display: flex;
-}
-
-.recuadro {
-  margin: 20px;
-  margin-bottom: 0px;
-  border: 2px solid lightgray;
-  padding: 15px;
 }

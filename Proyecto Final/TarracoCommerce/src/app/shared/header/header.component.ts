@@ -8,7 +8,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './header.component.html',
   styles: `
   img {
-    margin-right: 5px;
+    margin-right: 0.5vw;
   }
   button:hover {
     cursor: pointer;
@@ -17,11 +17,17 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     outline: none;
   }
   #header {
-    
-    background-color:  #1D1D1D;
+    background-color:  #1b1b1b;
     width: 100%;
-    // background: linear-gradient(to right, #1D1D1D 15%, #252422 45% 55%, #1D1D1D 85%);
     display: flex;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    justify-content: space-between;
+  }
+  #empresa {
+    width: 22vw;
   }
   #empresa > a {
     text-decoration: none;
@@ -38,6 +44,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    flex-wrap: wrap;
+    padding-right: 1.5vw;
   }
   #superior > div {
     display: flex;
@@ -50,21 +58,22 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   #header > div {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-left: 25px;
-    margin-right: 25px;
+    // width: 100%;
+    // background-color: #fff;
+    margin-left: 0.2vw;
+    margin-right: 0.2vw;
   }
   #logoEslogan > p {
-    margin: 5px;
-    margin-top: -5px;
+    margin: 2vw;
+    margin-top: -2vw;
   }
   #inferior > div {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0.5vh;
+    padding-left: 1.2vw;
+    padding-right: 1.2vw;
   }
   #inferior > div > a {
     color: white;
@@ -78,19 +87,19 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     justify-self: flex-end;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 2vw;
   }
   .imagenTexto {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 5px;
+    margin: 0.5vw;
     margin-top: 0;
     margin-bottom: 0;
     color: #fff;
   }
   .dorado {
-    color: #B4916C;
+    color: #d4af37;
   }
   .desplegable {
     position: relative;
@@ -101,7 +110,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
-    column-gap: 2px;
+    column-gap: 0.2vw;
   }
   .elementos-desplegable {
     display: none;
@@ -115,7 +124,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   }
   .elementos-desplegable > div {
     background-color: #7b7b7b;
-    padding: 5px;
+    padding: 1vw;
   }
   .elementos-desplegable > div > a {
     color: white;
@@ -131,21 +140,16 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   }
   .transparente {
     background-color: transparent;
-    height: 40px;
+    height: 5vh;
     border: 0;
   }
-  #inferior > .bordes {
-    border-left: 1px solid #fff;
+  .bordeD {
     border-right: 1px solid #fff;
-    width: 120px;
+    width: 6vw;
   }
-  .primero {
-    border-right: 1px solid #fff;
-    width: 120px;
-  }
-  .ultimo {
+  .bordeI {
     border-left: 1px solid #fff;
-    width: 120px;
+    width: 6vw;
   }
   `,
 })

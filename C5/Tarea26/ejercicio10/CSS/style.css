@@ -1,5 +1,6 @@
 body {
   width: 900px;
+  margin: 10px auto;
   background-color: lightgray;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -17,6 +18,33 @@ h3 {
   color: #ca823b;
 }
 
+#nombre {
+  color: #bf823b;
+}
+
+.fondoBlanco {
+  border-radius: 1%; /* Hacer los bordes redondos */
+  background-color: white;
+  padding: 5px;
+}
+
+.recuadro {
+  margin: 20px;
+  margin-bottom: 0px;
+  border: 2px solid lightgray;
+  padding: 15px;
+  background: linear-gradient(
+    lightgray,
+    white 10% 90%,
+    lightgray
+  ); /* Gradiente */
+}
+
+.contenido {
+  display: flex;
+  flex-direction: row;
+}
+
 ul {
   padding-top: 20px;
   margin-left: -20px;
@@ -30,11 +58,12 @@ li {
   width: 100px;
   padding: 10px;
   text-align: center;
-  background: linear-gradient(white, #cbe783);
+  background: linear-gradient(white, #cbe783); /* Gradiente */
 }
 
 li:hover {
-  background: linear-gradient(#cbe783, #f3ffd3);
+  background: linear-gradient(#cbe783, #f3ffd3); /* Gradiente */
+  cursor: pointer;
 }
 
 a {
@@ -43,15 +72,11 @@ a {
 }
 
 #inicio {
-  background: linear-gradient(white, #e8c39d);
+  background: linear-gradient(white, #e8c39d); /* Gradiente */
 }
 
 #inicio:hover {
-  background: linear-gradient(#e8c39d, #ffebd5);
-}
-
-#nombre {
-  color: #bf823b;
+  background: linear-gradient(#e8c39d, #ffebd5); /* Gradiente */
 }
 
 #infoImg {
@@ -59,20 +84,7 @@ a {
   color: lightgray;
 }
 
-.fondoBlanco {
-  background-color: white;
-  border-radius: 1%;
-  padding: 5px;
-}
-
-.contenido {
-  display: flex;
-}
-
-.recuadro {
-  margin: 20px;
-  margin-bottom: 0px;
-  border: 2px solid lightgray;
-  padding: 15px;
-  background: linear-gradient(lightgray, white 10% 90%, lightgray);
+.linkFoot {
+  color: lightgray;
+  text-decoration: underline;
 }

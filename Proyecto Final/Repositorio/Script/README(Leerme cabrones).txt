@@ -1,0 +1,1 @@
+El .bat esta con mi ruta directa a donde tengo la carpeta para ejecutarla, entrar y editar la ruta para que vaya al vuestro. Con eso ya funcionaria, yo me lo he guardado en una carpeta que he creado en "C:\SCRIPTS\" y he creado un acceso directo del .bat al escritorio y le he cambiado el logo para que este más accesible. (Al .bat no le puedes cambiar el icono ;(  )

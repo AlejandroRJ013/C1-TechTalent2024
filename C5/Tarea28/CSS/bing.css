@@ -16,7 +16,7 @@ nav {
 
 footer {
   background-color: #333333;
-  color: lightgray;
+  color: gray;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
   width: 100%;

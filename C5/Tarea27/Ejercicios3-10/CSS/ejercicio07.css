@@ -9,7 +9,6 @@ div {
 }
 
 #contenedor {
-  background-color: transparent;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
@@ -39,30 +38,20 @@ div {
 
 .personaC {
   background-image: url("../IMG/dh.jpg");
-  background-size: contain;
 }
 
 .personaCH {
   background-image: url("../IMG/dh_2.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-color: #ebf2f5;
 }
 
 .personaCV {
   background-image: url("../IMG/dh_3.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-color: #ebf2f5;
 }
 
 .bordeTranparente {
   border: 20px solid transparent;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
   overflow: hidden;
   line-height: 1.25;
 }
@@ -71,13 +60,24 @@ div {
   border: 20px solid #ebf2f5;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
   overflow: hidden;
   line-height: 1.25;
 }
 
 .unTrozo {
   background-size: contain;
+}
+
+.noRepetir {
+  background-repeat: no-repeat;
+}
+
+.fondoBR {
+  background-color: #ebf2f5;
+}
+
+.fondoPM {
+  background-position: center;
 }
 
 .filas {
