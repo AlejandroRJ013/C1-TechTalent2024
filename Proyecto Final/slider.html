@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <body>
+    <div class="slider">
+      <img class="imageneSlider" src="productos/aloeVeraS.png" />
+      <img class="imageneSlider" src="productos/puzzleS.png" />
+      <img class="imageneSlider" src="productos/libroS.png" />
+      <img class="imageneSlider" src="productos/bloquesJugueteS.png" />
+      <img class="imageneSlider" src="productos/bolsoS.png" />
+      <img class="imageneSlider" src="productos/camisaS.png" />
+      <img class="imageneSlider" src="productos/croissantS.png" />
+      <div class="acciones">
+        <div class="flecha izquierda khaki" onclick="moverImg(-1)">
+          &#10094;
+        </div>
+        <div class="flecha derecha khaki" onclick="moverImg(1)">&#10095;</div>
+        <span class="circulo puntos" onclick="mostrarImg(1)"></span>
+        <span class="circulo puntos" onclick="mostrarImg(2)"></span>
+        <span class="circulo puntos" onclick="mostrarImg(3)"></span>
+        <span class="circulo puntos" onclick="mostrarImg(4)"></span>
+        <span class="circulo puntos" onclick="mostrarImg(5)"></span>
+        <span class="circulo puntos" onclick="mostrarImg(6)"></span>
+        <span class="circulo puntos" onclick="mostrarImg(7)"></span>
+      </div>
+    </div>
+
+    <script>
+      var slideIndex = 1;
+      showDivs(slideIndex);
+      carousel();
+
+      function moverImg(n) {
+        showDivs((slideIndex += n));
+      }
+
+      function mostrarImg(n) {
+        showDivs((slideIndex = n));
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("imageneSlider");
+        var dots = document.getElementsByClassName("puntos");
+
+        if (n > x.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = x.length;
+        }
+
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" blanco", "");
+        }
+
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " blanco";
+      }
+
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("imageneSlider");
+        var dots = document.getElementsByClassName("puntos");
+
+        if (slideIndex > x.length) {
+          slideIndex = 1;
+        }
+
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" blanco", "");
+        }
+
+        slideIndex++;
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " blanco";
+        setTimeout(carousel, 10000); // Change image every 10 seconds
+      }
+    </script>
+  </body>
+</html>

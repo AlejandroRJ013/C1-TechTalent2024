@@ -1,0 +1,67 @@
+.circulo {
+  background-color: transparent;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  width: 0.8em;
+  height: 0.8em;
+  cursor: pointer;
+}
+
+.circulo:hover {
+  background-color: #fff;
+}
+
+.izquierda {
+  float: left;
+  margin-left: 1em;
+}
+
+.derecha {
+  float: right;
+  margin-right: 1em;
+}
+
+.flecha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
+  cursor: pointer;
+}
+
+.khaki:hover {
+  color: #b4aa50;
+  background-color: rgba(00, 00, 00, 0.2);
+}
+
+.acciones {
+  display: inline-block;
+  margin: 1em 0;
+  font-size: 1em;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.slider {
+  max-width: 50vw;
+  max-height: 50vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.blanco {
+  background-color: #fff;
+}
