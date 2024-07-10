@@ -23,7 +23,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     flex-wrap: wrap;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 10;
     justify-content: space-between;
   }
   #empresa {
@@ -104,7 +104,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   .desplegable {
     position: relative;
   }
-  .desplegable:hover .elementos-desplegable {
+  .desplegable:hover .elementos-desplegable-categorias {
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     grid-auto-flow: column;
@@ -112,7 +112,16 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     grid-auto-flow: column;
     column-gap: 0.2vw;
   }
-  .elementos-desplegable {
+  .desplegable:hover .elementos-desplegable-comercios {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    column-gap: 0.2vw;
+  }
+  .elementos-desplegable-categorias,
+  .elementos-desplegable-comercios {
     display: none;
     position: absolute;
     background-color: black;
@@ -122,11 +131,13 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     top: 100%;
     left: 0;
   }
-  .elementos-desplegable > div {
+  .elementos-desplegable-categorias > div,
+  .elementos-desplegable-comercios > div {
     background-color: #7b7b7b;
     padding: 1vw;
   }
-  .elementos-desplegable > div > a {
+  .elementos-desplegable-categorias > div > a,
+  .elementos-desplegable-comercios > div > a {
     color: white;
     text-decoration: none;
     text-wrap: nowrap;

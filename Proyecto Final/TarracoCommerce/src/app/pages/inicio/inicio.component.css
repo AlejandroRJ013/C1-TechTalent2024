@@ -3,38 +3,147 @@
     bottom: 0;
   }
   100% {
-    bottom: 8em;
+    bottom: 10em;
   }
 }
 @keyframes textoBaja {
   0% {
-    bottom: 8em;
+    bottom: 10em;
   }
   100% {
     bottom: 0;
   }
 }
 
+@keyframes imagenSube {
+  0% {
+    bottom: 0;
+    filter: brightness(70%);
+  }
+  100% {
+    bottom: 2em;
+    filter: brightness(100%);
+  }
+}
+
 @keyframes imagenBaja {
   0% {
-    top: 0;
+    bottom: 2em;
     filter: brightness(100%);
   }
   100% {
-    top: 1em;
+    bottom: 0;
     filter: brightness(70%);
   }
 }
 
-@keyframes imagenSube {
-  0% {
-    top: 1em;
-    filter: brightness(70%);
-  }
-  100% {
-    top: 0;
-    filter: brightness(100%);
-  }
+.imageneSlider {
+  width: 100%;
+  position: relative;
+}
+
+.circulo {
+  background-color: transparent;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  width: 0.8em;
+  height: 0.8em;
+  cursor: pointer;
+  margin: 0 0.25%;
+}
+
+.circulo:hover {
+  background-color: #fff;
+}
+
+.izquierda {
+  float: left;
+  margin-left: 1em;
+}
+
+.derecha {
+  float: right;
+  margin-right: 1em;
+}
+
+.flecha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
+  cursor: pointer;
+}
+
+.khaki:hover {
+  color: #b4aa50;
+  background-color: rgba(00, 00, 00, 0.2);
+}
+
+.acciones {
+  display: inline-block;
+  margin: 1em 0;
+  font-size: 1em;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(00, 00, 00, 0.2);
+  border-radius: 25px;
+}
+
+.slider {
+  max-width: 60vw;
+  max-height: 60vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 15px;
+  border: 2px solid #2c2827;
+}
+
+.blanco {
+  background-color: #fff;
+}
+
+.contenedorSlider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 0;
+  width: 100%;
+}
+
+.elementSlider > a {
+  text-decoration: none;
+}
+
+.elementSlider:hover img {
+  animation: imagenBaja 2s forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+.elementSlider:hover .oculto {
+  animation: textoSube 1s forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+.elementSlider:not(:hover) img {
+  animation: imagenSube 1s forwards;
+}
+
+.elementSlider:not(:hover) .oculto {
+  animation: textoBaja 1s forwards;
 }
 
 #cuadrados {
@@ -84,7 +193,7 @@
   flex-direction: column;
 }
 
-img {
+.imgCuadradas {
   width: 100%;
   display: block;
   position: relative;
@@ -92,21 +201,52 @@ img {
   z-index: 1;
 }
 
+.menuFiltro > ul {
+  list-style-type: none;
+  border-bottom: 2px dashed #999;
+}
+
+.menuFiltro > ul > li > * {
+  text-decoration: none;
+  padding: 5px;
+  font-size: 1.5em;
+  margin: 5px 0;
+  color: black;
+}
+
 .container {
-  max-width: 90vw;
-  margin: 3em auto;
-  padding: 2em;
+  max-width: 70vw;
+  margin: 1em auto;
+  padding: 1em 2em;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 2em;
+  position: relative;
+  right: 4vw;
+  z-index: 2;
+}
+
+.menuFiltro {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  left: 4vw;
+  top: 40%;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  width: 300px;
+  height: 200px;
+  margin: 2em 0;
+  z-index: 1;
 }
 
 .product-item {
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   padding: 0 1em;
   text-align: center;
   border-radius: 5px;
@@ -118,11 +258,14 @@ img {
 .segundoDiv {
   display: flex;
   height: 100%;
+  justify-content: center;
 }
 .product-item img {
   max-width: 90%;
   margin: 0;
   margin-bottom: 1.5em;
+  position: relative;
+  top: 1em;
 }
 .product-item h2 {
   font-size: 1.2rem;
@@ -132,7 +275,7 @@ img {
   color: #888;
 }
 .product-item button {
-  background-color: #4caf50;
+  background-color: #d49537;
   color: #fff;
   border: none;
   padding: 0.5em 1em;
@@ -145,7 +288,7 @@ img {
   border-radius: 5px;
 }
 .product-item button:hover {
-  background-color: #45a049;
+  background-color: #d49537df;
 }
 
 .delante {
@@ -162,9 +305,10 @@ img {
 }
 
 .infoImg {
-  width: 80%;
+  width: 100%;
   text-align: justify;
   text-shadow: 1px 1px 2px #2c2827;
+  padding: 0 1em;
 }
 
 .infoImg > * {
