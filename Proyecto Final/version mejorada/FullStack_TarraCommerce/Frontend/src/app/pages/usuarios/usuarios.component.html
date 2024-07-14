@@ -1,0 +1,17 @@
+<h1>Empleados</h1>
+<div *ngFor="let user of usuariosList">
+  <h3>Empleado:</h3>
+  <!-- <img [src]="user.img" alt="" /> -->
+  <h5>Nombre: {{ user.nombre }}</h5>
+  <p>ID: {{ user._id }}</p>
+  <ng-template *ngIf="user.username === 'anal'; else normal">
+    <h1>Nombre de usuario: {{ user.username }}</h1>
+  </ng-template>
+  <ng-template #normal>
+    <p>Nombre de usuario: {{ user.username }}</p>
+  </ng-template>
+  <p>Correo: {{ user.correo }}</p>
+  <p>Password: {{ user.password }}</p>
+  <p>Telefono: {{ user.telefono }}</p>
+  <p>Dirección: {{ user.direccion }}</p>
+</div>
