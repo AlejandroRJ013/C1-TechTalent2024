@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -49,12 +48,12 @@ import { AuthService } from '../../servicios/auth.service';
     flex-wrap: wrap;
     padding-right: 1.5vw;
   }
-  #superior {
+  #superior > div {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
   }
-  #superior > a {
+  #superior > div > a {
     text-decoration: none;
   }
   #header > div {
@@ -173,6 +172,4 @@ import { AuthService } from '../../servicios/auth.service';
   }
   `,
 })
-export class HeaderComponent {
-  // constructor(private authService: AuthService) {}
-}
+export class HeaderComponent {}

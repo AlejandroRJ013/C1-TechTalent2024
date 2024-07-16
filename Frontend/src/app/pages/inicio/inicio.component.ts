@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { IProductos } from '../../interfaces/productos';
 import { ProductosService } from '../../servicios/service-productos.service';
-
 @Component({
   selector: 'app-inicio',
   standalone: true,
@@ -16,14 +15,14 @@ export class InicioComponent implements AfterViewInit {
   cantDinero: number = 0;
   productosMostrar: string[] = [
     'prod48',
-    'prod85',
-    'prod1',
-    'prod2',
+    'prod86',
+    'prod01',
+    'prod02',
     'prod46',
     'prod65',
     'prod96',
     'prod69',
-    'prod3',
+    'prod03',
     'prod55',
   ];
 
@@ -96,20 +95,12 @@ export class InicioComponent implements AfterViewInit {
   }
 
   public productosList: IProductos[] = [];
-  public productosFiltrados: IProductos[] = [];
 
   constructor(private productoService: ProductosService) {}
 
   ngOnInit(): void {
-    this.productoService.getProductos().subscribe((data) => {
-      this.productosList = data;
-      this.filtrarProductos();
-    });
-  }
-
-  filtrarProductos() {
-    this.productosFiltrados = this.productosList.filter((producto) =>
-      this.productosMostrar.includes(producto._id)
-    );
+    this.productoService
+      .getProductos()
+      .subscribe((data) => (this.productosList = data));
   }
 }
