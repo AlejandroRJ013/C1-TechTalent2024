@@ -1,8 +1,0 @@
-.esp > li {
-  list-style-type: lower-alpha;
-}
-
-.eeuu > li {
-  list-style-type: upper-roman;
-  padding-left: 30px;
-}

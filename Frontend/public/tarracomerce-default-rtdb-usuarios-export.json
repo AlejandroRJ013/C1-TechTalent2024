@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "mariaf",
+    "correo": "maria.fernandez@example.com",
+    "direccion": "Calle Mayor 1, Tarragona",
+    "nombre": "María Fernández",
+    "password": "mariaSecurePass456",
+    "telefono": "600123456"
+  },
+  {
+    "_id": "josem",
+    "correo": "jose.martinez@example.com",
+    "direccion": "Avenida de la Paz 2, Tarragona",
+    "nombre": "José Martínez",
+    "password": "joseSecurePass789",
+    "telefono": "600654321"
+  },
+  {
+    "_id": "anal",
+    "correo": "ana.lopez@example.com",
+    "direccion": "Plaza del Sol 3, Tarragona",
+    "nombre": "Ana López",
+    "password": "anaSecurePass123",
+    "telefono": "600987654"
+  },
+  {
+    "_id": "luisg",
+    "correo": "luis.garcia@example.com",
+    "direccion": "Calle Luna 4, Tarragona",
+    "nombre": "Luis García",
+    "password": "luisSecurePass987",
+    "telefono": "600321987"
+  },
+  {
+    "_id": "carlas",
+    "correo": "carla.sanchez@example.com",
+    "direccion": "Avenida Mar 5, Tarragona",
+    "nombre": "Carla Sánchez",
+    "password": "carlaSecurePass654",
+    "telefono": "600789123"
+  }
+]
